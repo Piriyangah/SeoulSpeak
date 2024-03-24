@@ -1,0 +1,9 @@
+- backend starten mit: node server.js ODER npm run start ODER npm run watch
+
+in package.json: Nodemon achtet das es Veränderungen direkt auch angezigt werden. 
+
+router.js
+//CRUD
+//router.METHODE(PATH, HANDLER)
+
+upadte: video2 auds übung 8Minute 38:00
