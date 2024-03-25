@@ -1,0 +1,50 @@
+<h1>Vokabeln hinzufügen</h1>
+<div class = "form">
+<mat-form-field>
+    <mat-label for="german-name">german</mat-label>
+    <input matInput id="german-name" type="text" [formControl]="germanFC" />
+    @if (germanFC.invalid) {
+        <mat-error>{{getErrorMessageGerman()}}</mat-error>
+        }
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <mat-label for="korean">korean</mat-label>
+    <input matInput id="korean" type="text" [formControl]="koreanFC" />
+    @if (koreanFC.invalid) {
+        <mat-error>{{getErrorMessageKorean()}}</mat-error>
+        }
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label for="e-mail">pronunciation</mat-label>
+    <input matInput id="e-mail" type="text" [formControl]="pronunciationFC" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label for="pronunciation">eg_german</mat-label>
+    <input matInput id="pronunciation" type="text" [formControl]="eg_germanFC" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label for="eg_korean">eg_korean</mat-label>
+    <input matInput id="eg_korean" type="text" [formControl]="eg_koreanFC" />
+</mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label for="eg_pronunciation">eg_pronunciation</mat-label>
+    <input matInput id="eg_pronunciation" type="text" [formControl]="eg_pronunciationFC" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label for="Schwierigkeitsgrad">Schwierigkeitsgrad</mat-label>
+    <select matNativeControl id="Schwierigkeitsgrad" [formControl]="SchwierigkeitsgradFC">
+      <option value="">--auswählen--</option>
+      <option value="einfach">einfach</option>
+      <option value="mittel">mittel</option>
+      <option value="schwer">schwer</option>
+    </select>
+  </mat-form-field>
+  <br />
+  <button mat-raised-button [disabled]="formInvalid()" (click)="register()">Registrieren</button>
+</div>
