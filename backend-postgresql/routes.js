@@ -100,19 +100,24 @@ router.put('/vocabulary/:id', async(req, res) => {
 
 //DELETE one vokabel - DELETE 
 router.delete('/vocabulary/:id', async(req, res) => {
+    const id = req.params.id;
     const anfrage = `DELETE FROM vocabulary  WHERE id=$1`;
 
     try {
-        const id = req.params.id;
-        const result = await client.query(anfrage, [id])
-        console.log(result)
-        if (result.rowCount == 1)
-            res.send({ message: "Vokabel with id=" + id + " deleted" });
-        else
-            res.send({ message: "No Vokabel found with id=" + id });
-    } catch (err) {
-        console.log(err.stack)
+        const deleteQuery = `DELETE FROM vocabulary WHERE id = $1 RETURNING *;`;
+        const deleteResult = await client.query(deleteQuery, [id]);
+        if (deleteResult.rowCount > 0) {
+            console.log(`Vokabel mit ID ${id} wurde gelöscht.`);
+            res.send({ message: `Vokabel mit ID ${id} wurde gelöscht.` });
+        } 
+        else {
+            res.status(404).send({ message: `Vokabel mit ID ${id} nicht gefunden.` });
+        } 
     }
-});
+    catch (err) {
+        console.error(`Fehler beim Löschen von Vokabel: ${err}`);
+        res.status(500).send({ message: 'Fehler beim Löschen von Vokabel.' });
+    }
+}),
 
 module.exports = router;
