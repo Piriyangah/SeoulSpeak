@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="my-5">Alle Vokabeln</h1>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">German</th>
+          <th scope="col">Korean</th>
+          <th scope="col">Pronunciation</th>
+          <th scope="col">German Example</th>
+          <th scope="col">Korean Example</th>
+          <th scope="col">Pronunciation</th>
+          <th scope="col">Update</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (vokabel of vokabeln; track vokabel.id) {
+          <tr>
+            <th scope="row">{{ vokabel.id  }}</th>
+          <td>{{ vokabel.german }}</td>
+          <td>{{ vokabel.korean }}</td>
+          <td>{{ vokabel.pronunciation }}</td>
+          <td>{{ vokabel.eg_german }}</td>
+          <td>{{ vokabel.eg_korean }}</td>
+          <td>{{ vokabel.eg_pronunciation }}</td>
+          <td><a class="btn btn-sm btn-success" [routerLink]="['/update', vokabel.id]">update</a></td>
+          <td><button class="btn btn-sm btn-danger" (click)="delete(vokabel.id)">delete</button></td>
+          
+          
+          
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
+  

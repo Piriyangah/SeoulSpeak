@@ -1,0 +1,123 @@
+<div class="container">
+    <h1 class="my-5">Update</h1>
+
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="idGerman" placeholder="Wort eingeben" [formControl]="germanFC"
+            [class]="germanFC.touched ? germanFC.valid ? 'is-valid' : 'is-invalid' : ''">
+            <label for="idGerman">German</label>
+            <div class="invalid-feedback">
+                Please provide a German Word.
+            </div>
+        </div>
+          
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="idKorean" placeholder="입력" [formControl]="koreanFC"
+            [class]="koreanFC.touched ? koreanFC.valid ? 'is-valid' : 'is-invalid' : ''">
+            <label for="idKorean">Korean</label>
+            <div class="invalid-feedback">
+                Please provide a Korean word.
+            </div>
+        </div>
+    
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="idPronunciation" placeholder="입력" [formControl]="pronunciationFC"
+            [class]="pronunciationFC.touched ? pronunciationFC.valid ? 'is-valid' : 'is-invalid' : ''">
+            <label for="idPronunciation">Pronunciation</label>
+            <div class="invalid-feedback">
+                Please provide the Korean-Pronunciation.
+            </div>
+        </div>
+    
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="idEgGerman" placeholder="Wort eingeben" [formControl]="eg_germanFC"
+            [class]="eg_germanFC.touched ? eg_germanFC.valid ? 'is-valid' : 'is-invalid' : ''">
+            <label for="idEgGerman">German Example</label>
+            <div class="invalid-feedback">
+                Please provide an German Example.
+            </div>
+        </div>
+          
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="idEgKorean" placeholder="입력" [formControl]="eg_koreanFC"
+            [class]="eg_koreanFC.touched ? eg_koreanFC.valid ? 'is-valid' : 'is-invalid' : ''">
+            <label for="idEgKorean">Korean Example</label>
+            <div class="invalid-feedback">
+                Please provide a Korean word.
+            </div>
+        </div>
+    
+        <div class="mb-3 form-floating">
+            <input type="text" class="form-control" id="idEgPronunciation" placeholder="입력" [formControl]="eg_pronunciationFC"
+            [class]="eg_pronunciationFC.touched ? eg_pronunciationFC.valid ? 'is-valid' : 'is-invalid' : ''">
+            <label for="idEgPronunciation">Pronunciation</label>
+            <div class="invalid-feedback">
+                Please provide the Korean-Pronunciation.
+            </div>
+        </div>
+    
+        <div class="mb-3 row">
+            <label for="idSchwierigkeitsgrad" class="col-sm-2 col-form-label">Schwierigkeitsgrad auswählen</label>
+            <div class="col-sm-10">
+                <select class="form-select" id="idSchwierigkeitsgrad" [formControl]="SchwierigkeitsgradFC">
+                    <option value="1">einfach</option>
+                    <option value="2">mittel</option>
+                    <option value="3">schwer</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col">
+                <button type="button" class="offset-2 col-10 btn btn-dark" (click)="create(content)">Vokabel hinzufügen</button>
+            </div>
+            <div class="col">
+                <button type="button" class="w-100 btn btn-secondary" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h6 class="modal-title" id="modal-basic-title">Vokabel geupdatet!</h6>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>german</td>
+                        <td>:</td>
+                        <td>{{ germanFC.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>korean</td>
+                        <td>:</td>
+                        <td>{{ koreanFC.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>pronunciation</td>
+                        <td>:</td>
+                        <td>{{ pronunciationFC.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>german example</td>
+                        <td>:</td>
+                        <td>{{ eg_germanFC.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>korean example</td>
+                        <td>:</td>
+                        <td>{{ eg_koreanFC.value }}</td>
+                    </tr>
+                    <tr>
+                        <td>pronunciation</td>
+                        <td>:</td>
+                        <td>{{ eg_pronunciationFC.value }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+        </div>
+    </ng-template>

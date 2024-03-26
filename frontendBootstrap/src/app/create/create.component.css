@@ -1,0 +1,34 @@
+.background-overlay {
+    position: fixed;
+    top: 56px; /* Höhe der Navbar anpassen */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 56px); /* Höhe des Bildschirms abzüglich der Navbar-Höhe */
+    background-color: rgba(0, 0, 0, 0.7); /* Halbtransparentes Schwarz */
+    z-index: 1; /* Über dem Bild, aber unter dem Text */
+  }
+  
+  .background-image {
+    position: fixed;
+    top: 56px; /* Höhe der Navbar anpassen */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 56px); /* Höhe des Bildschirms abzüglich der Navbar-Höhe */
+    object-fit: cover; /* Bild so skalieren, dass es den gesamten Bereich abdeckt */
+    z-index: 0; /* Hinter anderen Elementen */
+  }
+  
+  .content {
+    position: relative;
+    z-index: 2; /* Über dem Bild */
+    color: rgb(239, 227, 248); /* Textfarbe anpassen */
+    text-align: center;
+    padding-top: 15%; /* Platz oben einfügen */
+  }
+
+h1{
+    color: rgb(239, 227, 248);
+}
+.form-floating{
+    color: hsl(210, 100%, 20%);
+}

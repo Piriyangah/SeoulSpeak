@@ -1,26 +1,28 @@
-<div class="mat-elevation-z8">
-  <table mat-table class="full-width-table" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
-    </ng-container>
+<h1>Vokabelliste</h1>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator #paginator
-      [length]="dataSource.data.length"
-      [pageIndex]="0"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
-      aria-label="Select page">
-  </mat-paginator>
-</div>
+<table mat-tabel>
+  <head>
+   <tr>
+    <th>Id</th>
+    <th>German</th>
+    <th>Korean</th>
+    <th>Pronunciation</th>
+    <th>German example</th>
+    <th>Korean example</th>
+    <th>Pronunciation of the Korean example</th>
+   </tr> 
+  </head>
+  <tbody>
+    @for(vokabel of vokabeln; track vokabel.id){
+      <tr>
+        <td>{{vokabel.id}}</td>
+        <td>{{vokabel.german}}</td>
+        <td>{{vokabel.korean}}</td>
+        <td>{{vokabel.pronunciation}}</td>
+        <td>{{vokabel.eg_german}}</td>
+        <td>{{vokabel.eg_korean}}</td>
+        <td>{{vokabel.eg_pronunciation}}</td>
+      </tr>
+    }
+  </tbody>
+</table>

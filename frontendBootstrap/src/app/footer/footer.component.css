@@ -1,0 +1,15 @@
+.footer {
+  position: absolute; /* Verwende absolute, um den Footer relativ zum sichtbaren Bereich zu positionieren */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: whitesmoke;
+  background-color: hsl(210, 100%, 20%);
+  z-index: 1500; /* Stelle sicher, dass der Footer über anderen Elementen liegt */
+  
+}
+
+.text{
+  color: whitesmoke ;
+}
+

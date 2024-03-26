@@ -1,0 +1,17 @@
+.navbar-light {
+    background-color: rgb(239, 227, 248) !important; /* Hintergrundfarbe der Navbar */
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Stelle sicher, dass die Navbar über anderen Inhaltselementen liegt */
+  }
+  
+/* Schriftart und Farbe */
+.navbar-brand,
+.navbar-nav .nav-link {
+    font-family: 'Noto Sans KR', sans-serif; /* Schriftart festlegen */
+    color: hsl(210, 100%, 20%) !important; /* Dunkelblau, das an die koreanische Flagge erinnert */
+}

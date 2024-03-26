@@ -1,19 +1,33 @@
-import { Component } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { BackendService } from '../shared/backend.service';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  styleUrl: './form.component.css',
+  imports: [
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule],
 })
 
 export class FormComponent {
+  //anbindung mit BackendService
+  private bs = inject(BackendService);
+  router = inject(Router);
+
 
   germanFC = new FormControl('', [Validators.required]);
   koreanFC = new FormControl('', [Validators.required]);
@@ -40,11 +54,27 @@ export class FormComponent {
 
   register(){
     if(!this.formInvalid){
-      let german = {
-        german: this.germanFC.value,
-        korean: this.koreanFC.value
+      let vokabel = {
+        german: this.germanFC.value!,
+        korean: this.koreanFC.value!,
+        pronunciation: this.pronunciationFC.value!,
+        eg_german: this.eg_germanFC.value!,
+        eg_korean: this.eg_koreanFC.value!,
+        eg_pronunciation: this.eg_pronunciationFC.value!,
+        Schwierigkeitsgrad: this.SchwierigkeitsgradFC.value!
       }
-      console.log('german', german)
+      //anbindung mit BackendService
+      this.bs.createNewVokabel(vokabel).subscribe({
+        next: (response) => {
+          console.log(response)
+          this.router.navigate(['/table'])
+        },
+        error: (err) => console.log(err),
+        complete: () => console.log('vokabel created')
+      })
+
+      
+      console.log('vokabel', vokabel)
     }
     else{
       console.log('from invalid')
