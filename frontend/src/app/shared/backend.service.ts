@@ -26,12 +26,12 @@ export class BackendService {
     return this.http.put<Vocab>(url, vocab);
   }  
 
-  async getOneVocab2(id: number): Promise<Vocab> {
-    let response = await fetch(`${this.backendUrl}/vocabulary/${id}`);
-    let vocab = await response.json();
-    console.log('vocab in service (getOneVocab) : ', vocab);
-    return vocab;
-  }
+  //async getOneVocab2(id: number): Promise<Vocab> {
+  //  let response = await fetch(`${this.backendUrl}/vocabulary/${id}`);
+  //  let vocab = await response.json();
+  //  console.log('vocab in service (getOneVocab) : ', vocab);
+  //  return vocab;
+  //}
 
   deleteVocab(id: number): Observable<void> {
     const url = `${this.backendUrl}/vocabulary/${id}`;

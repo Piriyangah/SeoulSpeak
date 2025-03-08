@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BackendService } from '../shared/backend.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Vocab } from '../shared/vocab';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,6 +14,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class DetailComponent implements OnInit {
   private bs = inject(BackendService)
   private route = inject(ActivatedRoute)
+  private router = inject(Router)
+
   vocab!: Vocab;
   id: string | null = ''
   form = new FormGroup({
@@ -82,11 +84,23 @@ export class DetailComponent implements OnInit {
   //  }
 
     update() {
-      // Update-Logik implementieren
+      const values = this.form.value;
+      this.vocab.korean = values.koreanControll!;
+      this.vocab.pronunciation = values.pronunciationControll!;
+      this.vocab.english = values.englishControll!;
+      this.vocab.example = values.exampleControll!;
+      this.vocab.meaning = values.meaningControll!;
+      this.vocab.difficulty = values.difficultyControll!;
+  
+      this.bs.updateVocab(Number(this.id), this.vocab)
+      .subscribe({
+        next: () => this.router.navigate(['/vocab']),
+        error: (err) => console.error('Error updating vocab:', err)
+      });
     }
 
-    cancel() {
-      // Abbrechen-Logik implementieren
+    cancel(): void {
+      this.router.navigate(['./vocab']);
     }
-  
+
 }
