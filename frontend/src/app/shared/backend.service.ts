@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BackendService {
-  backendUrl = 'http://localhost:3000'; // URL des Backends
+  backendUrl = 'http://localhost:3000'; 
 
   constructor(private http: HttpClient) { } 
 
@@ -19,6 +19,18 @@ export class BackendService {
   getOneVocab(id: number): Observable<Vocab> {
     const url = `${this.backendUrl}/vocabulary/${id}`;
     return this.http.get<Vocab>(url);
+  }
+
+  updateVocab(id: number, vocab: Vocab): Observable<Vocab> {
+    const url = `${this.backendUrl}/vocabulary/${id}`;
+    return this.http.put<Vocab>(url, vocab);
+  }  
+
+  async getOneVocab2(id: number): Promise<Vocab> {
+    let response = await fetch(`${this.backendUrl}/vocabulary/${id}`);
+    let vocab = await response.json();
+    console.log('vocab in service (getOneVocab) : ', vocab);
+    return vocab;
   }
 
   deleteVocab(id: number): Observable<void> {

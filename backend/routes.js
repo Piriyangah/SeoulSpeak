@@ -41,6 +41,25 @@ router.get('/vocabulary', async(req, res) => {
     }
 });
 
+// get one vocabulary with id
+router.get('/vocabulary/:id', async(req, res) => {
+    const query = `SELECT * FROM vocabulary WHERE id=$1`;
+
+    try {
+        const id = req.params.id;
+        const result = await client.query(query, [id])
+        console.log(result)
+        if (result.rowCount == 1)
+            res.send(result.rows[0]);
+        else {
+            res.status(404)
+            res.send({ message: "No vocabulary found with id=" + id });
+        }
+    } catch (err) {
+        console.log(err.stack)
+    }
+});
+
 // update one vocabulary
 router.put('/vocabulary/:id', async(req, res) => {
     const query = `SELECT * FROM vocabulary WHERE id=$1`;
