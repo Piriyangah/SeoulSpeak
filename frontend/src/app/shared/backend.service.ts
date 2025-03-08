@@ -15,4 +15,14 @@ export class BackendService {
   getAllVocabs(): Observable<Vocab[]> {
     return this.http.get<Vocab[]>(this.backendUrl + "/vocabulary"); 
   }
+
+  getOneVocab(id: number): Observable<Vocab> {
+    const url = `${this.backendUrl}/vocabulary/${id}`;
+    return this.http.get<Vocab>(url);
+  }
+
+  deleteVocab(id: number): Observable<void> {
+    const url = `${this.backendUrl}/vocabulary/${id}`;
+    return this.http.delete<void>(url);
+  }
 }

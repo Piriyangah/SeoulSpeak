@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BackendService } from '../../shared/backend.service';
 import { Vocab } from '../../shared/vocab';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-vocab',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './vocab.component.html',
   styleUrl: './vocab.component.css'
 })
@@ -30,6 +31,21 @@ export class VocabComponent implements OnInit { // OnInit ein Interface; beim In
       error: (error) => console.log('Error:', error),
       complete: () => { console.log('getAllVocabs() completed') }
     })
+  }
+
+  //delete(id: number): void {
+  //  this.bs.deleteVocab(id).subscribe({
+  //    next: () => {
+  //      // Entferne die gelöschte Vokabel aus der Liste
+  //      this.vocabList = this.vocabList.filter(vocab => vocab.id !== id);
+  //      console.log(`Vocabulary with id=${id} deleted`);
+  //    },
+  //    error: (error) => console.log('Error deleting vocabulary:', error),
+  //    complete: () => console.log('deleteVocab() completed')
+  //  });
+  //}
+  delete(id: number): void {
+    console.log(`Vocabulary with id=${id} deleted`);
   }
 }
 

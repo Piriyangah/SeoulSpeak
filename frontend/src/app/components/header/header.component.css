@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff; /* Weißer Hintergrund */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
+  }
+  
+  .logo {
+    max-width: 150px; /* Größe des Logos anpassen */
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Schatten für das Logo */
+  }

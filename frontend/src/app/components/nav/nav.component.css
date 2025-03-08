@@ -1,0 +1,33 @@
+.navbar {
+    background-color: #333333; /* Dunkelgrauer Hintergrund */
+    padding: 10px 0;
+  }
+  
+  .navbar-brand, .nav-link {
+    color: white !important; /* Textfarbe Weiß */
+    font-family: 'Montserrat', sans-serif; /* Moderne Schriftart */
+    font-weight: bold;
+    text-transform: uppercase; /* Text in Großbuchstaben */
+  }
+  
+  .nav-link:hover, .navbar-brand:hover {
+    color: #ff0077 !important; /* Akzentfarbe Blau beim Hover */
+    text-decoration: none;
+  }
+  
+  .dropdown-menu {
+    background-color: #333333; /* Dunkelgrauer Hintergrund für Dropdown */
+  }
+  
+  .dropdown-item {
+    color: white !important; /* Textfarbe im Dropdown-Menü */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #ff0077; /* Akzentfarbe Blau beim Hover */
+    color: white !important;
+  }
+  
+  .navbar-toggler {
+    background-color: white; /* Farbe des Toggler-Icons */
+  }

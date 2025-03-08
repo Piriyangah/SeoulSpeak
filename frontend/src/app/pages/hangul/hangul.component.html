@@ -1,1 +1,45 @@
-<p>hangul works!</p>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Hangul Letters (한글 문자)</h1>
+
+    <div class="row">
+        <!-- Consonants -->
+        <div class="col-12">
+            <h2 class="consonant-heading text-center">Consonants (자음)</h2>
+        </div>
+        <div *ngFor="let letter of consonants" class="col-4 col-md-3 col-lg-2 mb-3">
+            <div class="hangul-letter consonant" (click)="playAudio(letter.audio)">
+                {{ letter.char }}
+            </div>
+        </div>
+
+        <!-- Double Consonants -->
+        <div class="col-12 mt-4">
+            <h2 class="double-consonant-heading text-center">Double Consonants (쌍자음)</h2>
+        </div>
+        <div *ngFor="let letter of doubleConsonants" class="col-4 col-md-3 col-lg-2 mb-3">
+            <div class="hangul-letter double-consonant" (click)="playAudio(letter.audio)">
+                {{ letter.char }}
+            </div>
+        </div>
+
+        <!-- Vowels -->
+        <div class="col-12 mt-4">
+            <h2 class="vowel-heading text-center">Vowels (모음)</h2>
+        </div>
+        <div *ngFor="let letter of vowels" class="col-4 col-md-3 col-lg-2 mb-3">
+            <div class="hangul-letter vowel" (click)="playAudio(letter.audio)">
+                {{ letter.char }}
+            </div>
+        </div>
+
+        <!-- Complex Vowels -->
+        <div class="col-12 mt-4">
+            <h2 class="complex-vowel-heading text-center">Complex Vowels (복합 모음)</h2>
+        </div>
+        <div *ngFor="let letter of complexVowels" class="col-4 col-md-3 col-lg-2 mb-3">
+            <div class="hangul-letter complex-vowel" (click)="playAudio(letter.audio)">
+                {{ letter.char }}
+            </div>
+        </div>
+    </div>
+</div>

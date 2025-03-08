@@ -1,0 +1,64 @@
+.container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Heller Hintergrund für die Seite */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
+  }
+  
+  h1 {
+    color: #333333; /* Dunkelgrau für die Überschrift */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  
+  /* Stile für die Tabelle */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Leichte Trennlinien */
+  }
+  
+  .table th {
+    background-color: #333333; /* Dunkelgrauer Hintergrund für die Kopfzeile */
+    color: white; /* Weiße Schrift in der Kopfzeile */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1; /* Hover-Effekt für Tabellenzeilen */
+  }
+  
+  /* Stile für die Icons */
+  .bi-pencil-square {
+    color: #000000; /* Akzentfarbe für das Bearbeiten-Icon */
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .bi-trash {
+    color: #ff0000; /* Akzentfarbe für das Löschen-Icon */
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .bi-pencil-square:hover, .bi-trash:hover {
+    color: #ff0077; /* Dunklere Akzentfarbe beim Hover */
+  }
+  
+  /* Stile für die Caption */
+  .table caption {
+    caption-side: top;
+    font-size: 0.9rem;
+    color: #666; /* Graue Farbe für die Beschreibung */
+    margin-bottom: 10px;
+  }

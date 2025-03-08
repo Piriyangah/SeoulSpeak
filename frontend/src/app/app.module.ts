@@ -5,21 +5,21 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component'; 
 import { HomeComponent } from './pages/home/home.component';
 import { HangulComponent } from './pages/hangul/hangul.component';
-import { LessonComponent } from './pages/lesson/lesson.component';
 import { VocabComponent } from './pages/vocab/vocab.component';
 import { GrammarComponent } from './pages/grammar/grammar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { routes } from './app.routes';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     HomeComponent, 
     HangulComponent, 
-    LessonComponent, 
     VocabComponent,
     LayoutComponent,
-    GrammarComponent
+    GrammarComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

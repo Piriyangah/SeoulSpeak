@@ -1,1 +1,41 @@
-<p>vocab works!</p>
+<div class="container m-5">
+    <h1>Vocabulary</h1>
+
+    <table class="table table-striped table-responsive mt-5">
+        <caption>List of all vocabulary entries</caption>
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Korean</th>
+                <th scope="col">Pronunciation</th>
+                <th scope="col">English</th>
+                <th scope="col">Example</th>
+                <th scope="col">Meaning</th>
+                <th scope="col">Difficulty</th>
+                <th scope="col">Details</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (vocab of vocabList; track $index; let i = $index) {
+                <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ vocab.korean }}</td>
+                    <td>{{ vocab.pronunciation }}</td>
+                    <td>{{ vocab.english }}</td>
+                    <td>{{ vocab.example }}</td>
+                    <td>{{ vocab.meaning }}</td>
+                    <td>{{ vocab.difficulty }}</td>
+                    <td>
+                        <a [routerLink]="['/vocab', vocab.id]">
+                            <span class="bi bi-pencil-square"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <i (click)="delete(vocab.id)" class="bi bi-trash"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
