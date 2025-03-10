@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #333333; /* Dunkelgrauer Hintergrund */
+    background-color: #511462; /* Dunkelgrauer Hintergrund */
     padding: 10px 0;
   }
   
@@ -11,7 +11,7 @@
   }
   
   .nav-link:hover, .navbar-brand:hover {
-    color: #ff0077 !important; /* Akzentfarbe Blau beim Hover */
+    color: #9c67ab !important; /* Akzentfarbe Blau beim Hover */
     text-decoration: none;
   }
   

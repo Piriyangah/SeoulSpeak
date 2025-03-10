@@ -21,7 +21,7 @@ h2 {
     margin-bottom: 15px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #333333; /* Dunkelgrau für alle Überschriften */
+    color: #511462; /* Dunkelgrau für alle Überschriften */
     position: relative;
     padding-bottom: 10px;
     text-align: center;
@@ -65,22 +65,22 @@ h2::after {
 }
 
 .consonant {
-    background-color: #333333;
+    background-color: #511462;
     color: white;
 }
 
 .double-consonant {
-    background-color: #555555;
+    background-color: #8b3ba2;
     color: white;
 }
 
 .vowel {
-    background-color: #ff0077;
+    background-color: #9c67ab;
     color: white;
 }
 
 .complex-vowel {
-    background-color: #ff6699;
+    background-color: #be78d1;
     color: black;
 }
 

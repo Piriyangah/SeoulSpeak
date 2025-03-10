@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #ffffff; /* Weißer Hintergrund */
+    background-color: #f4e7f0; /* Weißer Hintergrund */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
   }
   

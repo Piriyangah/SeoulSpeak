@@ -6,7 +6,7 @@
   }
   
   h1 {
-    color: #333333; /* Dunkelgrau für die Überschrift */
+    color: #511462; /* Dunkelgrau für die Überschrift */
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
@@ -27,7 +27,7 @@
   }
   
   .table th {
-    background-color: #333333; /* Dunkelgrauer Hintergrund für die Kopfzeile */
+    background-color: #511462; /* Dunkelgrauer Hintergrund für die Kopfzeile */
     color: white; /* Weiße Schrift in der Kopfzeile */
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;

@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Vocab } from '../shared/vocab';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-detail',
   imports: [ReactiveFormsModule],
@@ -19,12 +18,12 @@ export class DetailComponent implements OnInit {
   vocab!: Vocab;
   id: string | null = ''
   form = new FormGroup({
-    koreanControll: new FormControl<string>(''),
-    pronunciationControll: new FormControl<string>(''),
-    englishControll: new FormControl<string>(''),
-    exampleControll: new FormControl<string>(''),
-    meaningControll: new FormControl<string>(''),
-    difficultyControll: new FormControl<number | null>(null)
+    koreanControl: new FormControl<string>(''),
+    pronunciationControl: new FormControl<string>(''),
+    englishControl: new FormControl<string>(''),
+    exampleControl: new FormControl<string>(''),
+    meaningControl: new FormControl<string>(''),
+    difficultyControl: new FormControl<number | null>(null)
   });
 
   ngOnInit(): void {
@@ -37,12 +36,12 @@ export class DetailComponent implements OnInit {
         console.log('vocab = ', this.vocab);
 
         this.form.patchValue({
-          koreanControll: this.vocab.korean,
-          pronunciationControll: this.vocab.pronunciation,
-          englishControll: this.vocab.english,
-          exampleControll: this.vocab.example,
-          meaningControll: this.vocab.meaning,
-          difficultyControll: this.vocab.difficulty
+          koreanControl: this.vocab.korean,
+          pronunciationControl: this.vocab.pronunciation,
+          englishControl: this.vocab.english,
+          exampleControl: this.vocab.example,
+          meaningControl: this.vocab.meaning,
+          difficultyControl: this.vocab.difficulty
 
         });
       },
@@ -85,12 +84,12 @@ export class DetailComponent implements OnInit {
 
     update() {
       const values = this.form.value;
-      this.vocab.korean = values.koreanControll!;
-      this.vocab.pronunciation = values.pronunciationControll!;
-      this.vocab.english = values.englishControll!;
-      this.vocab.example = values.exampleControll!;
-      this.vocab.meaning = values.meaningControll!;
-      this.vocab.difficulty = values.difficultyControll!;
+      this.vocab.korean = values.koreanControl!;
+      this.vocab.pronunciation = values.pronunciationControl!;
+      this.vocab.english = values.englishControl!;
+      this.vocab.example = values.exampleControl!;
+      this.vocab.meaning = values.meaningControl!;
+      this.vocab.difficulty = values.difficultyControl!;
   
       this.bs.updateVocab(Number(this.id), this.vocab)
       .subscribe({
@@ -102,5 +101,4 @@ export class DetailComponent implements OnInit {
     cancel(): void {
       this.router.navigate(['./vocab']);
     }
-
 }

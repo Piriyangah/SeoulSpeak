@@ -1,11 +1,27 @@
 <div class="container my-5">
-    <h1 class="text-center mb-4">Hangul Letters (한글 문자)</h1>
-
+    <h1 class="text-center mb-4">Hangul (한글)</h1>
+    <h3>Introduction to Hangul (Korean Alphabet)</h3>
+    <p>Hangeul is the writing system of the Korean language, which was developed based on unique principles and was originally named Hunminjeongeum (훈민정음). It was created in 1443 by King Sejong, the fourth king of the Joseon Dynasty. After a long study, King Sejong developed a writing system for his people who struggled due to illiteracy. They could not write because there was no alphabet representing the sounds of the Korean language. Later it was referred to as Hangeul. Hangeul can describe various sounds of the Korean language with only 19 consonants and 21 vowels. As a result, Hangeul is now recognized as the most systematic, scientific, and excellent writing system in the world.</p>
     <div class="row">
+
+        <!-- Vowels -->
+        <div class="col-12 mt-4">
+            <h2 class="vowel-heading text-center">Vowels (모음)</h2>
+            <p>Basic vowel letters consist of three of three basic elements ' . ', 'ㅡ', 'ㅣㅣ', symbolizing the sky, the earth, and a human being, respectively as the origin of all things.</p>
+        </div>
+        <div *ngFor="let letter of vowels" class="col-4 col-md-3 col-lg-2 mb-3">
+            <div class="hangul-letter vowel" (click)="playAudio(letter.audio)">
+                {{ letter.char }}
+            </div>
+        </div>
+
         <!-- Consonants -->
         <div class="col-12">
             <h2 class="consonant-heading text-center">Consonants (자음)</h2>
         </div>
+        <p>Basic consonant letters 'ㄱ','ㄴ','ㅁ','ㅅ' and 'ㅇ' were formed after the shapes or movements of vocal organs, such as the tongue, lips, teeth and the throat, when they produce particular sounds.</p>
+        <p>Other consonant letters were created by adding strokes to the basic consonant letters. For example, 'ㄱ' was created by adding a stroke to 'ㄱ' to make 'ㄲ'.</p>
+
         <div *ngFor="let letter of consonants" class="col-4 col-md-3 col-lg-2 mb-3">
             <div class="hangul-letter consonant" (click)="playAudio(letter.audio)">
                 {{ letter.char }}
@@ -16,18 +32,10 @@
         <div class="col-12 mt-4">
             <h2 class="double-consonant-heading text-center">Double Consonants (쌍자음)</h2>
         </div>
+        <p>Double consonants are pronounced with a stronger emphasis than their single counterparts. For example, 'ㄱ' is pronounced as 'g' while 'ㄲ' is pronounced as 'gg'.</p>
+        <p>Double consonants are formed by adding a stroke to the basic consonant letters.</p>
         <div *ngFor="let letter of doubleConsonants" class="col-4 col-md-3 col-lg-2 mb-3">
             <div class="hangul-letter double-consonant" (click)="playAudio(letter.audio)">
-                {{ letter.char }}
-            </div>
-        </div>
-
-        <!-- Vowels -->
-        <div class="col-12 mt-4">
-            <h2 class="vowel-heading text-center">Vowels (모음)</h2>
-        </div>
-        <div *ngFor="let letter of vowels" class="col-4 col-md-3 col-lg-2 mb-3">
-            <div class="hangul-letter vowel" (click)="playAudio(letter.audio)">
                 {{ letter.char }}
             </div>
         </div>
@@ -36,6 +44,8 @@
         <div class="col-12 mt-4">
             <h2 class="complex-vowel-heading text-center">Complex Vowels (복합 모음)</h2>
         </div>
+        <p>Complex vowels are formed by combining two or more basic vowels. For example, 'ㅗ' and 'ㅏ' are combined to form 'ㅘ'.</p>
+        <p>Complex vowels are pronounced as a single syllable.</p>
         <div *ngFor="let letter of complexVowels" class="col-4 col-md-3 col-lg-2 mb-3">
             <div class="hangul-letter complex-vowel" (click)="playAudio(letter.audio)">
                 {{ letter.char }}

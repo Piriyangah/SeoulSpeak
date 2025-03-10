@@ -1,12 +1,11 @@
 <main class="d-flex min-vh-100">
     <fieldset class="container mt-5">
-      <!-- Bedingte Anzeige der Legende, abhängig von der Verfügbarkeit von vocab -->
       @if(vocab){
         <legend class="mb-4">Eintrag von {{ vocab.korean }} aktualisieren</legend>
       } @else {
         <legend class="mb-4">Eintrag aktualisieren</legend>
       }
-          <form [formGroup]="form" (ngSubmit)="update()">
+        <form [formGroup]="form" (ngSubmit)="update()">
             <div class="mb-3 row">
             <label class="col-2 col-form-label" for="korean">Koreanisch</label>
             <div class="col-10">
@@ -55,6 +54,5 @@
             <button type="button" class="col-5 btn btn-secondary" (click)="cancel()">Abbrechen</button>
             </div>
         </form>
-        </fieldset>
-    </main>
-    
+    </fieldset>
+</main>
