@@ -8,6 +8,7 @@ import { Lesson1Component } from './pages/lessons/lesson1/lesson1.component';
 import { Lesson2Component } from './pages/lessons/lesson2/lesson2.component';
 import { Lesson3Component } from './pages/lessons/lesson3/lesson3.component';
 import { DetailComponent } from './detail/detail.component';
+import { CreateComponent } from './create/create.component';
 
 
 export const routes: Routes = [{
@@ -46,4 +47,9 @@ export const routes: Routes = [{
   { 
     path: 'vocab/:id',
     component : DetailComponent
-}];
+  },
+  {
+    path: "create",
+    component: CreateComponent
+  }
+];

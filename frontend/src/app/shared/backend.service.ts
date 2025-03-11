@@ -21,6 +21,10 @@ export class BackendService {
     return this.http.get<Vocab>(url);
   }
 
+  createVocab(vocab: Vocab): Observable<Vocab> {
+    return this.http.post<Vocab>(this.backendUrl + "/vocabulary", vocab);
+  }
+
   updateVocab(id: number, vocab: Vocab): Observable<Vocab> {
     const url = `${this.backendUrl}/vocabulary/${id}`;
     return this.http.put<Vocab>(url, vocab);

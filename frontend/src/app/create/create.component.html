@@ -1,1 +1,98 @@
-<p>create works!</p>
+<main class="d-flex justify-content-center min-vh-100">
+  <fieldset class="container mt-5 p-4">
+    <legend class="mb-4 text-center">Neuen Eintrag erstellen</legend>
+    <form [formGroup]="form" (ngSubmit)="createVocab()">
+      
+      <!-- Korean Field -->
+      <div class="mb-3">
+        <label class="form-label" for="korean">Korean</label>
+        <input type="text" class="form-control" id="korean" placeholder="Bitte geben Sie das koreanische Wort in Hangul ein" formControlName="koreanControl"
+            [ngClass]="{'is-invalid': form.get('koreanControl')?.invalid && form.get('koreanControl')?.touched}" />
+            <div *ngIf="form.get('koreanControl')?.invalid && form.get('koreanControl')?.touched" class="invalid-feedback">
+            Bitte geben Sie das koreanische Wort ein.
+        </div>      
+    </div>
+
+      <!-- Pronunciation Field -->
+      <div class="mb-3">
+        <label class="form-label" for="pronunciation">Pronunciation</label>
+        <input type="text" class="form-control" id="pronunciation" placeholder="Aussprache des koreanischen Wortes" formControlName="pronunciationControl" 
+        [ngClass]="{'is-invalid': form.get('englishControl')?.invalid && form.get('englishControl')?.touched}" />
+        <div *ngIf="form.get('englishControl')?.invalid && form.get('englishControl')?.touched" class="invalid-feedback">
+            Bitte geben Sie die englische Übersetzung ein.
+        </div>      
+    </div>
+
+      <!-- English Field -->
+      <div class="mb-3">
+        <label class="form-label" for="english">English</label>
+        <input type="text" class="form-control" id="english" placeholder="Englische Übersetzung" formControlName="englishControl" />
+      </div>
+
+      <!-- Example Field -->
+      <div class="mb-3">
+        <label class="form-label" for="example">Example</label>
+        <input type="text" class="form-control" id="example" placeholder="Beispiel im Gebrauch" formControlName="exampleControl" />
+      </div>
+
+      <!-- Meaning Field -->
+      <div class="mb-3">
+        <label class="form-label" for="meaning">Meaning</label>
+        <input type="text" class="form-control" id="meaning" placeholder="Bedeutung des koreanischen Wortes" formControlName="meaningControl" />
+      </div>
+
+      <!-- Difficulty Field -->
+    <div class="mb-3">
+        <label class="form-label" for="difficultyControl">Difficulty Level</label>
+        <div class="difficulty-dropdown position-relative">
+        <select formControlName="difficultyControl" id="difficultyControl" class="form-select">
+            <option value="" disabled selected>Select Difficulty</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <span class="info-icon position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+            <i class="bi bi-info-circle"></i>
+            <span class="tooltip-text">1: Easy<br>2: Medium<br>3: Advanced<br>4: Hard<br>5: Very Hard
+            </span>
+        </span>
+        </div>
+    </div>
+  
+
+      <!-- Submit and Cancel Buttons -->
+      <div class="d-flex justify-content-between mt-5">
+        <button type="submit" class="btn btn-secondary col-5">Create</button>
+        <button type="button" class="btn btn-secondary col-5" (click)="cancel()">Quit</button>
+      </div>
+    </form>
+  </fieldset>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModalLabel">Confirm Changes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Korean:</strong> {{modalValues.korean || 'Not Provided'}}</p>
+          <p><strong>Pronunciation:</strong> {{modalValues.pronunciation || 'Not Provided'}}</p>
+          <p><strong>English:</strong> {{modalValues.english || 'Not Provided'}}</p>
+          <p><strong>Example:</strong> {{modalValues.example || 'Not Provided'}}</p>
+          <p><strong>Meaning:</strong> {{modalValues.meaning || 'Not Provided'}}</p>
+          <p><strong>Difficulty:</strong> {{modalValues.difficulty || 'Not Provided'}}</p>
+          <p>Are you sure you want to save these changes?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="confirmSave()">Confirm</button>
+        </div>
+      </div>
+    </div>
+</div>

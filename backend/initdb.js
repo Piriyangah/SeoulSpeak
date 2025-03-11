@@ -16,7 +16,7 @@ initdb.get('/', async(req, res) => {
                 english TEXT NOT NULL,
                 example TEXT,
                 meaning TEXT,
-                difficulty INT CHECK (difficulty BETWEEN 1 AND 5) NOT NULL);`;
+                difficulty INT CHECK (difficulty BETWEEN 1 AND 5) IS NULL);`;
 
             
     try {
