@@ -1,64 +1,69 @@
-.container {
+.container-fluid {
     padding: 20px;
-    background-color: #f8f9fa; /* Heller Hintergrund für die Seite */
+    background-color: #f8f9fa;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   }
   
   h1 {
-    color: #511462; /* Dunkelgrau für die Überschrift */
+    color: #511462;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 20px;
   }
-  
-  /* Stile für die Tabelle */
+
   .table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .table th, .table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd; /* Leichte Trennlinien */
-  }
+    max-width: 100%;
+    table-layout: auto;
+}
   
   .table th {
-    background-color: #511462; /* Dunkelgrauer Hintergrund für die Kopfzeile */
-    color: white; /* Weiße Schrift in der Kopfzeile */
+    background-color: #511462;
+    color: white; 
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
   }
   
   .table tbody tr:hover {
-    background-color: #f1f1f1; /* Hover-Effekt für Tabellenzeilen */
+    background-color: #f1f1f1; 
   }
   
-  /* Stile für die Icons */
   .bi-pencil-square {
-    color: #000000; /* Akzentfarbe für das Bearbeiten-Icon */
+    color: #000000;
     font-size: 1.2rem;
     cursor: pointer;
   }
   
   .bi-trash {
-    color: #ff0000; /* Akzentfarbe für das Löschen-Icon */
+    color: #ff0000;
     font-size: 1.2rem;
     cursor: pointer;
   }
   
   .bi-pencil-square:hover, .bi-trash:hover {
-    color: #ff0077; /* Dunklere Akzentfarbe beim Hover */
+    color: #ff0077;
   }
   
-  /* Stile für die Caption */
   .table caption {
     caption-side: top;
     font-size: 0.9rem;
-    color: #666; /* Graue Farbe für die Beschreibung */
+    color: #666;
     margin-bottom: 10px;
   }
+
+  .btn-primary {
+    background-color: #511462; 
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.btn-primary:hover {
+    background-color: #700b97; 
+}

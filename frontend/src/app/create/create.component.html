@@ -3,7 +3,6 @@
     <legend class="mb-4 text-center">Neuen Eintrag erstellen</legend>
     <form [formGroup]="form" (ngSubmit)="confirm()">
       
-      <!-- Korean Field -->
       <div class="mb-3">
         <label class="form-label" for="korean">Korean</label>
         <input type="text" class="form-control" id="korean" placeholder="Bitte geben Sie das koreanische Wort in Hangul ein" formControlName="koreanControl"
@@ -13,13 +12,11 @@
         </div>      
     </div>
 
-      <!-- Pronunciation Field -->
       <div class="mb-3">
         <label class="form-label" for="pronunciation">Pronunciation</label>
         <input type="text" class="form-control" id="pronunciation" placeholder="Aussprache des koreanischen Wortes" formControlName="pronunciationControl">  
     </div>
 
-      <!-- English Field -->
       <div class="mb-3">
         <label class="form-label" for="english">English</label>
         <input type="text" class="form-control" id="english" placeholder="Englische Übersetzung" formControlName="englishControl"
@@ -29,19 +26,16 @@
         </div>    
       </div>
 
-      <!-- Example Field -->
       <div class="mb-3">
         <label class="form-label" for="example">Example</label>
         <input type="text" class="form-control" id="example" placeholder="Beispiel im Gebrauch" formControlName="exampleControl" />
       </div>
 
-      <!-- Meaning Field -->
       <div class="mb-3">
         <label class="form-label" for="meaning">Meaning</label>
         <input type="text" class="form-control" id="meaning" placeholder="Bedeutung des koreanischen Wortes" formControlName="meaningControl" />
       </div>
 
-      <!-- Difficulty Field -->
     <div class="mb-3">
         <label class="form-label" for="difficultyControl">Difficulty Level</label>
         <div class="difficulty-dropdown position-relative">
@@ -61,8 +55,6 @@
         </div>
     </div>
   
-
-      <!-- Submit and Cancel Buttons -->
       <div class="d-flex justify-content-between mt-5">
         <button type="submit" class="btn btn-secondary col-5">Create</button>
         <button type="button" class="btn btn-secondary col-5" (click)="cancel()">Quit</button>
@@ -72,7 +64,7 @@
 </main>
 
 
-<!-- Modal -->
+<!-- Mögichkeit, Eingabe zu korrigieren -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

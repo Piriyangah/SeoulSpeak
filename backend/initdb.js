@@ -60,5 +60,4 @@ initdb.get('/', async(req, res) => {
 
 });
 
-
 module.exports = initdb;

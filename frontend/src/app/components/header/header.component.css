@@ -2,12 +2,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #f4e7f0; /* Weißer Hintergrund */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten für Tiefe */
+    background-color: #f4e7f0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   }
   
   .logo {
-    max-width: 150px; /* Größe des Logos anpassen */
+    max-width: 150px;
     height: auto;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2)); /* Schatten für das Logo */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
   }

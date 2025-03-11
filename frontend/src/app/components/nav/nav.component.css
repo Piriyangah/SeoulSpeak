@@ -1,33 +1,33 @@
 .navbar {
-    background-color: #511462; /* Dunkelgrauer Hintergrund */
-    padding: 10px 0;
-  }
+  background-color: #511462; 
+  padding: 10px 0;
+}
   
-  .navbar-brand, .nav-link {
-    color: white !important; /* Textfarbe Weiß */
-    font-family: 'Montserrat', sans-serif; /* Moderne Schriftart */
-    font-weight: bold;
-    text-transform: uppercase; /* Text in Großbuchstaben */
-  }
+.navbar-brand, .nav-link {
+  color: white !important; 
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: bold;
+  text-transform: uppercase;
+}
   
-  .nav-link:hover, .navbar-brand:hover {
-    color: #9c67ab !important; /* Akzentfarbe Blau beim Hover */
-    text-decoration: none;
-  }
+.nav-link:hover, .navbar-brand:hover {
+  color: #9c67ab !important; 
+  text-decoration: none;
+}
   
-  .dropdown-menu:hover {
-    background-color: #333333; /* Dunkelgrauer Hintergrund für Dropdown */
-  }
+.dropdown-menu:hover {
+  background-color: #333333; 
+}
   
-  .dropdown-item {
-    color: white !important; /* Textfarbe im Dropdown-Menü */
-  }
+.dropdown-item {
+  color: white !important;
+}
   
-  .dropdown-item:hover {
-    background-color: #ff0077; /* Akzentfarbe Blau beim Hover */
-    color: white !important;
-  }
+.dropdown-item:hover {
+  background-color: #ff0077; 
+  color: white !important;
+}
   
-  .navbar-toggler {
-    background-color: white; /* Farbe des Toggler-Icons */
-  }
+.navbar-toggler {
+  background-color: white; 
+}

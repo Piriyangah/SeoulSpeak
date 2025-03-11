@@ -18,7 +18,7 @@ export class CreateComponent {
   vocab: Vocab = {id: 0, korean: '', pronunciation: '', english: '', example: '', meaning: '', difficulty: 0}
   saved: boolean = false
 
-  modalValues: any = {}; // für Modal-Dialog
+  modalValues: any = {}; // für Modal-Dialog (Eingabe-Korreaktion)
 
   form = new FormGroup({
     koreanControl: new FormControl<string>('',[Validators.required]),
@@ -41,24 +41,23 @@ export class CreateComponent {
     }
 
     const values = this.form.value;
-      console.log('values = ', values);
+    console.log('values = ', values);
 
-      this.vocab.korean = values.koreanControl || '';
-      this.vocab.pronunciation = values.pronunciationControl || '';
-      this.vocab.english = values.englishControl || '';
-      this.vocab.example = values.exampleControl || '';
-      this.vocab.meaning = values.meaningControl || '';
-      this.vocab.difficulty = values.difficultyControl || 0;
+    this.vocab.korean = values.koreanControl || '';
+    this.vocab.pronunciation = values.pronunciationControl || '';
+    this.vocab.english = values.englishControl || '';
+    this.vocab.example = values.exampleControl || '';
+    this.vocab.meaning = values.meaningControl || '';
+    this.vocab.difficulty = values.difficultyControl || 0;
       
-      console.log('new vocab = ', this.vocab);
+    console.log('new vocab = ', this.vocab);
 
-      if (this.vocab.korean != '' && this.vocab.english != '') {
-        this.bs.createVocab(this.vocab)
-          .subscribe(() => {
-            this.saved = true;
-            this.router.navigate(['./vocab']);
-          });
-      
+    if (this.vocab.korean != '' && this.vocab.english != '') {
+      this.bs.createVocab(this.vocab)
+        .subscribe(() => {
+          this.saved = true;
+          this.router.navigate(['./vocab']);
+        });    
     }
   }
 
@@ -72,11 +71,10 @@ export class CreateComponent {
       difficulty: this.form.value.difficultyControl || ''
     };
     
-    // Show Modal
+    // Modal-Dialog 
     const modal = new bootstrap.Modal(document.getElementById('confirmationModal')!);
     modal.show();
 
-    // Set the confirm callback to createVocab
     const confirmButton = document.getElementById('confirmButton')!;
     confirmButton.addEventListener('click', () => {
       this.createVocab(); 
@@ -87,5 +85,4 @@ export class CreateComponent {
   cancel() : void{
     this.router.navigate(['./vocab'])
   }
-
 }

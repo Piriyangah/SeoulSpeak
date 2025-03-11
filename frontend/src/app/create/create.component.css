@@ -1,186 +1,180 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f9;
-    color: #333;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+}
   
+.form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+  
+legend {
+  font-size: 1.75rem;
+  color: #5c3c92;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+  
+.form-group {
+  margin-bottom: 1.5rem;
+}
+ 
+label {
+  font-weight: 600;
+  color: #5c3c92;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+  
+.form-control {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  color: #333;
+  transition: all 0.3s ease;
+}
+  
+.form-control:focus {
+  border-color: #5c3c92;
+  background-color: #fff;
+  outline: none;
+}
+  
+.difficulty-group {
+  position: relative;
+}
+  
+.difficulty-dropdown select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  color: #333;
+  appearance: none; 
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23aaa" height="12" viewBox="0 0 20 20" width="12"><path d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+  
+.difficulty-dropdown select:focus {
+  border-color: #5c3c92;
+}
+ 
+.info-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+  
+.tooltip-text {
+  visibility: hidden;
+  width: 250px;
+  background-color: #5c3c92;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -125px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+  
+.info-icon:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+  
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+  
+.btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  
+.btn-primary {
+  background-color: #5c3c92;
+  border: none;
+  color: #fff;
+}
+  
+.btn-primary:hover {
+  background-color: #4a2c77;
+}
+  
+.btn-secondary {
+  background-color: #5c3c92;
+  border: none;
+  color: #fff;
+}
+  
+.btn-secondary:hover {
+  background-color: #bbb;
+}
+
+@media (max-width: 768px) {
   .form-container {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
   }
-  
-  legend {
-    font-size: 1.75rem;
-    color: #5c3c92;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+ 
+  .form-buttons {
+    flex-direction: column;
   }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  label {
-    font-weight: 600;
-    color: #5c3c92;
-    margin-bottom: 0.5rem;
+ 
+  .difficulty-dropdown {
     display: block;
   }
-  
-  .form-control {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f7f7f7;
-    color: #333;
-    transition: all 0.3s ease;
-  }
-  
-  .form-control:focus {
-    border-color: #5c3c92;
-    background-color: #fff;
-    outline: none;
-  }
-  
-  .difficulty-group {
-    position: relative;
-  }
-  
-  .difficulty-dropdown select {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f7f7f7;
-    color: #333;
-    appearance: none; /* Custom dropdown arrow */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23aaa" height="12" viewBox="0 0 20 20" width="12"><path d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-  }
-  
-  .difficulty-dropdown select:focus {
-    border-color: #5c3c92;
-  }
-  
-  .info-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-  
-  .tooltip-text {
-    visibility: hidden;
-    width: 250px;
-    background-color: #5c3c92;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 120%;
-    left: 50%;
-    margin-left: -125px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .info-icon:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .form-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  .btn {
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background-color: #5c3c92;
-    border: none;
-    color: #fff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #4a2c77;
-  }
-  
-  .btn-secondary {
-    background-color: #5c3c92;
-    border: none;
-    color: #fff;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #bbb;
-  }
-  
-  @media (max-width: 768px) {
-    .form-container {
-      padding: 1.5rem;
-    }
-  
-    .form-buttons {
-      flex-direction: column;
-    }
-  
-    .difficulty-dropdown {
-      display: block;
-    }
-  }
+}
 
-  /* Tooltip Text */
-  .tooltip-text {
-    visibility: hidden;
-    width:auto;
-    background-color: #5c3c92;
-    color: #fff;
-    text-align: left; 
-    border-radius: 10px;
-    padding: 10px;
-    position: absolute;
-    z-index: 5;  /* Höherer z-index, damit es nicht verdeckt wird */
-    bottom: 100%;
-    opacity: 0;
-    transition: opacity 0.3s;
+.tooltip-text {
+  visibility: hidden;
+  width:auto;
+  background-color: #5c3c92;
+  color: #fff;
+  text-align: left; 
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  z-index: 5;
+  bottom: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .info-icon:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
 }
-
   
-  .info-icon i {
-    font-size: 1.25rem;
-    color: #5c3c92;
-  }
+.info-icon i {
+  font-size: 1.25rem;
+  color: #5c3c92;
+}
   
-  /* Adjust the dropdown icon position */
-  .difficulty-dropdown {
-    position: relative;
-  }
+.difficulty-dropdown {
+  position: relative;
+}
   
-
-  .is-invalid {
-    border-color: red !important;
-  }
-  
-  
+.is-invalid {
+  border-color: red !important;
+}   
