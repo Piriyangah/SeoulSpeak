@@ -3,10 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BackendService } from '../shared/backend.service';
 import { Router } from '@angular/router';
 import { Vocab } from '../shared/vocab';
+import * as bootstrap from 'bootstrap';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
@@ -38,8 +40,7 @@ export class CreateComponent {
       return; 
     }
 
-    if(this.confirm){
-      const values = this.form.value;
+    const values = this.form.value;
       console.log('values = ', values);
 
       this.vocab.korean = values.koreanControl || '';
@@ -57,23 +58,30 @@ export class CreateComponent {
             this.saved = true;
             this.router.navigate(['./vocab']);
           });
-      }
+      
     }
   }
 
   confirm() : void{
     this.modalValues = {
-      korean: this.form.value.koreanControl || 'Not Provided',
-      pronunciation: this.form.value.pronunciationControl || 'Not Provided',
-      english: this.form.value.englishControl || 'Not Provided',
-      example: this.form.value.exampleControl || 'Not Provided',
-      meaning: this.form.value.meaningControl || 'Not Provided',
-      difficulty: this.form.value.difficultyControl || 'Not Provided'
+      korean: this.form.value.koreanControl || '',
+      pronunciation: this.form.value.pronunciationControl || '',
+      english: this.form.value.englishControl || '',
+      example: this.form.value.exampleControl || '',
+      meaning: this.form.value.meaningControl || '',
+      difficulty: this.form.value.difficultyControl || ''
     };
     
     // Show Modal
     const modal = new bootstrap.Modal(document.getElementById('confirmationModal')!);
     modal.show();
+
+    // Set the confirm callback to createVocab
+    const confirmButton = document.getElementById('confirmButton')!;
+    confirmButton.addEventListener('click', () => {
+      this.createVocab(); 
+      modal.hide(); 
+    });
   }
 
   cancel() : void{

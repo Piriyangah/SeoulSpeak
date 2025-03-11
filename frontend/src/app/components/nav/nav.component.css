@@ -15,7 +15,7 @@
     text-decoration: none;
   }
   
-  .dropdown-menu {
+  .dropdown-menu:hover {
     background-color: #333333; /* Dunkelgrauer Hintergrund für Dropdown */
   }
   

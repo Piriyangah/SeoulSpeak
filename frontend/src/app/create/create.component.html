@@ -1,7 +1,7 @@
 <main class="d-flex justify-content-center min-vh-100">
   <fieldset class="container mt-5 p-4">
     <legend class="mb-4 text-center">Neuen Eintrag erstellen</legend>
-    <form [formGroup]="form" (ngSubmit)="createVocab()">
+    <form [formGroup]="form" (ngSubmit)="confirm()">
       
       <!-- Korean Field -->
       <div class="mb-3">
@@ -16,17 +16,17 @@
       <!-- Pronunciation Field -->
       <div class="mb-3">
         <label class="form-label" for="pronunciation">Pronunciation</label>
-        <input type="text" class="form-control" id="pronunciation" placeholder="Aussprache des koreanischen Wortes" formControlName="pronunciationControl" 
-        [ngClass]="{'is-invalid': form.get('englishControl')?.invalid && form.get('englishControl')?.touched}" />
-        <div *ngIf="form.get('englishControl')?.invalid && form.get('englishControl')?.touched" class="invalid-feedback">
-            Bitte geben Sie die englische Übersetzung ein.
-        </div>      
+        <input type="text" class="form-control" id="pronunciation" placeholder="Aussprache des koreanischen Wortes" formControlName="pronunciationControl">  
     </div>
 
       <!-- English Field -->
       <div class="mb-3">
         <label class="form-label" for="english">English</label>
-        <input type="text" class="form-control" id="english" placeholder="Englische Übersetzung" formControlName="englishControl" />
+        <input type="text" class="form-control" id="english" placeholder="Englische Übersetzung" formControlName="englishControl"
+        [ngClass]="{'is-invalid': form.get('englishControl')?.invalid && form.get('englishControl')?.touched}" />
+        <div *ngIf="form.get('englishControl')?.invalid && form.get('englishControl')?.touched" class="invalid-feedback">
+            Bitte geben Sie die englische Übersetzung ein.
+        </div>    
       </div>
 
       <!-- Example Field -->
@@ -81,17 +81,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p><strong>Korean:</strong> {{modalValues.korean || 'Not Provided'}}</p>
-          <p><strong>Pronunciation:</strong> {{modalValues.pronunciation || 'Not Provided'}}</p>
-          <p><strong>English:</strong> {{modalValues.english || 'Not Provided'}}</p>
-          <p><strong>Example:</strong> {{modalValues.example || 'Not Provided'}}</p>
-          <p><strong>Meaning:</strong> {{modalValues.meaning || 'Not Provided'}}</p>
-          <p><strong>Difficulty:</strong> {{modalValues.difficulty || 'Not Provided'}}</p>
+          <p><strong>Korean:</strong> {{modalValues.korean || ''}}</p>
+          <p><strong>Pronunciation:</strong> {{modalValues.pronunciation || ''}}</p>
+          <p><strong>English:</strong> {{modalValues.english || ''}}</p>
+          <p><strong>Example:</strong> {{modalValues.example || ''}}</p>
+          <p><strong>Meaning:</strong> {{modalValues.meaning || ''}}</p>
+          <p><strong>Difficulty:</strong> {{modalValues.difficulty || ''}}</p>
           <p>Are you sure you want to save these changes?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" (click)="confirmSave()">Confirm</button>
+          <button type="button" class="btn btn-primary" id="confirmButton">Add to Vocablist</button>
         </div>
       </div>
     </div>
