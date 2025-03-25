@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container-fluid">
     <h1 class="text-center mb-4">Hangul (한글)</h1>
     <h3>Introduction to Hangul (Korean Alphabet)</h3>
     <p>Hangeul is the writing system of the Korean language, which was developed based on unique principles and was originally named Hunminjeongeum (훈민정음). It was created in 1443 by King Sejong, the fourth king of the Joseon Dynasty. After a long study, King Sejong developed a writing system for his people who struggled due to illiteracy. They could not write because there was no alphabet representing the sounds of the Korean language. Later it was referred to as Hangeul. Hangeul can describe various sounds of the Korean language with only 19 consonants and 21 vowels. As a result, Hangeul is now recognized as the most systematic, scientific, and excellent writing system in the world.</p>
@@ -51,5 +51,16 @@
                 {{ letter.char }}
             </div>
         </div>
-    </div>
+<!--
+        Final Consonants 
+        <div class="col-12 mt-4">
+            <h2 class="complex-vowel-heading text-center">Final Consonants (받침)</h2>
+        </div>
+        <p>Final consonants, also called Batchim, are consonants that appear at the end of a syllable block in Hangul. They affect pronunciation and can influence the next syllable.</p>
+        <div *ngFor="let letter of finalConsonants" class="col-4 col-md-3 col-lg-2 mb-3">
+            <div class="hangul-letter final-consonant" (click)="playAudio(letter.audio)">
+                {{ letter.char }}
+            </div>
+        </div>
+    </div>-->
 </div>

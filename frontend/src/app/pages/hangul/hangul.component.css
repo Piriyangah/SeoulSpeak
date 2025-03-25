@@ -39,9 +39,9 @@ h2::after {
     transform: translateX(-50%);
 }
 
-.container {
+.container-fluid {
     padding: 20px;
-    background-color: #ffffff; /* Weißer Hintergrund für den Container */
+    background-color: #f4e7f0; /* Weißer Hintergrund für den Container */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
 }
