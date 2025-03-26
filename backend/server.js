@@ -11,10 +11,12 @@ app.use(express.json());
 app.use(cors());
 app.use('/init', init);
 app.use('/', routes);
+// Login and Register
+app.use('/user', routes)
 
 app.listen(PORT, (error) => {
     if (error) {
-        console.log(error);
+        console.log('backend not started', error);
     } else {
         console.log(`Server started and listening on port ${PORT} ...`);
     }

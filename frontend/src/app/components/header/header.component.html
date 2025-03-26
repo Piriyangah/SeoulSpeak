@@ -1,3 +1,14 @@
 <header class="header">
-    <img src="assets/pic/Logo_3.png" alt="SeoulSpeak Logo" class="logo">
-  </header>
+  <img src="assets/pic/Logo_3.png" alt="SeoulSpeak Logo" class="logo">
+  <div class="header-buttons">
+    <!-- Show Logout button if logged in -->
+    <button *ngIf="loggedIn()" class="logout-btn" (click)="logout()">Logout</button>
+
+    <!-- Show Login and Register buttons if not logged in -->
+    <button *ngIf="!loggedIn()" class="login-btn" (click)="goToLogin()">Login</button>
+    <button *ngIf="!loggedIn()" class="register-btn" (click)="goToRegister()">Register</button>
+
+    <!-- Show username when logged in -->
+    <span *ngIf="loggedIn()" class="username-display">{{ user().username }}</span>
+  </div>
+</header>

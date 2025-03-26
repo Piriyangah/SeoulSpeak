@@ -9,12 +9,32 @@ import { Lesson2Component } from './pages/lessons/lesson2/lesson2.component';
 import { Lesson3Component } from './pages/lessons/lesson3/lesson3.component';
 import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { authguardAdmin, authguardLogin } from './shared/authguard.guard';
 
 
 export const routes: Routes = [{
     path: "",
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [authguardLogin] //
+  },
+  {
+    path: "register",
+    title: "Register",
+    component: RegisterComponent
+  },
+  {
+    path: "login",
+    title: "Login",
+    component: LoginComponent
+  },
+  {
+    path: "userlist",
+    component: UserlistComponent,
+    canActivate: [authguardAdmin]
   },
   {
     path: "hangul",

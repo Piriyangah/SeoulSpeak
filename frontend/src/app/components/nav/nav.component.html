@@ -25,6 +25,9 @@
             <li><a class="dropdown-item" routerLink="/lesson3">Lesson 3</a></li>
           </ul>
         </li>
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/userlist">Userlist</a>
+        </li>
       </ul>
     </div>
   </div>

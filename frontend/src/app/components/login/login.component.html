@@ -1,0 +1,46 @@
+<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">    
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Registrierung</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field hintLabel="Einloggen mit Nutzername und Passwort" class="full-width">
+                    <input matInput placeholder="Nutzername" formControlName="username">
+                    <mat-icon matSuffix >person_add</mat-icon>
+                    @if(loginForm.controls['username'].hasError('required')) {
+                        <mat-error>
+                        Nutzername <strong>erforderlich</strong>
+                        </mat-error>
+                    }
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field hintLabel="Mind. 8 Zeichen, mind. 1 Groß- und Kleinbuchstaben, Ziffer und Sonderzeichen" class="full-width">
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Passwort" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    @if(loginForm.controls['password'].hasError('required')) {
+                        <mat-error>
+                        Passwort <strong>erforderlich</strong>
+                        </mat-error>
+                    } @else if(loginForm.controls['password'].hasError('minlength')) {
+                        <mat-error>
+                        Passwort muss mind. <strong>8</strong> Zeichen enthalten!
+                        </mat-error>
+                    }
+                    </mat-form-field>
+                </div>
+            </div>
+            <mat-error ngIf="errorMessage">{{ errorMessage }}</mat-error>
+        </mat-card-content>
+        <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!valid()!">Login</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
