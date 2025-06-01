@@ -10,6 +10,7 @@ import { GrammarComponent } from './pages/grammar/grammar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { routes } from './app.routes';
 import { DetailComponent } from './detail/detail.component';
+import { LessonsComponent } from './pages/lessons/lessons.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DetailComponent } from './detail/detail.component';
     VocabComponent,
     LayoutComponent,
     GrammarComponent,
+    LessonsComponent,
     DetailComponent
   ],
   imports: [

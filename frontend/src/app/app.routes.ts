@@ -4,11 +4,9 @@ import { HangulComponent } from './pages/hangul/hangul.component';
 import { VocabComponent } from './pages/vocab/vocab.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { GrammarComponent } from './pages/grammar/grammar.component';
-import { Lesson1Component } from './pages/lessons/lesson1/lesson1.component';
-import { Lesson2Component } from './pages/lessons/lesson2/lesson2.component';
-import { Lesson3Component } from './pages/lessons/lesson3/lesson3.component';
 import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
+import { LessonsComponent } from './pages/lessons/lessons.component';
 
 
 export const routes: Routes = [{
@@ -29,16 +27,8 @@ export const routes: Routes = [{
     component: GrammarComponent
   }, 
   { 
-    path: 'lesson1', 
-    component: Lesson1Component 
-  },
-  { 
-    path: 'lesson2', 
-    component: Lesson2Component 
-  },
-  { 
-    path: 'lesson3', 
-    component: Lesson3Component 
+    path: 'lessons', 
+    component: LessonsComponent 
   },
   {
     path: "layout",
