@@ -1,0 +1,126 @@
+{
+  "levels": {
+    "A1": {
+      "lessons": {
+        "1": {
+          "title": "Introducing Yourself",
+          "title_pic": "assets/pic/LessonA1_1/lesson1_titlepic.png",          "intro": "Welcome to level A1. Here you will learn the basics of communication.",
+          "vocab": [
+            {"ko": "안녕하세요", "en": "Hello"},
+            {"ko": "안녕히 가세요", "en": "Goodbye"},
+            {"ko": "감사합니다", "en": "Thank you"},
+            {"ko": "천만에요", "en": "You're welcome"}
+          ],
+          "grammar": [
+            {
+              "title": "Personal Pronouns",
+              "info": "Learn how to refer to yourself and others (I, you, he/she, etc.)."
+            },
+            {
+              "title": "Verb 'to be'",
+              "info": "Understand how to use 'am', 'is', 'are' correctly in basic sentences."
+            },
+            {
+              "title": "Articles",
+              "info": "Learn the use of 'a', 'an', and 'the' in English."
+            }
+          ],
+          "examples": [
+            "My name is Anna.",
+            "How are you?"
+          ],
+          "test": "Write 3 sentences to introduce yourself.",
+          "video": "https://www.youtube.com/embed/abcdefg123",
+          "image": "../../../assets/pic/a1_example.png"
+        },
+        "2": {
+          "title": "Objects and Movements",
+          "intro": "This lesson teaches you about common objects and movement verbs.",
+          "vocab": [
+            {"ko": "음식", "en": "Food"},
+            {"ko": "음료", "en": "Drink"},
+            {"ko": "가족", "en": "Family"}
+          ],
+          "grammar": [
+            {
+              "title": "Present Tense",
+              "info": "Learn how to describe current actions using the present tense."
+            },
+            {
+              "title": "Accusative",
+              "info": "Understand how to form sentences with direct objects (e.g., I eat an apple)."
+            },
+            {
+              "title": "Dative",
+              "info": "Learn how to use indirect objects in sentences (e.g., I give him a book)."
+            }
+          ],
+          "examples": [
+            "I eat an apple.",
+            "This is my brother."
+          ],
+          "test": "Describe your daily routine using 3 actions.",
+          "video": "https://www.youtube.com/embed/ghijklm789",
+          "image": "../../../assets/pic/a2_example.png"
+        },
+        "3": {
+          "title": "Daily Routines",
+          "intro": "In this lesson, you learn how to talk about your daily activities.",
+          "vocab": [
+            {"ko": "일어나다", "en": "Get up"},
+            {"ko": "일하다", "en": "Work"},
+            {"ko": "먹다", "en": "Eat"}
+          ],
+          "grammar": [
+            {
+              "title": "Present Tense Verbs",
+              "info": "Use present tense verbs to describe daily actions."
+            },
+            {
+              "title": "Time Expressions",
+              "info": "Learn how to express time such as hours, days, and daily routines."
+            }
+          ],
+          "examples": [
+            "I get up at 7 o’clock.",
+            "I work from 9 to 5."
+          ],
+          "test": "Create a timetable of your typical day.",
+          "video": "https://www.youtube.com/embed/nopqrst012",
+          "image": "../../../assets/pic/a3_example.png"
+        }
+      }
+    },
+    "A2": {
+      "lessons": {
+        "1": {
+          "title": "Introduction to German Language",
+          "intro": "Welcome to level A2. Here you will deepen your language skills.",
+          "vocab": [
+            {"ko": "안녕하세요", "en": "Hello"},
+            {"ko": "안녕히 가세요", "en": "Goodbye"},
+            {"ko": "감사합니다", "en": "Thank you"},
+            {"ko": "천만에요", "en": "You're welcome"}
+          ],
+          "grammar": [
+            {
+              "title": "Noun Genders",
+              "info": "Understand the concept of gender in German nouns (der, die, das)."
+            },
+            {
+              "title": "Modal Verbs",
+              "info": "Learn verbs like 'can', 'must', and how to use them in context."
+            }
+          ],
+          "examples": [
+            "Can you help me?",
+            "I must go now."
+          ],
+          "test": "Write 5 sentences using modal verbs.",
+          "video": "https://www.youtube.com/embed/abcdefg123",
+          "image": "../../../assets/pic/a1_example.png"
+        }
+      }
+    }
+  }
+}

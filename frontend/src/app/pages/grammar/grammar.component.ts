@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-grammar',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './grammar.component.html',
   styleUrl: './grammar.component.css'
 })

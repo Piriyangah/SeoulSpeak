@@ -4,11 +4,11 @@ import { HangulComponent } from './pages/hangul/hangul.component';
 import { VocabComponent } from './pages/vocab/vocab.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { GrammarComponent } from './pages/grammar/grammar.component';
-import { Lesson1Component } from './pages/lessons/lesson1/lesson1.component';
-import { Lesson2Component } from './pages/lessons/lesson2/lesson2.component';
-import { Lesson3Component } from './pages/lessons/lesson3/lesson3.component';
 import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
+import { LanguageLevelsComponent } from './pages/language-levels/language-levels.component';
+import { LessonsComponent } from './pages/language-levels/lessons/lessons.component';
+import { LessonsOverviewComponent } from './pages/language-levels/lessons-overview/lessons-overview.component';
 
 
 export const routes: Routes = [{
@@ -29,17 +29,25 @@ export const routes: Routes = [{
     component: GrammarComponent
   }, 
   { 
-    path: 'lesson1', 
-    component: Lesson1Component 
+    path: "levels", 
+    component: LanguageLevelsComponent 
+  },
+  {
+    path: "lessons/:level",
+    component: LessonsOverviewComponent
+  },
+  {
+  path: 'levels/:level/:lessonId',
+  component: LessonsComponent
+  },
+  {
+    path: "lessons",
+    component: LessonsComponent
   },
   { 
-    path: 'lesson2', 
-    component: Lesson2Component 
-  },
-  { 
-    path: 'lesson3', 
-    component: Lesson3Component 
-  },
+    path: "", 
+    redirectTo: '/levels', 
+    pathMatch: 'full' },
   {
     path: "layout",
     component: LayoutComponent
