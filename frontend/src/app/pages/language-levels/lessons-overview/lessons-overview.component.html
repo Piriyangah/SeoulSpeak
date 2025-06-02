@@ -1,0 +1,25 @@
+<body>
+    <div *ngIf="lessons">
+    <header>
+        <h2>{{ level }} Lessons</h2>
+    </header>
+    <main>
+        <section class="wrapper">
+            <div *ngFor="let lesson of lessonEntries" class="lessonCard" (click)="goToLesson(lesson.key)">
+                <div class="lesson-image">
+                    <img [src]="lesson.value.title_pic" alt="TitelPicture" class="lesson-image" />
+                </div>
+                <div class="lesson">
+                    <p>{{ lesson.value.title }}</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    </div>
+</body>
+
+
+
+
+
+

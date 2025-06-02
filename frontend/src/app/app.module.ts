@@ -10,7 +10,8 @@ import { GrammarComponent } from './pages/grammar/grammar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { routes } from './app.routes';
 import { DetailComponent } from './detail/detail.component';
-import { LessonsComponent } from './pages/lessons/lessons.component';
+import { LessonsComponent } from './pages/language-levels/lessons/lessons.component';
+import { LanguageLevelsComponent } from './pages/language-levels/language-levels.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LessonsComponent } from './pages/lessons/lessons.component';
     VocabComponent,
     LayoutComponent,
     GrammarComponent,
+    LanguageLevelsComponent,
     LessonsComponent,
     DetailComponent
   ],
@@ -28,6 +30,7 @@ import { LessonsComponent } from './pages/lessons/lessons.component';
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
+  exports:[LessonsComponent, LanguageLevelsComponent], // exportieren für Verwendung in anderen Modulen
   providers: [],
   bootstrap: [AppComponent]
 })
