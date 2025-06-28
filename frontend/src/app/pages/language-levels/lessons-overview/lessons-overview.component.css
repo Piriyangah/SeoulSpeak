@@ -47,7 +47,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 150px;
-    background-color: #f4f4f4;
+    background-color: white;
     padding: 2%;
     overflow: hidden;
 }
@@ -59,12 +59,31 @@ header {
     border-radius: 4px;
 }
 
-.lesson {
+.lessonTop {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    padding: 10px;
-    background-color: #d4e6d0;
+    background-color: #f4e7f0;
     color: #333;
-    border-top: 1px solid #ddd;
+    padding-top: 15px;
 }
+
+.lesson {
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 6px;           /* statt 10px */
+  background-color: #f4e7f0;
+  color: #333;
+  border-top: 1px solid #ddd;
+}
+
+.title-ko {
+  font-style: italic;
+  color: gray;
+  margin-top: 0.1em;
+  font-size: 0.75rem;     /* kleinerer Text */
+  line-height: 1.1;       /* weniger Zeilenhöhe */
+  padding: 0;             /* kein zusätzliches Padding */
+}
+

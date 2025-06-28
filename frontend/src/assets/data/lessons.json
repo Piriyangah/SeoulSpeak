@@ -3,15 +3,44 @@
     "A1": {
       "lessons": {
         "1": {
-          "title": "Introducing Yourself",
-          "title_pic": "assets/pic/LessonA1_1/lesson1_titlepic.png",          "intro": "Welcome to level A1. Here you will learn the basics of communication.",
-          "vocab": [
-            {"ko": "안녕하세요", "en": "Hello"},
-            {"ko": "안녕히 가세요", "en": "Goodbye"},
-            {"ko": "감사합니다", "en": "Thank you"},
-            {"ko": "천만에요", "en": "You're welcome"}
-          ],
-          "grammar": [
+          "title": "Hello, I'm Anna ||| 안녕하세요? 저는안나예요",
+          "title_pic": "assets/pic/LessonA1_1/lesson1_titlepic.png",          
+          "intro": {
+            "title": "Greetings and How to Introduce yourself",
+            "paragraph": [
+              "In Korean, greetings and introductions are very important. They are not just polite phrases, but play a vital role in maintaining harmony, respect, and social order. One of the key aspects of Korean greetings is that they are highly dependent on age and social hierarchy. How you greet someone reflects your awareness of the other person's age, social status, or position at work.",
+              "For example, if someone is older or holds a higher position, you are expected to show more respect in both your greeting and your speech."
+            ],
+            "speech_levels_title": "Korean Speech Levels",
+            "speech_levels": [
+              "Informal - eg. when speaking to friends or younger people (안녕 - annyeong)",
+              "Polite - eg. when speaking to strangers or in everyday situations (안녕하세요 - annyeonghaseyo)",
+              "Formal - eg. when speaking to elders or in formal situations (안녕하십니까 - annyeonghasimnikka)"
+            ],
+            "paragraph2": [
+              "This emphasis on social roles is not limited to greetings. It also affects the way you speak in general. These levels are chosen based on the relationship between the speakers. At the A1 level, we will mostly learn the polite form, which is suitable for most everyday situations and respectful enough for use with strangers.",
+              "Using informal speech with elders or superiors can be considered rude. Always consider the context and relationship when speaking Korean."
+            ],
+            "intro_video": "https://www.youtube.com/embed/xyz123456"
+          },      
+          "vocab": {
+            "title":"Vocabulary",
+            "paragraph":[
+              "In this lesson, we will learn some basic greetings and phrases that are essential for everyday communication in Korean. These phrases will help you introduce yourself and engage in simple conversations. Here are some basic greetings and phrases to get you started."
+            ],
+            "words":[
+              {"ko": "안녕하세요", "en": "Hello"},
+              {"ko": "안녕히 가세요", "en": "Goodbye"},
+              {"ko": "감사합니다", "en": "Thank you"},
+              {"ko": "천만에요", "en": "You're welcome"}
+            ]
+          },
+          "grammar": {
+            "title": "Grammar",
+            "paragraph":[
+              "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
+            ],
+            "grammar":[
             {
               "title": "Personal Pronouns",
               "info": "Learn how to refer to yourself and others (I, you, he/she, etc.)."
@@ -24,54 +53,124 @@
               "title": "Articles",
               "info": "Learn the use of 'a', 'an', and 'the' in English."
             }
-          ],
+            ]
+          },
+
           "examples": [
             "My name is Anna.",
             "How are you?"
           ],
-          "test": "Write 3 sentences to introduce yourself.",
-          "video": "https://www.youtube.com/embed/abcdefg123",
+          "test": {
+            "title": "Test your knowledge",
+            "paragraph":[
+              "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
+            ]
+          },
+          "video": "https://www.youtube.com/embed/QV7QvtMREHM",
           "image": "../../../assets/pic/a1_example.png"
         },
+
         "2": {
-          "title": "Objects and Movements",
-          "intro": "This lesson teaches you about common objects and movement verbs.",
-          "vocab": [
-            {"ko": "음식", "en": "Food"},
-            {"ko": "음료", "en": "Drink"},
-            {"ko": "가족", "en": "Family"}
-          ],
-          "grammar": [
-            {
-              "title": "Present Tense",
-              "info": "Learn how to describe current actions using the present tense."
-            },
-            {
-              "title": "Accusative",
-              "info": "Understand how to form sentences with direct objects (e.g., I eat an apple)."
-            },
-            {
-              "title": "Dative",
-              "info": "Learn how to use indirect objects in sentences (e.g., I give him a book)."
-            }
-          ],
+          "title": "Objects and Movements ||| ",
+          "title_pic": "assets/pic/LessonA1_1/lesson2_titlepic.png",        
+          "intro": {
+            "title": "About Objects and Movements",
+            "paragraph": [
+              "This lesson teaches you about common objects and movement verbs."
+            ],
+            "speech_levels_title": "Korean Speech Levels",
+            "speech_levels": [
+              "Informal - eg. when speaking to friends or younger people (안녕 - annyeong)",
+              "Polite - eg. when speaking to strangers or in everyday situations (안녕하세요 - annyeonghaseyo)",
+              "Formal - eg. when speaking to elders or in formal situations (안녕하십니까 - annyeonghasimnikka)"
+            ],
+            "paragraph2": [
+              "This emphasis on social roles is not limited to greetings. It also affects the way you speak in general. These levels are chosen based on the relationship between the speakers. At the A1 level, we will mostly learn the polite form, which is suitable for most everyday situations and respectful enough for use with strangers."            ],
+            "intro_video": "https://www.youtube.com/embed/xyz123456"
+          },     
+          "vocab": {
+            "title":"Vocabulary",
+            "paragraph":[
+              "In this lesson, we will learn some basic greetings and phrases that are essential for everyday communication in Korean. These phrases will help you introduce yourself and engage in simple conversations."
+            ],
+            "words":[
+              {"ko": "음식", "en": "Food"},
+              {"ko": "음료", "en": "Drink"},
+              {"ko": "가족", "en": "Family"}
+            ]
+          },
+          "grammar": {
+            "title": "Grammar",
+            "paragraphs":[
+              "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
+            ],
+            "grammar": [
+              {
+                "title": "Present Tense",
+                "info": "Learn how to describe current actions using the present tense."
+              },
+              {
+                "title": "Accusative",
+                "info": "Understand how to form sentences with direct objects (e.g., I eat an apple)."
+              },
+              {
+                "title": "Dative",
+                "info": "Learn how to use indirect objects in sentences (e.g., I give him a book)."
+              }
+            ]
+          },
           "examples": [
             "I eat an apple.",
             "This is my brother."
           ],
-          "test": "Describe your daily routine using 3 actions.",
+          "test": {
+            "title": "Test your knowledge",
+            "paragraph":[
+              "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
+            ]
+          },
           "video": "https://www.youtube.com/embed/ghijklm789",
           "image": "../../../assets/pic/a2_example.png"
         },
+
         "3": {
           "title": "Daily Routines",
-          "intro": "In this lesson, you learn how to talk about your daily activities.",
-          "vocab": [
-            {"ko": "일어나다", "en": "Get up"},
-            {"ko": "일하다", "en": "Work"},
-            {"ko": "먹다", "en": "Eat"}
-          ],
-          "grammar": [
+          "title_pic": "assets/pic/LessonA1_1/lesson3_titlepic.png",          
+          "intro": {
+            "title": "In this lesson, you learn how to talk about your daily activities.",
+            "paragraphs": [
+              "In Korean, greetings and introductions are very important. They are not just polite phrases, but play a vital role in maintaining harmony, respect, and social order. One of the key aspects of Korean greetings is that they are highly dependent on age and social hierarchy. How you greet someone reflects your awareness of the other person's age, social status, or position at work.",
+              "For example, if someone is older or holds a higher position, you are expected to show more respect in both your greeting and your speech."
+            ],
+            "speech_levels_title": "Korean Speech Levels",
+            "speech_levels": [
+              "Informal - eg. when speaking to friends or younger people (안녕 - annyeong)",
+              "Polite - eg. when speaking to strangers or in everyday situations (안녕하세요 - annyeonghaseyo)",
+              "Formal - eg. when speaking to elders or in formal situations (안녕하십니까 - annyeonghasimnikka)"
+            ],
+            "speech_levels_paragraph": "This emphasis on social roles is not limited to greetings. It also affects the way you speak in general. These levels are chosen based on the relationship between the speakers. At the A1 level, we will mostly learn the polite form, which is suitable for most everyday situations and respectful enough for use with strangers.",
+            "warning": "Using informal speech with elders or superiors can be considered rude. Always consider the context and relationship when speaking Korean."
+          },     
+              "intro_video": "https://www.youtube.com/embed/xyz123456",
+              "vocab_title": "Vocabulary",
+              "vocab_intro": "Here are some basic greetings and phrases to get you started.",     
+          "vocab": {
+            "title":"Vocabulary",
+            "paragraphs":[
+              "In this lesson, we will learn some basic greetings and phrases that are essential for everyday communication in Korean. These phrases will help you introduce yourself and engage in simple conversations."
+            ],
+            "vocab":[
+              {"ko": "일어나다", "en": "Get up"},
+              {"ko": "일하다", "en": "Work"},
+              {"ko": "먹다", "en": "Eat"}
+            ]
+          },
+          "grammar": {
+            "title": "Grammar",
+            "paragraphs":[
+              "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
+            ],
+            "grammar": [
             {
               "title": "Present Tense Verbs",
               "info": "Use present tense verbs to describe daily actions."
@@ -88,6 +187,7 @@
           "test": "Create a timetable of your typical day.",
           "video": "https://www.youtube.com/embed/nopqrst012",
           "image": "../../../assets/pic/a3_example.png"
+          }
         }
       }
     },

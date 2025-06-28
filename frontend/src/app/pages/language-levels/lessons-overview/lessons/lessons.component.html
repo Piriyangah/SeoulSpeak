@@ -1,0 +1,79 @@
+<!-- 
+   INPUT aus JSON:
+    V1: <p>{{ lesson.intro.paragraph }}</p>; 
+    V2: <p *ngFor="let paragraph of lesson.intro.paragraph">{{ paragraph }}</p> 
+-->
+
+<body>
+  <div *ngIf="lessons">
+
+    <header *ngIf="lesson">
+      <div class="lesson-header-text">
+        <p class="title-en">{{ lesson.title.split('|||')[0].trim() }}</p>
+        <p class="title-ko" *ngIf="lesson.title.includes('|||')">
+          {{ lesson.title.split('|||')[1].trim() }}
+        </p>
+      </div>
+      <img [src]="lesson.title_pic" alt="TitelPicture" class="lesson-header-image" />
+    </header>
+
+    <main>
+      <section class="wrapper" *ngIf="levelKey && lesson">
+        <div class="lessonCard detail">
+          <div class="lesson-body">
+            <p class="intro" *ngIf="isIntroString(lesson.intro)">{{ lesson.intro }}</p>
+
+            <section *ngIf="isIntroObject(lesson.intro)">
+              <h4>{{ lesson.intro.title }}</h4>
+              <p *ngFor="let paragraph of lesson.intro.paragraph">{{ paragraph }}</p> 
+              <h6>{{ lesson.intro.speech_levels_title }}</h6>
+              <ul>
+                <li *ngFor="let level of lesson.intro.speech_levels">{{ level }}</li>
+              </ul>
+              <p *ngFor="let paragraph2 of lesson.intro.paragraph2">{{ paragraph2 }}</p>
+
+              <div class="media">
+                <iframe width="100%" height="250" [src]="getSafeUrl(lesson.video)" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </section>
+
+            <section *ngIf="isIntroObject(lesson.vocab)">
+              <h4>{{ lesson.vocab.title }}</h4>
+              <p *ngFor="let paragraph of lesson.vocab.paragraph">{{ paragraph }}</p> 
+              <ul>
+                <li *ngFor="let words of lesson.vocab.words">
+                  <strong>{{ words.ko }}</strong> – {{ words.en }}
+                </li>
+              </ul>
+            </section>
+
+            <section *ngIf="isIntroObject(lesson.grammar)">
+              <h4>{{ lesson.grammar.title }}</h4>
+              <p *ngFor="let paragraph of lesson.grammar.paragraph">{{ paragraph }}</p> 
+              <ul>
+                <li *ngFor="let grammar of lesson.grammar.grammar">
+                  <strong>{{ grammar.title }}</strong>: {{ grammar.info }}
+                </li>
+              </ul>
+              <h5>Examples</h5>
+              <ul>
+                <li *ngFor="let example of lesson.examples">{{ example }}</li>
+              </ul>
+            </section>
+
+            <section *ngIf="isIntroObject(lesson.test)">
+              <h4>{{ lesson.test.title }}</h4>
+              <p *ngFor="let paragraph of lesson.test.paragraph">{{ paragraph }}</p> 
+              <p>{{ lesson.test }}</p>
+            </section>
+
+            <a [routerLink]="['/lessons', levelKey, lessonId + 1]" class="back-link">
+              Go to Next lesson &rarr;
+            </a>
+
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>

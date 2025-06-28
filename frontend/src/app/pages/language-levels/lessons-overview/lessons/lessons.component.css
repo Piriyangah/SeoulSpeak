@@ -1,0 +1,151 @@
+/* Allgemeine Stile */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: rgba(30, 30, 53, 0.1) 0px 6px 12px -2px,
+              rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.lesson-header-text .title-en {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.lesson-header-text .title-ko {
+  font-size: 1.3rem;
+  color: #8a2be2;
+  margin-top: 0.3rem;
+}
+
+.lesson-header-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px;
+  object-fit: cover;
+}
+
+/* Hauptinhalt */
+main {
+  background-color: #f4e7f0;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: rgba(30, 30, 53, 0.1) 0px 6px 12px -2px,
+              rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
+}
+
+/* Karten-Layout */
+.lessonCard.detail {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Textkörper */
+.lesson-body {
+  font-size: 1rem;
+  color: #333;
+}
+
+.lesson-body section {
+  margin-bottom: 2rem;
+}
+
+.lesson-body h4 {
+  border-left: 4px solid #d19dc7;
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-body ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.lesson-body li {
+  margin-bottom: 0.4rem;
+}
+
+.intro {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+/* Medienbereich */
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.media iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.media img.lesson-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 6px;
+}
+
+/* Link */
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #8a2be2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Anpassung */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .lesson-header-text {
+    flex: 1;
+  }
+
+  .lesson-header-image {
+    max-width: 300px;
+    margin-left: 2rem;
+  }
+
+  main {
+    padding: 3rem;
+  }
+
+  .lesson-body {
+    font-size: 1.05rem;
+  }
+}

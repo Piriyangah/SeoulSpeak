@@ -7,7 +7,7 @@ import { GrammarComponent } from './pages/grammar/grammar.component';
 import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
 import { LanguageLevelsComponent } from './pages/language-levels/language-levels.component';
-import { LessonsComponent } from './pages/language-levels/lessons/lessons.component';
+import { LessonsComponent } from './pages/language-levels/lessons-overview/lessons/lessons.component';
 import { LessonsOverviewComponent } from './pages/language-levels/lessons-overview/lessons-overview.component';
 
 
@@ -36,9 +36,9 @@ export const routes: Routes = [{
     path: "lessons/:level",
     component: LessonsOverviewComponent
   },
-  {
-  path: 'levels/:level/:lessonId',
-  component: LessonsComponent
+  { 
+    path: 'lessons/:level/:lesson', 
+    component: LessonsComponent 
   },
   {
     path: "lessons",

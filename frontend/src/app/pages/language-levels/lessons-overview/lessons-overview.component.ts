@@ -1,70 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import rawLessonsData from '../../../../assets/data/lessons.json';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import lessons from '../../../../assets/data/lessons.json';
 import { CommonModule } from '@angular/common';
 
-interface VocabularyItem {
-  ko: string;
-  en: string;
-}
-
-interface GrammarItem {
+interface LessonOverview {
   title: string;
-  info: string;
+  title_pic: string;
 }
 
-interface Lesson {
-  title: string;
-  title_pic?: string;
-  intro: string;
-  vocab: VocabularyItem[];
-  grammar: GrammarItem[];
-  examples: string[];
-  test: string;
-  video: string;
-  image: string;
-}
-
-interface LessonsByLevel {
-  [lessonId: string]: Lesson;
-}
-
-interface LevelData {
-  lessons: LessonsByLevel;
-}
-
-interface LessonsData {
-  levels: {
-    [levelKey: string]: LevelData;
-  };
-}
-
-const lessonsData: LessonsData = rawLessonsData;
 @Component({
   selector: 'app-lessons-overview',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './lessons-overview.component.html',
   styleUrl: './lessons-overview.component.css'
 })
+
 export class LessonsOverviewComponent implements OnInit {
-  level: string = '';
-  lessons: LessonsByLevel = {};
-  lessonEntries: { key: string; value: Lesson }[] = [];
+  lessons: LessonOverview[] = [];
+  levelKey!: string;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.level = params.get('level') || '';
-      const levelData = lessonsData.levels[this.level];
-      if (levelData?.lessons) {
-        this.lessons = levelData.lessons;
-        this.lessonEntries = Object.entries(this.lessons).map(([key, value]) => ({ key, value }));
-      }
-    });
+   ngOnInit() {
+    this.levelKey = this.route.snapshot.paramMap.get('level')!;
+    const levelLessons = (lessons.levels as Record<string, any>)[this.levelKey]?.lessons;
+
+    if (levelLessons) {
+      this.lessons = Object.values(levelLessons).map((lesson: any) => ({
+        title: lesson.title,
+        title_pic: lesson.title_pic
+      }));
+    }
   }
 
-  goToLesson(lessonId: string) {
-    this.router.navigate(['/levels', this.level, lessonId]);
+  getTitleEn(title: string): string {
+    return title.split('|||')[0].trim();
   }
+
+  getTitleKo(title: string): string | null {
+    const parts = title.split('|||');
+    return parts.length > 1 ? parts[1].trim() : null;
+  }
+
+  goToLesson(index: number) {
+    this.router.navigate(['/lessons', this.levelKey, index]);
+  }
+
 }

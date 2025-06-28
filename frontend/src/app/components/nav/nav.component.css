@@ -14,20 +14,6 @@
   color: #9c67ab !important; 
   text-decoration: none;
 }
-  
-.dropdown-menu:hover {
-  background-color: #333333; 
-}
-  
-.dropdown-item {
-  color: white !important;
-}
-  
-.dropdown-item:hover {
-  background-color: #ff0077; 
-  color: white !important;
-}
-  
 .navbar-toggler {
   background-color: white; 
 }
