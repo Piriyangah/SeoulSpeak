@@ -61,11 +61,48 @@
               </ul>
             </section>
 
-            <section *ngIf="isIntroObject(lesson.test)">
-              <h4>{{ lesson.test.title }}</h4>
-              <p *ngFor="let paragraph of lesson.test.paragraph">{{ paragraph }}</p> 
-              <p>{{ lesson.test }}</p>
-            </section>
+          <section *ngIf="lesson?.test?.type?.multiple_choice as mc" class="quiz-section">
+  <h2 class="quiz-title">{{ lesson.test.title }}</h2>
+  <div class="quiz-paragraph" *ngFor="let p of lesson.test.paragraph">
+    <p>{{ p }}</p>
+  </div>
+
+  <h4 class="quiz-instruction">{{ mc.instruction }}</h4>
+
+  <div *ngFor="let question of mc.questions; let i = index" class="question-block">
+    <p class="question-text">{{ question.question }}</p>
+    <ul class="answer-list">
+      <li *ngFor="let answer of question.answers; let j = index">
+        <label class="answer-label">
+          <input
+            type="checkbox"
+            [checked]="isSelected(i, j)"
+            (change)="toggleAnswer(i, j)"
+            [disabled]="results.length > 0"
+          />
+          <span>{{ answer }}</span>
+        </label>
+      </li>
+    </ul>
+
+    <div *ngIf="results.length > 0" class="feedback">
+      <p [class.correct]="results[i].correct" [class.incorrect]="!results[i].correct">
+        {{ results[i].correct ? 'Correct!' : 'Wrong answer.' }}
+      </p>
+      <p class="correct-answer">Correct answer: {{ question.correct_answer }}</p>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="primary-button" (click)="checkAnswers()" [disabled]="results.length > 0">
+      Check Answers
+    </button>
+    <button class="secondary-button" *ngIf="results.length > 0" (click)="selectedAnswers = {}; results = []">
+      Try Again
+    </button>
+  </div>
+</section>
+
 
             <a [routerLink]="['/lessons', levelKey, lessonId + 1]" class="back-link">
               Go to Next lesson &rarr;

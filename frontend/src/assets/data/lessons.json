@@ -62,9 +62,27 @@
           ],
           "test": {
             "title": "Test your knowledge",
-            "paragraph":[
-              "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
-            ]
+            "paragraph": [
+              "Let's test what you learned. Do the following exercises to practice your vocabulary and grammar skills.",
+              "Extra: I recommend you to write a short introduction about yourself in Korean. Use the vocabulary and grammar rules you learned in this lesson."
+            ],
+            "type": {
+              "multiple_choice": {
+                "instruction":  "Choose the correct answer.",
+                "questions": [
+                  {
+                    "question": "What does 'Hello' mean in Korean?",
+                    "answers": ["안녕", "안녕하세요", "감사합니다", "천만에요"],
+                    "correct_answer": "안녕하세요"
+                  },
+                  {
+                    "question": "Which form is polite?",
+                    "answers": ["안녕", "안녕하세요", "안녕하십니까", "안녕히 가세요"],
+                    "correct_answer": "안녕하세요"
+                  }
+                ]
+              }
+            }
           },
           "video": "https://www.youtube.com/embed/QV7QvtMREHM",
           "image": "../../../assets/pic/a1_example.png"
@@ -101,7 +119,7 @@
           },
           "grammar": {
             "title": "Grammar",
-            "paragraphs":[
+            "paragraph":[
               "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
             ],
             "grammar": [
@@ -138,7 +156,7 @@
           "title_pic": "assets/pic/LessonA1_1/lesson3_titlepic.png",          
           "intro": {
             "title": "In this lesson, you learn how to talk about your daily activities.",
-            "paragraphs": [
+            "paragraph": [
               "In Korean, greetings and introductions are very important. They are not just polite phrases, but play a vital role in maintaining harmony, respect, and social order. One of the key aspects of Korean greetings is that they are highly dependent on age and social hierarchy. How you greet someone reflects your awareness of the other person's age, social status, or position at work.",
               "For example, if someone is older or holds a higher position, you are expected to show more respect in both your greeting and your speech."
             ],
@@ -156,7 +174,7 @@
               "vocab_intro": "Here are some basic greetings and phrases to get you started.",     
           "vocab": {
             "title":"Vocabulary",
-            "paragraphs":[
+            "paragraph":[
               "In this lesson, we will learn some basic greetings and phrases that are essential for everyday communication in Korean. These phrases will help you introduce yourself and engage in simple conversations."
             ],
             "vocab":[
@@ -167,7 +185,7 @@
           },
           "grammar": {
             "title": "Grammar",
-            "paragraphs":[
+            "paragraph":[
               "In this lesson, we will cover some basic grammar rules that will help you form simple sentences in Korean. Understanding these rules is essential for building a solid foundation in the language."
             ],
             "grammar": [

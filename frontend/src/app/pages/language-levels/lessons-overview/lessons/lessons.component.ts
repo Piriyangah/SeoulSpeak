@@ -12,12 +12,10 @@ interface Lesson {
     paragraph: string[];
     speech_levels_title: string;
     speech_levels: string[];
-    paragraph2: string;
+    paragraph2: string[]; 
     warning: string;
   };
   intro_video: string;
-  vocab_title: string;
-  vocab_intro: string;
   vocab: {
     title: string;
     paragraph: string[];
@@ -32,6 +30,16 @@ interface Lesson {
   test: {
     title: string;
     paragraph: string[];
+    type:{
+      multiple_choice?: {
+        instruction: string;
+        questions: {
+          question: string;
+          answers: string[];
+          correct_answer: string;
+        }[];
+      };
+    } 
   }
   video: string;
   image: string;
@@ -80,5 +88,42 @@ export class LessonsComponent implements OnInit {
 
   isIntroObject(intro: any): intro is object {
     return typeof intro === 'object' && intro !== null;
+  }
+
+  // Für Tests Prüfen
+  selectedAnswers: { [questionIndex: number]: Set<number> } = {};
+  results: { correct: boolean }[] = [];
+
+  isSelected(qIndex: number, aIndex: number): boolean {
+    return this.selectedAnswers[qIndex]?.has(aIndex) || false;
+  }
+
+  toggleAnswer(qIndex: number, aIndex: number): void {
+    if (!this.selectedAnswers[qIndex]) {
+      this.selectedAnswers[qIndex] = new Set<number>();
+    }
+
+    if (this.selectedAnswers[qIndex].has(aIndex)) {
+      this.selectedAnswers[qIndex].delete(aIndex);
+    } else {
+      this.selectedAnswers[qIndex].add(aIndex);
+    }
+  }
+
+  checkAnswers(): void {
+    if (!this.lesson || !this.lesson.test || !this.lesson.test.type || !this.lesson.test.type.multiple_choice) {
+      return;
+    }
+    const questions = this.lesson.test.type.multiple_choice.questions;
+    this.results = questions.map((q, i) => {
+      const selected = this.selectedAnswers[i] || new Set<number>();
+      
+      const correctIndex = q.answers.findIndex(ans => ans === q.correct_answer);
+      const selectedArray = Array.from(selected);
+
+      return {
+        correct: selectedArray.length === 1 && selectedArray[0] === correctIndex
+      };
+    });
   }
 }
