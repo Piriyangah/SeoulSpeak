@@ -94,6 +94,32 @@
                     "correct_answer": false
                   }
                 ]
+              },
+              "fill_in_the_blanks": {
+                "instruction": "Drag and drop the correct word into each blank.",
+                "words": ["안녕하세요", "감사합니다", "안녕히 가세요", "천만에요", "안녕"],
+                "sentences": [
+                  {
+                    "text": "When greeting someone formally, say ___.",
+                    "answer": "안녕하세요"
+                  },
+                  {
+                    "text": "To say thank you in Korean, use ___.",
+                    "answer": "감사합니다"
+                  },
+                  {
+                    "text": "To say goodbye politely to someone who is leaving, say ___.",
+                    "answer": "안녕히 가세요"
+                  },
+                  {
+                    "text": "You’re welcome is expressed as ___.",
+                    "answer": "천만에요"
+                  },
+                  {
+                    "text": "A casual hello between friends is ___.",
+                    "answer": "안녕"
+                  }
+                ]
               }
             }
           },

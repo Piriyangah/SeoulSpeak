@@ -45,7 +45,15 @@ interface Lesson {
           question: string;
           correct_answer: boolean;
         }[];
-      } 
+      };
+      fill_in_the_blanks?: {
+        instruction: string;
+        words: string[];
+        sentences: {
+          text: string;
+          answer: string;
+        }[];
+      };
     }
   }
   video: string;
@@ -152,4 +160,62 @@ export class LessonsComponent implements OnInit {
     }));
   }
 
+ // 3) fill_in_the_blank_questions
+  selectedWords: { [sentenceIndex: number]: string } = {};
+  fillInResults: { correct: boolean }[] = [];
+  draggedWord: string | null = null;
+  activeBlankIndex: number | null = null;
+
+  getRemainingWords(): string[] {
+    if (!this.lesson?.test?.type?.fill_in_the_blanks) {
+      return [];
+    }
+    const allWords = this.lesson.test.type.fill_in_the_blanks.words;
+    const usedWords = Object.values(this.selectedWords);
+    return allWords.filter(w => !usedWords.includes(w));
+  }
+
+  // Drag & Drop Events
+  onDragStart(word: string): void {
+    this.draggedWord = word;
+  }
+
+  allowDrop(event: DragEvent): void {
+    event.preventDefault();
+  }
+
+  onDrop(event: DragEvent, sentenceIndex: number): void {
+    event.preventDefault();
+    if (this.draggedWord) {
+      this.selectedWords[sentenceIndex] = this.draggedWord;
+      this.draggedWord = null;
+      this.activeBlankIndex = null;  
+    }
+  }
+
+  onBlankClick(sentenceIndex: number): void {
+    if (this.activeBlankIndex === sentenceIndex) {
+      this.activeBlankIndex = null; 
+    } else {
+      this.activeBlankIndex = sentenceIndex;
+    }
+  }
+
+  onSelectWord(word: string): void {
+    if (this.activeBlankIndex !== null) {
+      this.selectedWords[this.activeBlankIndex] = word;
+      this.activeBlankIndex = null; 
+    }
+  }
+
+  checkBFAnswers(): void {
+    if (!this.lesson?.test?.type?.fill_in_the_blanks) return;
+
+    const sentences = this.lesson.test.type.fill_in_the_blanks.sentences;
+    this.fillInResults = sentences.map((sentence, i) => {
+      return {
+        correct: this.selectedWords[i] === sentence.answer
+      };
+    });
+  }
 }

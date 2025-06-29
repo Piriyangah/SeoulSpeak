@@ -61,96 +61,151 @@
               </ul>
             </section>
 
-          <section *ngIf="lesson?.test?.type?.multiple_choice as mc" class="quiz-section">
-            <h2 class="quiz-title">{{ lesson.test.title }}</h2>
-            <div class="quiz-paragraph" *ngFor="let p of lesson.test.paragraph">
-              <p>{{ p }}</p>
-            </div>
+            <section *ngIf="lesson?.test?.type?.multiple_choice as mc" class="quiz-section">
+              <h2 class="quiz-title">{{ lesson.test.title }}</h2>
+              <div class="quiz-paragraph" *ngFor="let p of lesson.test.paragraph">
+                <p>{{ p }}</p>
+              </div>
 
-            <h4 class="quiz-instruction">{{ mc.instruction }}</h4>
+              <h4 class="quiz-instruction">{{ mc.instruction }}</h4>
 
-            <div *ngFor="let question of mc.questions; let i = index" class="question-block">
-              <p class="question-text">{{ question.question }}</p>
-              <ul class="answer-list">
-                <li *ngFor="let answer of question.answers; let j = index">
+              <div *ngFor="let question of mc.questions; let i = index" class="question-block">
+                <p class="question-text">{{ question.question }}</p>
+                <ul class="answer-list">
+                  <li *ngFor="let answer of question.answers; let j = index">
+                    <label class="answer-label">
+                      <input
+                        type="checkbox"
+                        [checked]="isSelected(i, j)"
+                        (change)="toggleAnswer(i, j)"
+                        [disabled]="results.length > 0"
+                      />
+                      <span>{{ answer }}</span>
+                    </label>
+                  </li>
+                </ul>
+
+                <div *ngIf="results.length > 0" class="feedback">
+                  <p [class.correct]="results[i].correct" [class.incorrect]="!results[i].correct">
+                    {{ results[i].correct ? 'Correct!' : 'Wrong answer.' }}
+                  </p>
+                  <p class="correct-answer">Correct answer: {{ question.correct_answer }}</p>
+                </div>
+              </div>
+
+              <div class="button-group">
+                <button class="primary-button" (click)="checkAnswers()" [disabled]="results.length > 0">
+                  Check Answers
+                </button>
+                <button class="secondary-button" *ngIf="results.length > 0" (click)="selectedAnswers = {}; results = []">
+                  Try Again
+                </button>
+              </div>
+            </section>
+
+            <section *ngIf="lesson?.test?.type?.true_false as tf" class="quiz-section">
+              <h4 class="quiz-instruction">{{ tf.instruction }}</h4>
+
+              <div *ngFor="let question of tf.questions; let i = index" class="question-block">
+                <p class="question-text">{{ question.question }}</p>
+                <div class="answer-list tf-answer">
                   <label class="answer-label">
                     <input
-                      type="checkbox"
-                      [checked]="isSelected(i, j)"
-                      (change)="toggleAnswer(i, j)"
-                      [disabled]="results.length > 0"
-                    />
-                    <span>{{ answer }}</span>
+                      type="radio"
+                      [checked]="selectedTFAnswers[i] === true"
+                      (change)="toggleTFAnswer(i, true)"
+                      [disabled]="tfResults.length > 0"
+                      name="tf_{{i}}"
+                    /> True
                   </label>
-                </li>
-              </ul>
+                  <label class="answer-label">
+                    <input
+                      type="radio"
+                      [checked]="selectedTFAnswers[i] === false"
+                      (change)="toggleTFAnswer(i, false)"
+                      [disabled]="tfResults.length > 0"
+                      name="tf_{{i}}"
+                    /> False
+                  </label>
+                </div>
 
-              <div *ngIf="results.length > 0" class="feedback">
-                <p [class.correct]="results[i].correct" [class.incorrect]="!results[i].correct">
-                  {{ results[i].correct ? 'Correct!' : 'Wrong answer.' }}
+                <div *ngIf="tfResults.length > 0" class="feedback">
+                  <p [class.correct]="tfResults[i].correct" [class.incorrect]="!tfResults[i].correct">
+                    {{ tfResults[i].correct ? 'Correct!' : 'Wrong answer.' }}
+                  </p>
+                  <p class="correct-answer">Correct answer: {{ question.correct_answer ? 'True' : 'False' }}</p>
+                </div>
+              </div>
+
+              <div class="button-group">
+                <button class="primary-button" (click)="checkTFAnswers()" [disabled]="tfResults.length > 0">
+                  Check TF Answers
+                </button>
+                <button class="secondary-button" *ngIf="tfResults.length > 0" (click)="selectedTFAnswers = {}; tfResults = []">
+                  Try Again
+                </button>
+              </div>
+            </section>
+
+            <section *ngIf="lesson?.test?.type?.fill_in_the_blanks as fib" class="quiz-section">
+              <h2 class="quiz-title">{{ lesson.test.title }}</h2>
+              <div class="quiz-paragraph" *ngFor="let p of lesson.test.paragraph">
+                <p>{{ p }}</p>
+              </div>
+
+              <h4 class="quiz-instruction">{{ fib.instruction }}</h4>
+
+              <div class="word-bank">
+                <span
+                  *ngFor="let word of getRemainingWords()"
+                  class="draggable-word"
+                  draggable="true"
+                  (dragstart)="onDragStart(word)"
+                  [class.selectable]="activeBlankIndex !== null"
+                  (click)="activeBlankIndex !== null && onSelectWord(word)"
+                >
+                  {{ word }}
+                </span>
+              </div>
+
+              <div *ngFor="let sentence of fib.sentences; let i = index" class="fill-in-blank-sentence">
+                <p>
+                  <ng-container *ngFor="let part of sentence.text.split('___'); let idx = index">
+                    {{ part }}
+                    <span
+                      *ngIf="idx < sentence.text.split('___').length - 1"
+                      class="blank"
+                      [class.active]="activeBlankIndex === i"
+                      (click)="onBlankClick(i)"
+                      (drop)="onDrop($event, i)"
+                      (dragover)="allowDrop($event)"
+                    >
+                      {{ selectedWords[i] || '____' }}
+                    </span>
+                  </ng-container>
                 </p>
-                <p class="correct-answer">Correct answer: {{ question.correct_answer }}</p>
-              </div>
-            </div>
 
-            <div class="button-group">
-              <button class="primary-button" (click)="checkAnswers()" [disabled]="results.length > 0">
-                Check Answers
-              </button>
-              <button class="secondary-button" *ngIf="results.length > 0" (click)="selectedAnswers = {}; results = []">
-                Try Again
-              </button>
-            </div>
-          </section>
-
-          <section *ngIf="lesson?.test?.type?.true_false as tf" class="quiz-section">
-            <h4 class="quiz-instruction">{{ tf.instruction }}</h4>
-
-            <div *ngFor="let question of tf.questions; let i = index" class="question-block">
-              <p class="question-text">{{ question.question }}</p>
-              <div class="answer-list tf-answer">
-                <label class="answer-label">
-                  <input
-                    type="radio"
-                    [checked]="selectedTFAnswers[i] === true"
-                    (change)="toggleTFAnswer(i, true)"
-                    [disabled]="tfResults.length > 0"
-                    name="tf_{{i}}"
-                  /> True
-                </label>
-                <label class="answer-label">
-                  <input
-                    type="radio"
-                    [checked]="selectedTFAnswers[i] === false"
-                    (change)="toggleTFAnswer(i, false)"
-                    [disabled]="tfResults.length > 0"
-                    name="tf_{{i}}"
-                  /> False
-                </label>
+                <div *ngIf="fillInResults.length > 0" class="feedback">
+                  <p [class.correct]="fillInResults[i].correct" [class.incorrect]="!fillInResults[i].correct">
+                    {{ fillInResults[i].correct ? 'Correct!' : 'Wrong answer.' }}
+                  </p>
+                  <p class="correct-answer">Correct answer: {{ sentence.answer }}</p>
+                </div>
               </div>
 
-              <div *ngIf="tfResults.length > 0" class="feedback">
-                <p [class.correct]="tfResults[i].correct" [class.incorrect]="!tfResults[i].correct">
-                  {{ tfResults[i].correct ? 'Correct!' : 'Wrong answer.' }}
-                </p>
-                <p class="correct-answer">Correct answer: {{ question.correct_answer ? 'True' : 'False' }}</p>
+              <div class="button-group">
+                <button class="primary-button" (click)="checkBFAnswers()" [disabled]="fillInResults.length > 0">
+                  Check Answers
+                </button>
+                <button class="secondary-button" *ngIf="fillInResults.length > 0" (click)="selectedWords = {}; fillInResults = []">
+                  Try Again
+                </button>
               </div>
-            </div>
+            </section>
 
-            <div class="button-group">
-              <button class="primary-button" (click)="checkTFAnswers()" [disabled]="tfResults.length > 0">
-                Check TF Answers
-              </button>
-              <button class="secondary-button" *ngIf="tfResults.length > 0" (click)="selectedTFAnswers = {}; tfResults = []">
-                Try Again
-              </button>
-            </div>
-          </section>
-
-          <a [routerLink]="['/lessons', levelKey, lessonId + 1]" class="back-link">
-            Go to Next lesson &rarr;
-          </a>
-
+            <a [routerLink]="['/lessons', levelKey, lessonId + 1]" class="back-link">
+              Go to Next lesson &rarr;
+            </a>
           </div>
         </div>
       </section>
