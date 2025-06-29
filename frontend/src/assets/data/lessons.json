@@ -81,6 +81,19 @@
                     "correct_answer": "안녕하세요"
                   }
                 ]
+              },
+              "true_false": {
+                "instruction": "Decide whether the following statements are true or false.",
+                "questions": [
+                  {
+                    "question": "‘안녕하세요’ is used when speaking formally.",
+                    "correct_answer": true
+                  },
+                  {
+                    "question": "‘안녕’ is more polite than ‘안녕하세요’.",
+                    "correct_answer": false
+                  }
+                ]
               }
             }
           },

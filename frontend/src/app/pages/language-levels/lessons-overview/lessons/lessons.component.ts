@@ -39,7 +39,14 @@ interface Lesson {
           correct_answer: string;
         }[];
       };
-    } 
+      true_false?: {
+        instruction: string;
+        questions: {
+          question: string;
+          correct_answer: boolean;
+        }[];
+      } 
+    }
   }
   video: string;
   image: string;
@@ -91,6 +98,7 @@ export class LessonsComponent implements OnInit {
   }
 
   // Für Tests Prüfen
+  // 1) multiple_choice_questions
   selectedAnswers: { [questionIndex: number]: Set<number> } = {};
   results: { correct: boolean }[] = [];
 
@@ -126,4 +134,22 @@ export class LessonsComponent implements OnInit {
       };
     });
   }
+
+  // 2) true_false_questions
+  selectedTFAnswers: { [index: number]: boolean } = {};
+  tfResults: { correct: boolean }[] = [];
+
+  toggleTFAnswer(qIndex: number, answer: boolean): void {
+    this.selectedTFAnswers[qIndex] = answer;
+  }
+
+  checkTFAnswers(): void {
+    if (!this.lesson?.test?.type?.true_false) return;
+    const questions = this.lesson.test.type.true_false.questions;
+
+    this.tfResults = questions.map((q, i) => ({
+      correct: this.selectedTFAnswers[i] === q.correct_answer
+    }));
+  }
+
 }
