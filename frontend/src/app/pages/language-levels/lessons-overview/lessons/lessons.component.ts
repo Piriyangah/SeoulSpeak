@@ -31,6 +31,7 @@ interface Lesson {
     title: string;
     paragraph: string[];
     type:{
+      // Aufgabe 1: Multiple Choice
       multiple_choice?: {
         instruction: string;
         questions: {
@@ -39,6 +40,7 @@ interface Lesson {
           correct_answer: string;
         }[];
       };
+      // Aufgabe 2: Richtig/Falsch
       true_false?: {
         instruction: string;
         questions: {
@@ -46,12 +48,21 @@ interface Lesson {
           correct_answer: boolean;
         }[];
       };
+      // Aufgabe 3: Lückentext
       fill_in_the_blanks?: {
         instruction: string;
         words: string[];
         sentences: {
           text: string;
           answer: string;
+        }[];
+      };
+      // Aufgabe 4: Satzreihenfolge
+      sentence_order?: {
+        instruction: string;
+        questions: {
+          segments: string[];
+          correct_order: string[];
         }[];
       };
     }
@@ -68,19 +79,21 @@ interface Lesson {
 })
 
 export class LessonsComponent implements OnInit {
-  levelKey: string = '';
-  level: any;
-  lessons: { [key: string]: Lesson } = {};
+  
+  levelKey: string = ''; //aktueller Level (A1)
+  level: any;  // level object
+  lessons: { [key: string]: Lesson } = {}; // Liste der Lexionen aus aktuellen Level
+  lessonId: number = 0; // aktuelle Lektion ID (Index 0)
+  lesson: Lesson | null = null; // Aktuelle Lektion (Lesson nur 1)
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
-  lessonId: number = 0;
-  lesson: Lesson | null = null;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const level = params.get('level');
       const lessonId = params.get('lesson');
 
+      // speichert den Level und Lektio aus URL  und gibt sie weiter
       if (level && lessonId && (lessons as any).levels[level]) {
         this.levelKey = level;
         this.lessonId = parseInt(lessonId, 10);
@@ -88,11 +101,17 @@ export class LessonsComponent implements OnInit {
         const levelLessons = (lessons.levels as any)[level].lessons;
         this.lesson = levelLessons[lessonId];
 
+        // Aufgabe 4: Initialisierung Satzreihenfolge
+        if (this.lesson?.test?.type?.sentence_order) {
+        this.initializeOrderQuestions();
+      }
+        // Nach oben scrollen, wenn eine Lektion geladen wird
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   }
 
+  // Hilfsfunktionen: Sicherheit für eingebettete URLs (YT Video)
   getSafeUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
@@ -105,20 +124,24 @@ export class LessonsComponent implements OnInit {
     return typeof intro === 'object' && intro !== null;
   }
 
-  // Für Tests Prüfen
+  // TEST LOGIC
   // 1) multiple_choice_questions
-  selectedAnswers: { [questionIndex: number]: Set<number> } = {};
-  results: { correct: boolean }[] = [];
+  selectedAnswers: { [qIndex: number]: Set<number> } = {}; // Map von Frageindex zu Set von Antwortindex
+  results: { correct: boolean }[] = []; // Array von Ergebnissen für jede Frage
 
+  // pürft, ob Antwort ausgewählt
   isSelected(qIndex: number, aIndex: number): boolean {
     return this.selectedAnswers[qIndex]?.has(aIndex) || false;
   }
 
+  // toggelt die Auswahl einer Antwort; sammelt die Antworten in einem Set
   toggleAnswer(qIndex: number, aIndex: number): void {
-    if (!this.selectedAnswers[qIndex]) {
-      this.selectedAnswers[qIndex] = new Set<number>();
+    // prüft, ob Antwort bereits gewählt; nein -> initialisiere ein Set
+    if (!this.selectedAnswers[qIndex]) { 
+      this.selectedAnswers[qIndex] = new Set<number>(); 
     }
 
+    // prüft, ob die Antwort bereits ausgewählt ist, wenn ja -> entfernen, wenn nein -> hinzufügen
     if (this.selectedAnswers[qIndex].has(aIndex)) {
       this.selectedAnswers[qIndex].delete(aIndex);
     } else {
@@ -126,6 +149,7 @@ export class LessonsComponent implements OnInit {
     }
   }
 
+  //
   checkAnswers(): void {
     if (!this.lesson || !this.lesson.test || !this.lesson.test.type || !this.lesson.test.type.multiple_choice) {
       return;
@@ -175,7 +199,6 @@ export class LessonsComponent implements OnInit {
     return allWords.filter(w => !usedWords.includes(w));
   }
 
-  // Drag & Drop Events
   onDragStart(word: string): void {
     this.draggedWord = word;
   }
@@ -217,5 +240,86 @@ export class LessonsComponent implements OnInit {
         correct: this.selectedWords[i] === sentence.answer
       };
     });
+  }
+  
+  // 4) sentence_order_questions
+  sentenceSlots: { [index: number]: string[] } = {};
+  // aus 4: draggedWord: string | null = null;
+  sentenceOrderWords: string[] = [];
+  sentenceOrderResults: { correct: boolean }[] = [];
+  sentenceOrderWordsPerQuestion: { [index: number]: string[] } = {};
+
+  shuffleArray(array: string[]): string[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  onDropSentenceWord(qIndex: number, i: number): void {
+    if (!this.draggedWord) return;
+    const usedWords = Object.values(this.sentenceSlots[qIndex]);
+    if (usedWords.includes(this.draggedWord)) return;
+
+    this.sentenceSlots[qIndex][i] = this.draggedWord;
+    this.draggedWord = null;
+  }
+
+  onSelectSentenceWord(word: string): void {
+    // Optional: Direkt per Klick setzen in das nächste freie Feld
+    const index = this.findFirstEmptySlot();
+    if (index.qIndex !== -1 && index.i !== -1) {
+      this.sentenceSlots[index.qIndex][index.i] = word;
+    }
+  }
+
+  findFirstEmptySlot(): { qIndex: number; i: number } {
+    for (let qIndex in this.sentenceSlots) {
+      for (let i = 0; i < this.sentenceSlots[qIndex].length; i++) {
+        if (!this.sentenceSlots[qIndex][i]) {
+          return { qIndex: +qIndex, i };
+        }
+      }
+    }
+    return { qIndex: -1, i: -1 };
+  }
+
+  onDropClick(qIndex: number, i: number): void {
+    this.sentenceSlots[qIndex][i] = '';
+  }
+
+  checkSentenceOrderAnswers(): void {
+    if (!this.lesson?.test?.type?.sentence_order) return;
+
+    const questions = this.lesson.test.type.sentence_order.questions;
+    this.sentenceOrderResults = questions.map((q, i) => {
+      const current = this.sentenceSlots[i];
+      return {
+        correct: JSON.stringify(current) === JSON.stringify(q.correct_order)
+      };
+    });
+  }
+
+  initializeOrderQuestions(): void {
+  const questions = this.lesson?.test?.type?.sentence_order?.questions;
+  if (!questions) return;
+
+  this.sentenceSlots = {};
+  this.sentenceOrderWordsPerQuestion = [];
+
+  questions.forEach((q, i) => {
+    this.sentenceSlots[i] = Array(q.correct_order.length).fill('');
+    const shuffled = this.shuffleArray(q.segments);
+    this.sentenceOrderWordsPerQuestion[i] = shuffled;
+  });
+
+  this.sentenceOrderResults = [];
+  }
+
+  resetSentenceOrder(): void {
+    this.initializeOrderQuestions();
+    this.sentenceOrderResults = [];
   }
 }

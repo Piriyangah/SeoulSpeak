@@ -120,6 +120,19 @@
                     "answer": "안녕"
                   }
                 ]
+              },
+              "sentence_order": {
+                "instruction": "Put the words in the correct order.",
+                "questions": [
+                  {
+                    "segments": ["저는", "학생이에요"],
+                    "correct_order": ["저는", "학생이에요"]
+                  },
+                  {
+                    "segments": ["안녕하세요", "여러분"],
+                    "correct_order": ["여러분", "안녕하세요"]
+                  }
+                ]
               }
             }
           },
