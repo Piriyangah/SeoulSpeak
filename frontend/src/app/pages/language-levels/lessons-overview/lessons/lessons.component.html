@@ -43,8 +43,14 @@
               <ul>
                 <li *ngFor="let words of lesson.vocab.words">
                   <strong>{{ words.ko }}</strong> – {{ words.en }}
+                  <button (click)="addToVocabList(words)" class="icon-button" title="Zur Vokabelliste">
+                    <i class="bi bi-download"></i>
+                  </button>
                 </li>
               </ul>
+              <button (click)="saveAllVocab()" class="btn btn-outline-primary mt-2">
+                    <i class="bi bi-save"></i> Alle Vokabeln speichern
+                  </button>
             </section>
 
             <section *ngIf="isIntroObject(lesson.grammar)">
@@ -89,7 +95,9 @@
                   <p [class.correct]="results[i].correct" [class.incorrect]="!results[i].correct">
                     {{ results[i].correct ? 'Correct!' : 'Wrong answer.' }}
                   </p>
-                  <p class="correct-answer">Correct answer: {{ question.correct_answer }}</p>
+                  <p class="correct-answer" *ngIf="!results[i].correct">
+                    Correct answer: {{ question.correct_answer }}
+                  </p>
                 </div>
               </div>
 
@@ -133,7 +141,9 @@
                   <p [class.correct]="tfResults[i].correct" [class.incorrect]="!tfResults[i].correct">
                     {{ tfResults[i].correct ? 'Correct!' : 'Wrong answer.' }}
                   </p>
-                  <p class="correct-answer">Correct answer: {{ question.correct_answer ? 'True' : 'False' }}</p>
+                  <p class="correct-answer" *ngIf="!tfResults[i].correct">
+                    Correct answer: {{ question.correct_answer ? 'True' : 'False' }}
+                  </p>
                 </div>
               </div>
 
@@ -148,11 +158,6 @@
             </section>
 
             <section *ngIf="lesson?.test?.type?.fill_in_the_blanks as fib" class="quiz-section">
-              <h2 class="quiz-title">{{ lesson.test.title }}</h2>
-              <div class="quiz-paragraph" *ngFor="let p of lesson.test.paragraph">
-                <p>{{ p }}</p>
-              </div>
-
               <h4 class="quiz-instruction">{{ fib.instruction }}</h4>
 
               <div class="word-bank">
@@ -171,7 +176,7 @@
               <div *ngFor="let sentence of fib.sentences; let i = index" class="fill-in-blank-sentence">
                 <p>
                   {{ i + 1 }}.
-                  <ng-container *ngFor="let part of sentence.text.split('___'); let idx = index">
+                  <ng-container *ngFor="let part of sentence.text.split('___'); let idx = index" class="question-block">
                     {{ part }}
                     <span
                       *ngIf="idx < sentence.text.split('___').length - 1"
@@ -190,7 +195,9 @@
                   <p [class.correct]="fillInResults[i].correct" [class.incorrect]="!fillInResults[i].correct">
                     {{ fillInResults[i].correct ? 'Correct!' : 'Wrong answer.' }}
                   </p>
-                  <p class="correct-answer">Correct answer: {{ sentence.answer }}</p>
+                  <p class="correct-answer" *ngIf="!fillInResults[i].correct">
+                    Correct answer: {{ sentence.answer }}
+                  </p>
                 </div>
               </div>
 
@@ -204,56 +211,56 @@
               </div>
             </section>
 
-<section *ngIf="lesson?.test?.type?.sentence_order as so" class="quiz-section">
-  <h4 class="quiz-instruction">{{ so.instruction }}</h4>
+            <section *ngIf="lesson?.test?.type?.sentence_order as so" class="quiz-section">
+              <h4 class="quiz-instruction">{{ so.instruction }}</h4>
 
-  <div *ngFor="let q of so.questions; let qIndex = index" class="sentence-block">
-    <div class="word-bank">
-      <h5>{{ qIndex + 1 }}.</h5>
-      <span
-        *ngFor="let word of sentenceOrderWordsPerQuestion[qIndex]"
-        class="draggable-word"
-        draggable="true"
-        (dragstart)="onDragStart(word)"
-        (click)="onSelectSentenceWord(word)"
-      >
-        {{ word }}
-      </span>
-    </div>
+              <div *ngFor="let q of so.questions; let qIndex = index" class="question-block">
+                <div class="word-bank">
+                  <h5>{{ qIndex + 1 }}.</h5>
+                  <span
+                    *ngFor="let word of sentenceOrderWordsPerQuestion[qIndex]"
+                    class="draggable-word"
+                    draggable="true"
+                    (dragstart)="onDragStart(word)"
+                    (click)="onSelectSentenceWord(word)"
+                  >
+                    {{ word }}
+                  </span>
+                </div>
 
-    <div class="sentences">
-      <div class="drop-row">
-        <span
-          class="drop-zone"
-          *ngFor="let item of q.correct_order; let i = index"
-          (dragover)="allowDrop($event)"
-          (drop)="onDropSentenceWord(qIndex, i)"
-          (click)="onDropClick(qIndex, i)"
-        >
-          {{ sentenceSlots[qIndex][i] }}
-        </span>
-      </div>
-    </div>
+                <div class="sentences">
+                  <div class="drop-row">
+                    <span
+                      class="drop-zone"
+                      *ngFor="let item of q.correct_order; let i = index"
+                      (dragover)="allowDrop($event)"
+                      (drop)="onDropSentenceWord(qIndex, i)"
+                      (click)="onDropClick(qIndex, i)"
+                    >
+                      {{ sentenceSlots[qIndex][i] }}
+                    </span>
+                  </div>
+                </div>
 
-    <div *ngIf="sentenceOrderResults.length > 0" class="feedback">
-      <p [class.correct]="sentenceOrderResults[qIndex].correct" [class.incorrect]="!sentenceOrderResults[qIndex].correct">
-        {{ sentenceOrderResults[qIndex].correct ? 'Correct!' : 'Wrong answer.' }}
-      </p>
-      <p class="correct-answer" *ngIf="!sentenceOrderResults[qIndex].correct">
-        Correct answer: {{ q.correct_order.join(' ') }}
-      </p>
-    </div>
-  </div>
+                <div *ngIf="sentenceOrderResults.length > 0" class="feedback">
+                  <p [class.correct]="sentenceOrderResults[qIndex].correct" [class.incorrect]="!sentenceOrderResults[qIndex].correct">
+                    {{ sentenceOrderResults[qIndex].correct ? 'Correct!' : 'Wrong answer.' }}
+                  </p>
+                  <p class="correct-answer" *ngIf="!sentenceOrderResults[qIndex].correct">
+                    Correct answer: {{ q.correct_order.join(' ') }}
+                  </p>
+                </div>
+              </div>
 
-  <div class="button-group">
-    <button class="primary-button" (click)="checkSentenceOrderAnswers()" [disabled]="sentenceOrderResults.length > 0">
-      Check Answers
-    </button>
-    <button class="secondary-button" *ngIf="sentenceOrderResults.length > 0" (click)="resetSentenceOrder()">
-      Try Again
-    </button>
-  </div>
-</section>
+              <div class="button-group">
+                <button class="primary-button" (click)="checkSentenceOrderAnswers()" [disabled]="sentenceOrderResults.length > 0">
+                  Check Answers
+                </button>
+                <button class="secondary-button" *ngIf="sentenceOrderResults.length > 0" (click)="resetSentenceOrder()">
+                  Try Again
+                </button>
+              </div>
+            </section>
 
 
 

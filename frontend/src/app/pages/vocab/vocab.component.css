@@ -13,8 +13,6 @@
   }
 
   .table {
-    width: 100%;
-    max-width: 100%;
     table-layout: auto;
 }
   
@@ -25,6 +23,17 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+
+  .table td,
+.table th {
+  padding: 12px;
+  vertical-align: middle;
+  white-space: nowrap;      /* verhindert Zeilenumbruch */
+  overflow: hidden;         /* schneidet überlange Inhalte ab */
+  text-overflow: ellipsis;  /* zeigt "..." bei zu langem Text */
+  max-width: 150px;         /* Spalten nicht breiter als nötig */
+}
+
   
   .table tbody tr:hover {
     background-color: #f1f1f1; 
@@ -37,13 +46,16 @@
   }
   
   .bi-trash {
-    color: #ff0000;
+    color: #000000;
     font-size: 1.2rem;
     cursor: pointer;
   }
+  .bi-trash:hover {
+    color: #ff0000;
+  }
   
-  .bi-pencil-square:hover, .bi-trash:hover {
-    color: #ff0077;
+  .bi-pencil-square:hover {
+    color: #700b97;
   }
   
   .table caption {
@@ -67,3 +79,66 @@
 .btn-primary:hover {
     background-color: #700b97; 
 }
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  background-color: transparent;
+}
+
+.table thead th {
+  background-color: #511462;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 12px;
+  border: none;
+}
+
+.table tbody tr {
+  background-color: #fefdfe;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.table tbody tr:hover {
+  transform: scale(1.01);
+}
+
+.table td {
+  padding: 12px;
+  vertical-align: middle;
+  border-top: none;
+}
+
+.table td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.table td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.bi-pencil-square, .bi-trash {
+  transition: color 0.2s ease;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clickable-row:hover {
+  background-color: #e8d9e3;
+}
+
+

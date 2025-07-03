@@ -71,14 +71,14 @@
                 "instruction":  "Choose the correct answer.",
                 "questions": [
                   {
-                    "question": "What does 'Hello' mean in Korean?",
+                    "question": "What is 'Hello' in Korean?",
                     "answers": ["안녕", "안녕하세요", "감사합니다", "천만에요"],
-                    "correct_answer": "안녕하세요"
+                    "correct_answer": ["안녕하세요", "안녕"]
                   },
                   {
                     "question": "Which form is polite?",
                     "answers": ["안녕", "안녕하세요", "안녕하십니까", "안녕히 가세요"],
-                    "correct_answer": "안녕하세요"
+                    "correct_answer": ["안녕하세요"]
                   }
                 ]
               },

@@ -4,6 +4,12 @@ body {
     color: #333;
     margin: 0;
   }
+  h1 {
+    color: #511462;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
   h2 {
     font-weight: 700;

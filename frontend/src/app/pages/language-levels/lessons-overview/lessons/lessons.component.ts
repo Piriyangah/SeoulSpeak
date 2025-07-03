@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import lessons from '../../../../../assets/data/lessons.json';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { Vocab } from '../../../../shared/vocab';
 
 interface Lesson {
   title: string;
@@ -37,7 +38,7 @@ interface Lesson {
         questions: {
           question: string;
           answers: string[];
-          correct_answer: string;
+          correct_answer: string[];
         }[];
       };
       // Aufgabe 2: Richtig/Falsch
@@ -124,6 +125,123 @@ export class LessonsComponent implements OnInit {
     return typeof intro === 'object' && intro !== null;
   }
 
+  // Vokabeln von Lektion in hinzufügen auf die Vokabelliste
+  addToVocabList(word: { ko: string; en: string }): void {
+    const vocabEntry: Vocab = {
+      id: 0,
+      korean: word.ko,
+      pronunciation: '',
+      english: word.en,
+      example: '',
+      meaning: '',
+      difficulty: 0 // 👈 wichtig: kein "A1" als String!
+    };
+
+    fetch('http://localhost:3000/vocabulary', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(vocabEntry)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Fehler beim Speichern');
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert(`Vokabel "${data.korean}" wurde gespeichert.`);
+      console.log('Gespeichert:', data);
+    })
+    .catch(error => {
+      console.error('Fehler:', error);
+      alert('Fehler beim Speichern.');
+    });
+  }
+
+
+  saveAllVocab(): void {
+    if (!this.lesson) return;
+
+    // 1. Hole aktuelle Vokabelliste vom Server
+    fetch('http://localhost:3000/vocabulary')
+      .then(res => res.json())
+      .then((existingVocab: Vocab[]) => {
+        const newWords = this.lesson!.vocab.words;
+
+        // 2. Prüfe auf Duplikate
+        const duplicates: { ko: string, en: string }[] = [];
+        const toInsert: { ko: string, en: string }[] = [];
+
+        for (const word of newWords) {
+          const exists = existingVocab.some(v => v.korean === word.ko && v.english === word.en);
+          if (exists) {
+            duplicates.push(word);
+          } else {
+            toInsert.push(word);
+          }
+        }
+
+        // 3. Falls Duplikate -> Frage nach
+        if (duplicates.length > 0) {
+          const confirmMessage = `Folgende Vokabeln existieren bereits:\n\n${duplicates
+            .map(w => `- ${w.ko} / ${w.en}`)
+            .join('\n')}\n\nTrotzdem alle speichern?`;
+
+          if (!confirm(confirmMessage)) {
+            // wenn nur neue 
+            this.bulkSave(toInsert);
+            return;
+          }
+        }
+
+        // sonst alle
+        this.bulkSave(newWords);
+      })
+      .catch(err => {
+        console.error('Fehler beim Laden vorhandener Vokabeln:', err);
+        alert('Fehler beim Speichern.');
+      });
+  }
+
+  bulkSave(words: { ko: string; en: string }[]): void {
+    for (const word of words) {
+      const vocabEntry: Vocab = {
+        id: 0,
+        korean: word.ko,
+        pronunciation: '',
+        english: word.en,
+        example: '',
+        meaning: '',
+        difficulty: 0
+      };
+
+      fetch('http://localhost:3000/vocabulary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(vocabEntry)
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Fehler beim Speichern');
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log('Gespeichert:', data);
+      })
+      .catch(err => {
+        console.error('Fehler beim Speichern:', err);
+      });
+    }
+
+    alert(`${words.length} Vokabel(n) wurden gespeichert.`);
+  }
+
+
   // TEST LOGIC
   // 1) multiple_choice_questions
   selectedAnswers: { [qIndex: number]: Set<number> } = {}; // Map von Frageindex zu Set von Antwortindex
@@ -158,12 +276,23 @@ export class LessonsComponent implements OnInit {
     this.results = questions.map((q, i) => {
       const selected = this.selectedAnswers[i] || new Set<number>();
       
-      const correctIndex = q.answers.findIndex(ans => ans === q.correct_answer);
-      const selectedArray = Array.from(selected);
+      const correctAnswers = Array.isArray(q.correct_answer)
+      ? q.correct_answer
+      : [q.correct_answer];
 
-      return {
-        correct: selectedArray.length === 1 && selectedArray[0] === correctIndex
-      };
+    const correctIndexes = q.answers
+      .map((a, idx) => (correctAnswers.includes(a) ? idx : -1))
+      .filter(idx => idx !== -1);
+
+    // prüfe: gleiche Anzahl + gleiche Werte
+    const selectedArray = Array.from(selected).sort();
+    const correctSorted = correctIndexes.sort();
+
+    const isCorrect =
+      selectedArray.length === correctSorted.length &&
+      selectedArray.every((val, index) => val === correctSorted[index]);
+
+    return { correct: isCorrect };
     });
   }
 
