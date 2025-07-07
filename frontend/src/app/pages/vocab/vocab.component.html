@@ -30,8 +30,8 @@
                         <th scope="col">English</th>
                         <th scope="col">Example</th>
                         <th scope="col">Meaning</th>
-                        <th scope="col">Difficulty</th>
-                        <th scope="col">Details</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>
@@ -60,7 +60,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Vokabel-Details</h5>
+                            <h5 class="modal-title"> {{ selectedVocab.korean }} </h5>
                             <button type="button" class="btn-close" (click)="closeDetails()"></button>
                         </div>
                         <div class="modal-body">

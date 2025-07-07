@@ -1,19 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;700&display=swap');
 
+.container-fluid {
+    padding: 20px;
+    background-color: #f4e7f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     color: #333;
 }
 
-h1, h2 {
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
 h1 {
-    color: #333333; /* Dunkelgrau für die Hauptüberschrift */
-    margin-bottom: 30px;
+    color: #511462;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -25,25 +29,18 @@ h2 {
     position: relative;
     padding-bottom: 10px;
     text-align: center;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: #ff0077; /* Pinke Akzentfarbe */
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.container-fluid {
-    padding: 20px;
-    background-color: #f4e7f0; 
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+.section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hangul-letter {
@@ -64,24 +61,24 @@ h2::after {
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.consonant {
+.vowel {
     background-color: #511462;
     color: white;
 }
 
-.double-consonant {
-    background-color:#9c67ab;
-    color: white;
-}
-
-.vowel {
-    background-color: #9c67ab;
-    color: white;
-}
-
 .complex-vowel {
-    background-color: #be78d1;
-    color: black;
+    background-color: #763987;
+    color: rgb(255, 255, 255);
+}
+
+.consonant {
+    background-color: #a66ab5;
+    color: white;
+}
+
+.double-consonant {
+    background-color:#ba8ac7;
+    color: rgb(255, 255, 255);
 }
 
 .bi-volume-up {
@@ -90,30 +87,18 @@ h2::after {
     color: rgba(255, 255, 255, 0.8); 
 }
 
-/* Farben für die einzelnen Kategorien */
 .consonant-heading::after {
-    background-color: #333333; /* Dunkelgrau für Konsonanten */
+    background-color: #333333; 
 }
 
 .double-consonant-heading::after {
-    background-color: #555555; /* Dunkleres Grau für Doppelkonsonanten */
+    background-color: #555555;
 }
 
 .vowel-heading::after {
-    background-color: #ff0077; /* Pink für Vokale */
+    background-color: #ff0077;
 }
 
 .complex-vowel-heading::after {
-    background-color: #ff6699; /* Hellrosa für komplexe Vokale */
-}
-
-h2 {
-    font-size: 1.8rem;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-h2::after {
-    width: 60px; 
-    height: 4px;
+    background-color: #ff6699; 
 }

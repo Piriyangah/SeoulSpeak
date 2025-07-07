@@ -1,10 +1,10 @@
 .container-fluid {
     padding: 20px;
     background-color: #f4e7f0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   h1 {
     color: #511462;
     font-family: 'Montserrat', sans-serif;
@@ -12,28 +12,25 @@
     text-transform: uppercase;
   }
 
-  .table {
-    table-layout: auto;
-}
-  
   .table th {
     background-color: #511462;
     color: white; 
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
     text-transform: uppercase;
   }
 
   .table td,
-.table th {
-  padding: 12px;
-  vertical-align: middle;
-  white-space: nowrap;      /* verhindert Zeilenumbruch */
-  overflow: hidden;         /* schneidet überlange Inhalte ab */
-  text-overflow: ellipsis;  /* zeigt "..." bei zu langem Text */
-  max-width: 150px;         /* Spalten nicht breiter als nötig */
-}
+  .table th {
+    padding: 12px;
+    vertical-align: middle;
+    white-space: nowrap;       
+    overflow: hidden;         
+    max-width: 150px;         
+  }
 
+  table td {
+    text-overflow: ellipsis; 
+  }
   
   .table tbody tr:hover {
     background-color: #f1f1f1; 
@@ -140,5 +137,3 @@
 .clickable-row:hover {
   background-color: #e8d9e3;
 }
-
-

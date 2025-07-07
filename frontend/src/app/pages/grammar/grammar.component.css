@@ -1,3 +1,10 @@
+.container-fluid {
+    padding: 20px;
+    background-color: #f4e7f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4e7f0;
