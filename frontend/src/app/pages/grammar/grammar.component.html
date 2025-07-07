@@ -1,1 +1,135 @@
-<p>grammar works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korean Particles with Interactive Exercises</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .correct { background-color: #d4edda !important; }
+    .incorrect { background-color: #f8d7da !important; }
+  </style>
+</head>
+<body class="container-fluid">    
+
+    
+ <!--   
+<header>
+    <nav class="sticky-top bg-white shadow-sm">
+    
+        <ul class="nav justify-content-center py-3">
+          <li class="nav-item"><a class="nav-link" [routerLink]="[]" fragment="section1">이에요 / 예요</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="[]" fragment="section2">은 / 는</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="[]" fragment="section3">이 / 가</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="[]" fragment="section4">이 / 가 아니에요</a></li>
+        </ul>
+    </nav>
+</header>
+-->
+
+  <div class="d-flex justify-content-between align-items-center">
+        <h1>Grammar</h1>    
+  </div>
+  <div class="container section-padding">
+    <section id="section1" class="mb-5 section-content">
+      <h2>이에요 / 예요</h2>
+      <p>In Korean, these are polite copula endings attached to nouns to mean “to be.” Use <strong>이에요</strong> after consonant-ending nouns and <strong>예요</strong> after vowel-ending nouns.</p>
+      <div id="exercise1" class="mt-4 p-3 bg-light border rounded">
+        <h3>Exercise 1: Choose the correct form</h3>
+        <form>
+          <div class="mb-2 p-2" data-answer="ieyo">
+            1. 책( )예요:
+            <label><input type="radio" name="q1_1" value="ieyo"> 책이에요 </label>
+            <label><input type="radio" name="q1_1" value="yeyo"> 책예요 </label>
+            <span class="feedback"></span>
+          </div>
+          <div class="mb-2 p-2" data-answer="ieyo">
+            2. 물( )예요:
+            <label><input type="radio" name="q1_2" value="ieyo"> 물이에요</label>
+            <label><input type="radio" name="q1_2" value="yeyo"> 물예요</label>
+          </div>
+          <div class="mb-2 p-2" data-answer="yeyo">
+            3. 의사( )예요:
+            <label><input type="radio" name="q1_3" value="ieyo"> 의사이에요</label>
+            <label><input type="radio" name="q1_3" value="yeyo"> 의사예요</label>
+          </div>
+        </form>
+        <button type="button" class="btn btn-primary mt-2" (click)="checkExercise('exercise1')">Check Answers</button>
+        <button *ngIf="showResetButtons['exercise1']" type="button" class="btn btn-secondary mt-2 ms-2" (click)="resetExercise('exercise1')">Reset</button>      
+    </div>
+    </section>
+
+    <section id="section2" class="mb-5 section-content">
+      <h2>은 / 는</h2>
+      <p><strong>은</strong> and <strong>는</strong> mark the topic of a sentence. Use <strong>은</strong> after consonants and <strong>는</strong> after vowels.</p>
+      <div id="exercise2" class="mt-4 p-3 bg-light border rounded">
+        <h3>Exercise 2: True or False</h3>
+        <form>
+          <div class="mb-2 p-2" data-answer="false">
+            1. “저은 학생이에요” is correct usage.
+            <label><input type="radio" name="q2_1" value="true"> True</label>
+            <label><input type="radio" name="q2_1" value="false"> False</label>
+          </div>
+          <div class="mb-2 p-2" data-answer="true">
+            2. “날씨는 좋습니다” emphasizes contrast.
+            <label><input type="radio" name="q2_2" value="true"> True</label>
+            <label><input type="radio" name="q2_2" value="false"> False</label>
+          </div>
+          <div class="mb-2 p-2" data-answer="true">
+            3. Use “는” after “사람”.
+            <label><input type="radio" name="q2_3" value="true"> True</label>
+            <label><input type="radio" name="q2_3" value="false"> False</label>
+          </div>
+        </form>
+        <button type="button" class="btn btn-primary mt-2" (click)="checkExercise('exercise2')">Check Answers</button>
+        <button *ngIf="showResetButtons['exercise2']" type="button" class="btn btn-secondary mt-2 ms-2" (click)="resetExercise('exercise2')">Reset</button>      
+      </div>
+    </section> 
+
+    <section id="section3" class="mb-5 section-content">
+      <h2>이 / 가</h2>
+      <p><strong>이</strong> and <strong>가</strong> mark the grammatical subject. Use <strong>이</strong> after consonants and <strong>가</strong> after vowels.</p>
+      <div id="exercise3" class="mt-4 p-3 bg-light border rounded">
+        <h3>Exercise 3: Fill in the blank</h3>
+        <form>
+          <div class="mb-2 p-2" data-answer="ga">
+            1. 사과( ) 맛있어요. (<em>이/가</em>)
+            <label><input type="radio" name="q3_1" value="i"> 이</label>
+            <label><input type="radio" name="q3_1" value="ga"> 가</label>
+          </div>
+          <div class="mb-2 p-2" data-answer="ga">
+            2. 누가( ) 노래해요? (<em>이/가</em>)
+            <label><input type="radio" name="q3_2" value="i"> 이</label>
+            <label><input type="radio" name="q3_2" value="ga"> 가</label>
+          </div>
+          <div class="mb-2 p-2" data-answer="i">
+            3. 친구( ) 집에 있어요. (<em>이/가</em>)
+            <label><input type="radio" name="q3_3" value="i"> 이</label>
+            <label><input type="radio" name="q3_3" value="ga"> 가</label>
+          </div>
+        </form>
+        <button type="button" class="btn btn-primary mt-2" (click)="checkExercise('exercise3')">Check Answers</button>
+        <button *ngIf="showResetButtons['exercise3']" type="button" class="btn btn-secondary mt-2 ms-2" (click)="resetExercise('exercise3')">Reset</button>      
+      </div>
+    </section>
+
+    <section id="section4" class="section-content">
+        <h2>이 / 가 아니에요</h2>
+        <p>The polite negative copula “to not be.” Attach <strong>아니에요</strong> after <em>이</em> or <em>가</em>.</p>
+        <div id="exercise4" class="mt-4 p-3 bg-light border rounded">
+          <h3>Exercise 4: Which sentence is correct?</h3>
+          <form>
+            <div class="mb-2 p-2" data-answer="i">
+                <label><input type="radio" name="q3_3" value="i"> A: 저는 의사가 아니에요.</label><br>
+                <label><input type="radio" name="q3_3" value="ga"> B: 저는 의사이에요 아니에요.</label>
+            </div>
+          </form>
+          <button type="button" class="btn btn-primary mt-2" (click)="checkExercise('exercise4')">Check Answers</button>
+          <button *ngIf="showResetButtons['exercise4']" type="button" class="btn btn-secondary mt-2 ms-2" (click)="resetExercise('exercise4')">Reset</button>
+        </div>
+      </section>      
+  </div> 
+</body>
+</html>

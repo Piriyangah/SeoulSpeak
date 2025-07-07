@@ -106,6 +106,28 @@ export class VocabComponent implements OnInit { // OnInit ein Interface; beim In
     this.deleteStatus=false
     this.deleteVocab = null;;
   }
+
+  //NEU: Details anzeigen - wenn auf eine Vokabel geklickt wird, dann wird die Vokabel in der Liste ausgewählt und Details angezeigt
+selectedVocab: any = null;
+
+selectVocab(vocab: any) {
+  this.selectedVocab = vocab;
+}
+
+closeDetails() {
+  this.selectedVocab = null;
+}
+
+setStatus(status: 'learned' | 'learning') {
+  if (this.selectedVocab) {
+    this.selectedVocab.status = status;
+    // ggf. speichern über Service
+  }
+}
+
+
+
+
 }
 // Was passiert hier?
 // - Komponente VocabComponent wird initialisiert, dabei ng ngOnInit() wird ausgeführt

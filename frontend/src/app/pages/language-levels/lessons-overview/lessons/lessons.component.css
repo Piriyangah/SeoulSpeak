@@ -1,0 +1,372 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: rgba(30, 30, 53, 0.1) 0px 6px 12px -2px,
+              rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.lesson-header-text .title-en {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.lesson-header-text .title-ko {
+  font-size: 1.3rem;
+  color: #8a2be2;
+  margin-top: 0.3rem;
+}
+
+.lesson-header-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px;
+  object-fit: cover;
+}
+
+main {
+  background-color: #f4e7f0;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: rgba(30, 30, 53, 0.1) 0px 6px 12px -2px,
+              rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
+}
+
+.lessonCard.detail {
+  display: grid;
+  gap: 1rem;
+}
+
+.lesson-body {
+  font-size: 1rem;
+  color: #333;
+}
+
+.lesson-body section {
+  margin-bottom: 2rem;
+}
+
+.lesson-body h4 {
+  border-left: 4px solid #d19dc7;
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-body ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.lesson-body li {
+  margin-bottom: 0.4rem;
+}
+
+.intro {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.media iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.media img.lesson-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 6px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #8a2be2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Anpassung */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .lesson-header-text {
+    flex: 1;
+  }
+
+  .lesson-header-image {
+    max-width: 300px;
+    margin-left: 2rem;
+  }
+
+  main {
+    padding: 3rem;
+  }
+
+  .lesson-body {
+    font-size: 1.05rem;
+  }
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ae66cb;
+}
+.icon-button:hover {
+  color: #15c83c;
+}
+
+
+/* Quiz-Sektion */
+.quiz-section {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quiz-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.quiz-instruction {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem;
+  color: #444;
+}
+
+.question-block {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.question-text {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #222;
+}
+
+.answer-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.answer-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.answer-label input {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.feedback {
+  margin-top: 0.75rem;
+}
+
+.correct {
+  color: #28a745;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.incorrect {
+  color: #dc3545;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.correct-answer {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button {
+  background-color: #d19dc7;
+  color: #fff;
+}
+
+.primary-button:hover:not([disabled]) {
+  background-color: #511462;
+  transform: translateY(-2px);
+}
+
+.primary-button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  background-color: #d19dc7;
+  color: #ffffff;
+}
+
+.secondary-button:hover {
+  background-color: #511462;
+  transform: translateY(-2px);
+}
+
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1rem 0 1.5rem;
+}
+
+.draggable-word {
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: #d19dc7;
+  color: #fff;
+  border-radius: 8px;
+  cursor: grab;
+  user-select: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  border: 1px solid #b07bb0;
+}
+
+.draggable-word:hover {
+  background-color: #b073aa;
+}
+
+.sentence-block {
+  margin-bottom: 2rem;
+}
+
+.sentences {
+  margin-bottom: 1rem;
+}
+
+.drop-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 1rem 0;
+  justify-content: start;
+}
+
+.drop-zone {
+  display: inline-block;
+  min-width: 100px;
+  padding: 20px;
+  margin: 4px;
+  border: 2px solid #d19dc7;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.drop-zone:hover {
+  background-color: #f0e7f4;
+}
+
+.drop-zone:empty::before {
+  content: '____';
+  color: #bbb;
+  font-style: italic;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blank {
+  cursor: pointer;
+  padding: 2px 6px;
+  border-bottom: 2px dashed #ccc;
+  user-select: none;
+  display: inline-block;
+}
+
+.main-content {
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}
+
+.test-section {
+  margin-top: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .quiz-section {
+    max-width: 100%;
+  }
+}
