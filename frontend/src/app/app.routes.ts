@@ -9,12 +9,32 @@ import { CreateComponent } from './create/create.component';
 import { LanguageLevelsComponent } from './pages/language-levels/language-levels.component';
 import { LessonsComponent } from './pages/language-levels/lessons-overview/lessons/lessons.component';
 import { LessonsOverviewComponent } from './pages/language-levels/lessons-overview/lessons-overview.component';
-
+// Login_New
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { authguardAdmin, authguardLogin } from './shared/authguard.guard';
 
 export const routes: Routes = [{
     path: "",
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [authguardLogin] //
+  },
+  {
+    path: "register",
+    title: "Register",
+    component: RegisterComponent
+  },
+  {
+    path: "login",
+    title: "Login",
+    component: LoginComponent
+  },
+  {
+    path: "userlist",
+    component: UserlistComponent,
+    canActivate: [authguardAdmin]
   },
   {
     path: "hangul",
