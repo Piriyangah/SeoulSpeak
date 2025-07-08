@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http'; // stellt die Funktionen zu v
 import { Injectable } from '@angular/core';
 import { Vocab } from './vocab';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-  backendUrl = 'http://localhost:3000'; 
+  backendUrl = environment.apiUrl;  // binden wir die environment.ts in unseren Service ein = apiUrl
+  //backendUrl = 'http://localhost:3000'; 
 
   constructor(private http: HttpClient) { } 
 
