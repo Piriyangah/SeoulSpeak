@@ -7,7 +7,7 @@ router.get('/', async(req, res) => {
     res.send({ message: "Hello FIW!" });
 });
 
-router.post(environment.apiUrl + '/vocabulary', async(req, res) => {
+router.post('/vocabulary', async(req, res) => {
     let korean = req.body.korean || null;
     let pronunciation = req.body.pronunciation || null;
     let english = req.body.english || null;
@@ -27,7 +27,7 @@ router.post(environment.apiUrl + '/vocabulary', async(req, res) => {
     }
   });
   
-router.get(environment.apiUrl + '/vocabulary', async(req, res) => {
+router.get('/vocabulary', async(req, res) => {
     const query = `SELECT * FROM vocabulary `;
 
     try {
