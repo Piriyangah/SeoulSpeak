@@ -1,9 +1,6 @@
 {
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "cleanUrls": true,
   "headers": [
@@ -16,5 +13,6 @@
         }
       ]
     }
-  ]
+  ],
+  "outputDirectory": "dist/frontend/browser"
 }
