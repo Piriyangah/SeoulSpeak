@@ -1,58 +1,54 @@
-<main class="d-flex min-vh-100">
-    <fieldset class="container mt-5">
-      @if(vocab){
-        <legend class="mb-4">Eintrag von {{ vocab.korean }} aktualisieren</legend>
-      } @else {
-        <legend class="mb-4">Eintrag aktualisieren</legend>
-      }
+<div class="container-fluid">        
+    <h1>
+        @if(vocab){
+          Update Entry for {{ vocab.korean }}
+        } @else {
+          Update Entry
+        }
+    </h1>
+
+    <div class="container section-padding">
+
         <form [formGroup]="form" (ngSubmit)="update()">
-            <div class="mb-3 row">
-            <label class="col-2 col-form-label" for="korean">Koreanisch</label>
-            <div class="col-10">
-                <input type="text" class="form-control" id="korean" placeholder="Koreanisch" formControlName="koreanControl" />
+
+            <div class="mb-3">
+            <label for="korean" class="form-label">Korean</label>
+            <input type="text" id="korean" class="form-control" placeholder="Korean" formControlName="koreanControl" />
             </div>
+
+            <div class="mb-3">
+            <label for="pronunciation" class="form-label">Pronunciation</label>
+            <input type="text" id="pronunciation" class="form-control" placeholder="Pronunciation" formControlName="pronunciationControl" />
             </div>
-    
-            <div class="mb-3 row">
-            <label class="col-2 col-form-label" for="pronunciation">Aussprache</label>
-            <div class="col-10">
-                <input type="text" class="form-control" id="pronunciation" placeholder="Aussprache" formControlName="pronunciationControl" />
+
+            <div class="mb-3">
+            <label for="english" class="form-label">English</label>
+            <input type="text" id="english" class="form-control" placeholder="English" formControlName="englishControl" />
             </div>
+
+            <div class="mb-3">
+            <label for="example" class="form-label">Example</label>
+            <input type="text" id="example" class="form-control" placeholder="Example" formControlName="exampleControl" />
             </div>
-    
-            <div class="mb-3 row">
-            <label class="col-2 col-form-label" for="english">Englisch</label>
-            <div class="col-10">
-                <input type="text" class="form-control" id="english" placeholder="Englisch" formControlName="englishControl" />
+
+            <div class="mb-3">
+            <label for="meaning" class="form-label">Meaning</label>
+            <input type="text" id="meaning" class="form-control" placeholder="Meaning" formControlName="meaningControl" />
             </div>
+
+            <div class="mb-3">
+            <label for="difficulty" class="form-label">Difficulty</label>
+            <input type="number" id="difficulty" class="form-control" placeholder="Difficulty Level (1–5)" formControlName="difficultyControl" />
             </div>
-    
-            <div class="mb-3 row">
-            <label class="col-2 col-form-label" for="example">Beispiel</label>
-            <div class="col-10">
-                <input type="text" class="form-control" id="example" placeholder="Beispiel" formControlName="exampleControl" />
-            </div>
-            </div>
-    
-            <div class="mb-3 row">
-            <label class="col-2 col-form-label" for="meaning">Bedeutung</label>
-            <div class="col-10">
-                <input type="text" class="form-control" id="meaning" placeholder="Bedeutung" formControlName="meaningControl" />
-            </div>
-            </div>
-    
-            <div class="mb-3 row">
-            <label class="col-2 col-form-label" for="difficulty">Schwierigkeitsgrad</label>
-            <div class="col-10">
-                <input type="number" class="form-control" id="difficulty" placeholder="Schwierigkeitsgrad" formControlName="difficultyControl" />
-            </div>
-            </div>
-    
-            <div class="row gx-0 mt-5">
-            <button type="submit" class="col-5 btn btn-secondary">Aktualisieren</button>
-            <div class="col-2"></div>
-            <button type="button" class="col-5 btn btn-secondary" (click)="cancel()">Abbrechen</button>
+
+            <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary col-5">
+                Update
+            </button>
+            <button type="button" class="btn btn-secondary col-5" (click)="cancel()">
+                Cancel
+            </button>
             </div>
         </form>
-    </fieldset>
-</main>
+    </div>
+</div>

@@ -1,23 +1,29 @@
-<body>
-  <div *ngIf="lessons.length > 0">
-    <header>
-      <h2>{{ levelKey }} Lessons</h2>
-    </header>
-    <main>
-      <section class="wrapper">
-        <a class="lessonCard" *ngFor="let lesson of lessons; let i = index" [routerLink]="['/lessons', levelKey, i+1]">
-          <div class="lessonTop">
-            <p>Lesson {{ i + 1 }}</p>
+<div class="container-fluid">  
+  <main class="main-content">      
+    <h1>{{ levelKey }} Lessons</h1>   
+    <h3>Dive into structured Korean practice for level {{ levelKey }}</h3>
+    <p>
+      Explore carefully designed lessons that match your current learning level. Each lesson includes grammar explanations,
+      vocabulary, and exercises tailored to {{ levelKey }}. Start from Lesson 1 or pick any topic – the choice is yours!
+    </p>   
+
+    <div class="container section-padding">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="grid-wrapper">
+            <a class="lesson-card" *ngFor="let lesson of lessons; let i = index" [routerLink]="['/lessons', levelKey, i + 1]">
+              <div class="card-img">
+                <img [src]="lesson.title_pic" alt="Lesson image">
+              </div>
+              <div class="card-label">
+                <p>Lesson {{ i + 1 }}</p>
+                <p class="title-en">{{ getTitleEn(lesson.title) }}</p>
+                <p class="title-ko" *ngIf="lesson.title.includes('|||')">{{ getTitleKo(lesson.title) }}</p>
+              </div>
+            </a>
           </div>
-          <div class="lesson-image">
-            <img [src]="lesson.title_pic" alt="TitelPicture" class="lesson-image" />
-          </div>
-          <div class="lesson">
-            <p class="title-en">{{ getTitleEn(lesson.title) }}</p>
-            <p class="title-ko" *ngIf="lesson.title.includes('|||')">{{ getTitleKo(lesson.title) }}</p>
-          </div>
-        </a>
-      </section>
-    </main>
-  </div>
-</body>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

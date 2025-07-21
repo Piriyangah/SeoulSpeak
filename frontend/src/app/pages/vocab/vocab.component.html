@@ -1,95 +1,124 @@
 <div class="container-fluid">
-    <div *ngIf="deleteStatus" class="modal fade show d-block" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Wirklich löschen?</h5>
-                    <button type="button" class="btn-close" aria-label="Abbrechen" (click)="cancel()"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Wollen Sie wirklich <strong>{{ deleteVocab?.korean }} ({{ deleteVocab?.english }})</strong> löschen?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="cancel()">Abbrechen</button>
-                    <button type="button" class="btn btn-danger" (click)="confirm()">Löschen</button>
-                </div>
+  <main class="main-content">
+    <h1>VOCABULARY</h1>
+    <p>
+      Seoul Speak gives you a powerful and modern tool to manage your personal vocabulary list.
+      You can easily <strong>add</strong>, <strong>edit</strong>, and <strong>delete</strong> words to suit your learning needs.
+      This space is designed to keep your learning organized and accessible.
+    </p>
+
+    <div class="d-flex justify-content-end mb-3">
+      <a [routerLink]="['/create']" class="btn btn-primary">
+        <i class="bi bi-plus-lg"></i> ADD VOCAB
+      </a>
+    </div>
+    
+    <div class="table-responsive mt-3">
+      <table class="table">
+        <thead>
+          <tr>
+          <!--  <th scope="col">No.</th> -->
+            <th scope="col">Korean</th>
+            <th scope="col">Pronunciation</th>
+            <th scope="col">English</th>
+            <th scope="col">Example</th>
+            <th scope="col">Meaning</th>
+            <th scope="col">Level</th>
+          <!--
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          -->
+          </tr>
+        </thead>
+        <tbody>
+          @for (vocab of vocabList; track $index; let i = $index) {
+            <tr (click)="selectVocab(vocab)" class="clickable-row">
+            <!--  <td>{{ i + 1 }}</td> -->
+              <td>{{ vocab.korean }}</td>
+              <td>{{ vocab.pronunciation }}</td>
+              <td>{{ vocab.english }}</td>
+              <td>{{ vocab.example }}</td>
+              <td>{{ vocab.meaning }}</td>
+              <td>{{ vocab.difficulty }}</td>
+              <!--
+              <td>
+                <a [routerLink]="['/vocab', vocab.id]">
+                  <span class="bi bi-pencil-square"></span>
+                </a>
+              </td>
+              <td>
+                <i (click)="openDeleteModal(vocab)" class="bi bi-trash"></i>
+              </td>
+          -->
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <div *ngIf="selectedVocab" class="modal fade show d-block" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header justify-content-between align-items-center">
+              <h5 class="modal-title">{{ selectedVocab.korean }}</h5>
+              <div class="d-flex align-items-center gap-2">
+                <a [routerLink]="['/vocab', selectedVocab.id]" class="btn btn-sm btn-outline-primary" (click)="$event.stopPropagation()">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                <button class="btn btn-sm btn-outline-danger" (click)="openDeleteModal(selectedVocab)">
+                  <i class="bi bi-trash"></i>
+                </button>
+                <button type="button" class="btn-close" (click)="closeDetails()"></button>
+              </div>
             </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-between align-items-center">
-        <h1>Vocabulary</h1>
-        <a [routerLink]="['/create']" class="btn btn-primary"><i class="bi bi-plus-lg"></i> ADD VOCAB</a>
-    </div>
-        <div class="table-responsive mt-3">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Korean</th>
-                        <th scope="col">Pronunciation</th>
-                        <th scope="col">English</th>
-                        <th scope="col">Example</th>
-                        <th scope="col">Meaning</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (vocab of vocabList; track $index; let i = $index) {
-                        <tr (click)="selectVocab(vocab)" class="clickable-row">
-                            <td>{{ i + 1 }}</td>
-                            <td>{{ vocab.korean }}</td>
-                            <td>{{ vocab.pronunciation }}</td>
-                            <td>{{ vocab.english }}</td>
-                            <td>{{ vocab.example }}</td>
-                            <td>{{ vocab.meaning }}</td>
-                            <td>{{ vocab.difficulty }}</td>
-                            <td>
-                                <a [routerLink]="['/vocab', vocab.id]">
-                                    <span class="bi bi-pencil-square"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <i (click)="delete(vocab.id)" class="bi bi-trash"></i>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-                <div *ngIf="selectedVocab" class="modal fade show d-block" tabindex="-1">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title"> {{ selectedVocab.korean }} </h5>
-                            <button type="button" class="btn-close" (click)="closeDetails()"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Korean:</strong> {{ selectedVocab.korean }}</p>
-                            <p><strong>Pronunciation:</strong> {{ selectedVocab.pronunciation }}</p>
-                            <p><strong>English:</strong> {{ selectedVocab.english }}</p>
-                            <p><strong>Example:</strong> {{ selectedVocab.example }}</p>
-                            <p><strong>Meaning:</strong> {{ selectedVocab.meaning }}</p>
-                            <p><strong>Difficulty:</strong> {{ selectedVocab.difficulty }}</p>
+            <div class="modal-body">
+              <p><strong>Korean:</strong> {{ selectedVocab.korean }}</p>
+              <p><strong>Pronunciation:</strong> {{ selectedVocab.pronunciation }}</p>
+              <p><strong>English:</strong> {{ selectedVocab.english }}</p>
+              <p><strong>Example:</strong> {{ selectedVocab.example }}</p>
+              <p><strong>Meaning:</strong> {{ selectedVocab.meaning }}</p>
+              <p><strong>Difficulty:</strong> {{ selectedVocab.difficulty }}</p>
 
-                            <div class="mt-3">
-                            <label>Status:</label>
-                            <div class="btn-group" role="group">
-                                <button class="btn btn-outline-success" [class.active]="selectedVocab.status === 'learned'" (click)="setStatus('learned')">
-                                ✔ Gelernt
-                                </button>
-                                <button class="btn btn-outline-warning" [class.active]="selectedVocab.status === 'learning'" (click)="setStatus('learning')">
-                                📚 Noch lernen
-                                </button>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" (click)="closeDetails()">Schließen</button>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+              <!--
+              <div class="mt-4">
+                <label class="form-label">Status:</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="learnedCheckbox"
+                        [checked]="selectedVocab.status === 'learned'"
+                        (change)="setStatus('learned')">
+                  <label class="form-check-label" for="learnedCheckbox">
+                    Mark as Learned
+                  </label>
+                </div>
+              </div>
+              -->
 
-            </table>
+              <div *ngIf="deleteStatus" class="mt-4 border-top pt-3">
+                <div class="alert alert-danger">
+                  <h5>Delete Vocabulary?</h5>
+                  <p>
+                    Are you sure you want to delete
+                    <strong>{{ deleteVocab?.korean }} ({{ deleteVocab?.english }})</strong>?
+                  </p>
+                  <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-secondary btn-sm" (click)="cancel()">Cancel</button>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="confirm(); closeDetails();">Delete</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="closeDetails()">Close</button>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <p class="mt-4">
+        In future versions, exciting new features will be available. Including interactive modes like
+        <strong>flashcards</strong> for quick review and <strong>memory games</strong> to make learning more fun and effective.
+        Stay tuned and continue building your vocabulary!
+      </p>
+    </div>
+  </main>
 </div>

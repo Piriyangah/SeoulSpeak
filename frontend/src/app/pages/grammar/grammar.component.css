@@ -1,7 +1,16 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #f4e7f0);
+  background: linear-gradient(to bottom, #f4e7f0, #ffffff);
   color: #333;
+}
+
+.main-grammar-content {
+  background: linear-gradient(to bottom, #ffffff, #f4e7f0);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow:
+    rgba(30, 30, 53, 0.05) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.08) 0px 3px 7px -3px;
 }
 
 .container-fluid {
@@ -30,14 +39,13 @@ h2 {
   background: #fff;
   border-radius: 1.5rem;
   padding: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 6px 24px rgba(81, 20, 98, 0.07);
 }
 
 .section-box:hover {
   box-shadow: 0 8px 32px rgba(81, 20, 98, 0.12);
 }
-
 
 .exercise-box {
   background-color: #f9f4f8;
@@ -46,7 +54,6 @@ h2 {
   box-shadow: 0 4px 16px rgba(81, 20, 98, 0.05);
   transition: 0.3s ease;
 }
-
 
 .exercise-box h3 {
   color: #511462;
@@ -62,14 +69,14 @@ h2 {
 }
 
 .btn {
-  background: linear-gradient(to right, #511462, #ba8ac7);
+  background: linear-gradient(to right, #511462, #d19dc7);
   border: none;
   color: white;
   font-weight: bold;
 }
 
 .btn:hover {
-  background: linear-gradient(to right, #ba8ac7, #511462);
+  background: linear-gradient(to right, #d19dc7, #511462);
 }
 
 label.correct {
@@ -119,7 +126,6 @@ label.incorrect {
   opacity: 1;
 }
 
-
 .explanation-text {
   margin-top: 6px;
   font-size: 0.95rem;
@@ -127,3 +133,6 @@ label.incorrect {
   color: #333;
 }
 
+input[type="radio"] {
+  accent-color: #511462;
+}

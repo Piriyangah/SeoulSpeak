@@ -346,12 +346,14 @@ export class LessonsComponent implements OnInit {
   }
 
   onBlankClick(sentenceIndex: number): void {
-    if (this.activeBlankIndex === sentenceIndex) {
-      this.activeBlankIndex = null; 
-    } else {
-      this.activeBlankIndex = sentenceIndex;
-    }
+  if (this.selectedWords[sentenceIndex]) {
+    delete this.selectedWords[sentenceIndex];
+    this.activeBlankIndex = null;
+  } else {
+    this.activeBlankIndex = sentenceIndex;
   }
+}
+
 
   onSelectWord(word: string): void {
     if (this.activeBlankIndex !== null) {
