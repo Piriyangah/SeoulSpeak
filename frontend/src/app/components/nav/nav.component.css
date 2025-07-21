@@ -1,19 +1,112 @@
 .navbar {
-  background-color: #511462; 
-  padding: 15px 0;
+  background-color: #511462;
+  color: white;
+  padding: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  z-index: 1000;
 }
-  
-.navbar-brand, .nav-link {
-  color: white !important; 
-  font-family: 'Montserrat', sans-serif; 
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-brand {
   font-weight: bold;
   text-transform: uppercase;
-}
-  
-.nav-link:hover, .navbar-brand:hover {
-  color: #9c67ab !important; 
+  color: white;
   text-decoration: none;
+  font-size: 1.5rem;
 }
-.navbar-toggler {
-  background-color: white; 
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #c58adb;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.burger span {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 10px;
+    background-color: #511462;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 180px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+
+  .nav-links.dropdown.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links.dropdown li {
+    margin: 0.5rem 0;
+  }
+
+  .nav-links.dropdown a {
+    font-size: 1rem;
+    text-align: left;
+  }
 }

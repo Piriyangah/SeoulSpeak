@@ -1,3 +1,48 @@
-<header class="header">
-    <img src="assets/pic/Logo_3.png" alt="SeoulSpeak Logo" class="logo">
-  </header>
+<header class="header container">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a routerLink="/" class="logo-link">
+      <img src="assets/pic/Logo_3c.png" alt="SeoulSpeak Logo" class="logo" />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="nav d-none d-md-flex">
+      <a routerLink="/hangul">Hangul</a>
+      <a routerLink="/grammar">Grammar</a>
+      <a routerLink="/vocab">Vocabulary</a>
+      <a routerLink="/levels">Learn</a>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <!-- Mobile Nav Wrapper -->
+    <div class="mobile-menu-wrapper" 
+        (mouseenter)="onHover(true)" 
+        (mouseleave)="onHover(false)">
+      <nav class="nav-mobile" [class.active]="menuOpen">
+        <a routerLink="/hangul">
+           <span class="hangul-icon">한</span> Hangul
+        </a>
+        <a routerLink="/grammar">
+          <i class="bi bi-book"></i> Grammar
+        </a>
+        <a routerLink="/vocab">
+          <i class="bi bi-journal-text"></i> Vocabulary
+        </a>
+
+        <a routerLink="/levels">
+          <i class="bi bi-mortarboard"></i> Learn
+        </a>
+      </nav>
+    </div>
+
+    <!-- Login + Burger -->
+    <div class="actions">
+      <a routerLink="/login" class="btn login-icon" aria-label="Login">
+        <i class="bi bi-person-circle"></i>
+      </a>
+      <button class="burger d-md-none" (click)="toggleMenu()" [class.open]="menuOpen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>    
+  </div>
+</header>
