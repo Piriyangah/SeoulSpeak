@@ -78,6 +78,7 @@ ng serve
 
 ```
 Die App läuft jetzt unter http://localhost:4200
+
 Beende den Server bei Bedarf mit Ctrl + C.
 
 ---
