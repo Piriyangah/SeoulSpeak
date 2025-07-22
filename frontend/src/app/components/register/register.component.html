@@ -1,109 +1,82 @@
 <form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
-    <mat-card-header>
-      <mat-card-title>Registrierung</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+  <div class="card shadow-sm p-4 mt-4">
+    <h3 class="card-title mb-3">Registrierung</h3>
 
-      <div class="row">
-        <div class="col">
-          <mat-form-field hintLabel="Einloggen mit Nutzername und Passwort" class="full-width">
-            <input matInput placeholder="Nutzername" formControlName="username">
-            <mat-icon matSuffix >person_add</mat-icon>
-            @if(registerForm.controls['username'].hasError('required')) {
-              <mat-error>
-                Nutzername <strong>erforderlich</strong>
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Nutzername</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person-plus"></i></span>
+        <input type="text" class="form-control" id="username" formControlName="username" placeholder="Nutzername">
       </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field hintLabel="Mind. 8 Zeichen, mind. 1 Groß- und Kleinbuchstaben, Ziffer und Sonderzeichen" class="full-width">
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Passwort" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            @if(registerForm.controls['password'].hasError('required')) {
-              <mat-error>
-                Passwort <strong>erforderlich</strong>
-              </mat-error>
-            } @else if(registerForm.controls['password'].hasError('minlength')) {
-              <mat-error>
-                Passwort muss mind. <strong>8</strong> Zeichen enthalten!
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['username'].hasError('required')">
+        Nutzername <strong>erforderlich</strong>
       </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field hintLabel="Dasselbe Passwort wie oben" class="full-width">
-            <input matInput  
-            [class.ng-invalid]="differentPassword()" 
-            [class.ng-valid]="!differentPassword()"
-            [type]="hide2 ? 'password' : 'text'" placeholder="Passwort wiederholen" formControlName="password2">
-            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            @if(registerForm.controls['password2'].hasError('required')) {
-              <mat-error>
-                Wiederholung Passwort <strong>erforderlich</strong>
-              </mat-error>
-            } @else if(registerForm.controls['password2'].hasError('minlength')) {
-              <mat-error>
-                Passwort muss mind. <strong>8</strong> Zeichen enthalten!
-              </mat-error>
-            } @else if(differentPassword()) {
-              <mat-error>
-                Passwörter nicht identisch!
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
-      </div>
+    </div>
 
-      <div class="row">
-        <div class="col">
-          <mat-form-field hintLabel="E-Mail-Adresse zum Kontaktieren verwendet" class="full-width">
-            <input matInput placeholder="E-Mail" formControlName="email">
-            <mat-icon matSuffix>email</mat-icon>
-            @if(registerForm.controls['email'].hasError('required')) {
-              <mat-error>
-                E-Mail-Adresse <strong>erforderlich</strong>
-              </mat-error>
-            } @else if(registerForm.controls['email'].hasError('email')) {
-              <mat-error>
-                keine <strong>gültige</strong> E-Mail-Adresse 
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Passwort</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input [type]="hide ? 'password' : 'text'" class="form-control" id="password" formControlName="password" placeholder="Passwort">
+        <button type="button" class="btn btn-outline-secondary" (click)="hide = !hide">
+          <i class="bi" [ngClass]="hide ? 'bi-eye-slash' : 'bi-eye'"></i>
+        </button>
       </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field hintLabel="Wählen Sie eine der beiden Rollen aus" class="full-width">
-            <mat-select placeholder="Rolle" formControlName="role">
-              @for(role of roles; track $index) {
-                <mat-option [value]="role">
-                  {{ role }}
-                </mat-option>
-              }
-            </mat-select>
-            <mat-icon matSuffix>group</mat-icon>
-            @if(registerForm.controls['role'].hasError('required')) {
-              <mat-error>
-                Rolle <strong>erforderlich</strong>
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['password'].hasError('required')">
+        Passwort <strong>erforderlich</strong>
       </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['password'].hasError('minlength')">
+        Passwort muss mind. <strong>8</strong> Zeichen enthalten!
+      </div>
+    </div>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Registrieren</button>
-    </mat-card-actions>
-  </mat-card>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Passwort wiederholen</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
+        <input [type]="hide2 ? 'password' : 'text'" class="form-control" id="password2" formControlName="password2" placeholder="Passwort wiederholen">
+        <button type="button" class="btn btn-outline-secondary" (click)="hide2 = !hide2">
+          <i class="bi" [ngClass]="hide2 ? 'bi-eye-slash' : 'bi-eye'"></i>
+        </button>
+      </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['password2'].hasError('required')">
+        Wiederholung <strong>erforderlich</strong>
+      </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['password2'].hasError('minlength')">
+        Passwort muss mind. <strong>8</strong> Zeichen enthalten!
+      </div>
+      <div class="text-danger small mt-1" *ngIf="differentPassword()">
+        Passwörter <strong>nicht identisch!</strong>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">E-Mail</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-Mail">
+      </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['email'].hasError('required')">
+        E-Mail <strong>erforderlich</strong>
+      </div>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['email'].hasError('email')">
+        keine <strong>gültige</strong> E-Mail-Adresse
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="role" class="form-label">Rolle</label>
+      <select class="form-select" id="role" formControlName="role">
+        <option value="" disabled selected>Wähle eine Rolle</option>
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+      <div class="text-danger small mt-1" *ngIf="registerForm.controls['role'].hasError('required')">
+        Rolle <strong>erforderlich</strong>
+      </div>
+    </div>
+
+    <div class="d-grid">
+      <button class="btn btn-primary" type="submit">Registrieren</button>
+    </div>
+  </div>
 </form>

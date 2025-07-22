@@ -8,33 +8,12 @@
       <span></span>
     </button>
 
-<<<<<<< HEAD
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/hangul" (click)="scrollToTop()">Hangul</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/grammar" (click)="scrollToTop()">Grammar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/vocab" (click)="scrollToTop()">Vocabulary</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/levels" (click)="scrollToTop()">Learn</a>
-        </li>
-        <li class="nav-item" *ngIf="isAdmin()">
-          <a class="nav-link" routerLink="/userlist">Userlist</a>
-        </li>
-      </ul>
-    </div>
-=======
     <ul class="nav-links dropdown" [class.active]="menuOpen">
       <li><a routerLink="/hangul" (click)="closeMenu()">Hangul</a></li>
       <li><a routerLink="/grammar" (click)="closeMenu()">Grammar</a></li>
       <li><a routerLink="/vocab" (click)="closeMenu()">Vocabulary</a></li>
       <li><a routerLink="/levels" (click)="closeMenu()">Learn</a></li>
+      <li *ngIf="isAdmin()"><a routerLink="/userlist" (click)="closeMenu()">Userlist</a></li>
     </ul>
->>>>>>> origin/main
   </div>
 </nav>

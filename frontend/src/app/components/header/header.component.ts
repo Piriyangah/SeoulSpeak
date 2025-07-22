@@ -1,6 +1,6 @@
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Component, computed, inject, Signal } from '@angular/core';
+import { Component, inject, signal, computed, Signal } from '@angular/core';
 import { BackendService } from '../../shared/backend.service';
 import { User } from '../../shared/user';
 import { CommonModule } from '@angular/common';
@@ -11,27 +11,18 @@ import { CommonModule } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-
 export class HeaderComponent {
   menuOpen = false;
-  isMobile = false; 
+  isMobile = false;
   private routerEventsSub!: Subscription;
 
+  private backend = inject(BackendService);
+
   constructor(private router: Router) {}
-
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
-  }
-
-  closeMenu(): void {
-    this.menuOpen = false;
-  }
 
   ngOnInit(): void {
     this.checkScreenSize();
     window.addEventListener('resize', this.checkScreenSize.bind(this));
-
-    // Outside click schließen
     document.addEventListener('click', this.handleClickOutside.bind(this));
 
     this.routerEventsSub = this.router.events.subscribe((event) => {
@@ -47,14 +38,20 @@ export class HeaderComponent {
     this.routerEventsSub?.unsubscribe();
   }
 
-  // Wenn Maus über Menü ist (für Hover)
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
   onHover(hovering: boolean): void {
     if (!this.isMobile) {
       this.menuOpen = hovering;
     }
   }
 
-  // Klick außerhalb => Menü schließen
   handleClickOutside(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const isClickInsideMenu = target.closest('.mobile-menu-wrapper') !== null;
@@ -68,4 +65,27 @@ export class HeaderComponent {
   checkScreenSize(): void {
     this.isMobile = window.innerWidth < 768;
   }
+
+  // ➕ Ergänzte Methoden ↓↓↓↓↓↓
+
+  goToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
+  goToRegister(): void {
+    this.router.navigate(['/register']);
+  }
+
+  user = this.backend.user;
+  token = this.backend.token;
+
+  loggedIn(): boolean {
+    return this.backend.loggedIn(); // alternativ: return this.user().id > 0;
+  }
+
+  logout(): void {
+    this.backend.unsetUser(); // ← wichtig!
+    this.router.navigate(['/']);
+  }
+
 }

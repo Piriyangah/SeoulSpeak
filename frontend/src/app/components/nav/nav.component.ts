@@ -1,27 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
-
-<<<<<<< HEAD
-declare var bootstrap: any;
-// Login_New
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BackendService } from '../../shared/backend.service';
 
-=======
->>>>>>> origin/main
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })
-export class NavComponent {
+export class NavComponent implements OnInit, OnDestroy {
   menuOpen = false;
   private routerEventsSub!: Subscription;
+
+  private auth = inject(BackendService);
 
   constructor(private router: Router) {}
 
@@ -32,6 +26,14 @@ export class NavComponent {
   closeMenu(): void {
     this.menuOpen = false;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  isAdmin(): boolean {
+    return this.auth.isAdmin();
+  }
+
+  isLoginPage(): boolean {
+    return this.router.url === '/login';
   }
 
   ngOnInit(): void {
@@ -46,17 +48,3 @@ export class NavComponent {
     this.routerEventsSub?.unsubscribe();
   }
 }
-<<<<<<< HEAD
-// Login_New
-  private auth = inject(BackendService);
-  private router = inject(Router);
-  
-  isAdmin(): boolean {
-    return this.auth.isAdmin();
-  }
-  isLoginPage(): boolean {
-    return this.router.url === '/login';
-  }
-}
-=======
->>>>>>> origin/main

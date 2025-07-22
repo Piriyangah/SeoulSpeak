@@ -2,11 +2,8 @@ import { HttpClient } from '@angular/common/http'; // stellt die Funktionen zu v
 import { computed, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { Vocab } from './vocab';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
 import { User } from './user';
-=======
 import { environment } from '../../environments/environment';
->>>>>>> origin/main
 
 @Injectable({
   providedIn: 'root'
@@ -84,4 +81,9 @@ export class BackendService {
     const url = `${this.backendUrl}/vocabulary/${id}`;
     return this.http.delete<void>(url);
   }
+
+  currentUser(): User {
+    return this.user();
+  }
+
 }

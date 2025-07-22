@@ -1,7 +1,9 @@
-<h1 mat-dialog-title>{{ data.headline }}</h1>
-<mat-dialog-content class="mat-typography">
-  {{ data.info }}
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
-</mat-dialog-actions>
+<app-confirm
+  [headline]="'Logout bestätigen'"
+  [info]="'Möchten Sie sich wirklich abmelden?'"
+  [show]="showConfirmDialog"
+  (confirmed)="doLogout()"
+  (closed)="showConfirmDialog = false">
+</app-confirm>
+
+<button class="btn btn-danger" (click)="showConfirmDialog = true">Logout</button>

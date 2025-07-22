@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<header class="header">
-  <img src="assets/pic/Logo_3.png" alt="SeoulSpeak Logo" class="logo">
-  <div class="header-buttons">
-    <!-- Show Logout button if logged in -->
-    <button *ngIf="loggedIn()" class="logout-btn" (click)="logout()">Logout</button>
-
-    <!-- Show Login and Register buttons if not logged in -->
-    <button *ngIf="!loggedIn()" class="login-btn" (click)="goToLogin()">Login</button>
-    <button *ngIf="!loggedIn()" class="register-btn" (click)="goToRegister()">Register</button>
-
-    <!-- Show username when logged in -->
-    <span *ngIf="loggedIn()" class="username-display">{{ user().username }}</span>
-=======
 <header class="header container">
   <div class="header-inner">
     <a routerLink="/" class="logo-link">
@@ -30,7 +16,7 @@
         (mouseleave)="onHover(false)">
       <nav class="nav-mobile" [class.active]="menuOpen">
         <a routerLink="/hangul">
-           <span class="hangul-icon">한</span> Hangul
+          <span class="hangul-icon">한</span> Hangul
         </a>
         <a routerLink="/grammar">
           <i class="bi bi-book"></i> Grammar
@@ -38,21 +24,30 @@
         <a routerLink="/vocab">
           <i class="bi bi-journal-text"></i> Vocabulary
         </a>
-
         <a routerLink="/levels">
           <i class="bi bi-mortarboard"></i> Learn
         </a>
       </nav>
     </div>
-    
+
     <div class="actions">
-      <a routerLink="/login" class="btn login-icon" aria-label="Login">
+      <!-- Wenn eingeloggt, zeige Logout-Button & Username -->
+      <span *ngIf="loggedIn()" class="username-display">{{ user()?.username }}</span>
+      <button *ngIf="loggedIn()" class="logout-btn" (click)="logout()">Logout</button>
+
+      <!-- Wenn nicht eingeloggt, zeige Login & Register -->
+      <button *ngIf="!loggedIn()" class="login-btn" (click)="goToLogin()">Login</button>
+      <button *ngIf="!loggedIn()" class="register-btn" (click)="goToRegister()">Register</button>
+
+      <!-- Icon-Login-Button (optional, bleibt erhalten) -->
+      <a routerLink="/login" class="btn login-icon d-none" aria-label="Login">
         <i class="bi bi-person-circle"></i>
       </a>
+
+      <!-- Mobile Burger Menu Button -->
       <button class="burger d-md-none" (click)="toggleMenu()" [class.open]="menuOpen">
         <span></span><span></span><span></span>
       </button>
-    </div>    
->>>>>>> origin/main
+    </div>
   </div>
 </header>
