@@ -1,30 +1,26 @@
 <div class="login-wrapper">
   <div class="login-card">
     
-    <!-- Bildbereich -->
     <div class="login-image">
       <img src="assets/pic/Login4.jpg" alt="Register Illustration" />
     </div>
 
-    <!-- Formular -->
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
-      <h2 class="text-center mb-4">Registrieren</h2>
+      <h2 class="text-center mb-4">Register</h2>
 
-      <!-- Nutzername -->
       <div class="mb-3">
-        <label for="username" class="form-label">Nutzername</label>
+        <label for="username" class="form-label">Username</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-person-plus"></i></span>
           <input type="text" class="form-control" id="username" formControlName="username" placeholder="Nutzername">
         </div>
         <div class="text-danger" *ngIf="registerForm.controls['username'].hasError('required') && registerForm.controls['username'].touched">
-          Nutzername erforderlich
+          Username is required
         </div>
       </div>
 
-      <!-- Passwort -->
       <div class="mb-3">
-        <label for="password" class="form-label">Passwort</label>
+        <label for="password" class="form-label">Password</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-lock"></i></span>
           <input [type]="hide ? 'password' : 'text'" class="form-control" id="password" formControlName="password" placeholder="Passwort">
@@ -33,13 +29,12 @@
           </button>
         </div>
         <div class="text-danger" *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched">
-          Passwort erforderlich
+          Password is required
         </div>
       </div>
 
-      <!-- Passwort wiederholen -->
       <div class="mb-3">
-        <label for="password2" class="form-label">Passwort wiederholen</label>
+        <label for="password2" class="form-label">Repeat Password</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
           <input [type]="hide2 ? 'password' : 'text'" class="form-control" id="password2" formControlName="password2" placeholder="Passwort wiederholen">
@@ -48,47 +43,45 @@
           </button>
         </div>
         <div class="text-danger" *ngIf="registerForm.controls['password2'].hasError('required') && registerForm.controls['password2'].touched">
-          Wiederholung erforderlich
+          Repetition required
         </div>
         <div class="text-danger" *ngIf="differentPassword()">
-          Passwörter nicht identisch!
+          Passwords do not match!
         </div>
       </div>
 
-      <!-- Email -->
       <div class="mb-3">
-        <label for="email" class="form-label">E-Mail</label>
+        <label for="email" class="form-label">Email</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-envelope"></i></span>
           <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-Mail">
         </div>
         <div class="text-danger" *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched">
-          E-Mail erforderlich
+          Email is required
         </div>
         <div class="text-danger" *ngIf="registerForm.controls['email'].hasError('email')">
-          Keine gültige E-Mail-Adresse
+          Invalid email address
         </div>
       </div>
 
-      <!-- Rolle -->
       <div class="mb-3">
-        <label for="role" class="form-label">Rolle</label>
+        <label for="role" class="form-label">Role</label>
         <select class="form-select" id="role" formControlName="role">
-          <option value="" disabled>Wähle eine Rolle</option>
+          <option value="" disabled>Select a role</option>
           <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
         </select>
 
         <div class="text-danger" *ngIf="registerForm.controls['role'].hasError('required') && registerForm.controls['role'].touched">
-          Rolle erforderlich
+          Role is required
         </div>
       </div>
 
       <div class="text-center mt-3">
-        Bereits registriert?
-        <a routerLink="/login" class="register-link">Zum Login</a>
+        Already have an account?
+        <a routerLink="/login" class="register-link">Go to Login</a>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100 mt-3">Registrieren</button>
+      <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
     </form>
   </div>
 </div>

@@ -10,7 +10,7 @@
       <h2 class="text-center mb-4">Login</h2>
 
       <div class="mb-3">
-        <label for="username" class="form-label">Nutzername</label>
+        <label for="username" class="form-label">Username</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-person"></i></span>
           <input
@@ -22,12 +22,12 @@
           />
         </div>
         <div class="text-danger" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">
-          Nutzername erforderlich
+          Username is required
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label">Passwort</label>
+        <label for="password" class="form-label">Password</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-lock"></i></span>
           <input
@@ -42,7 +42,7 @@
           </button>
         </div>
         <div class="text-danger" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
-          Passwort erforderlich
+          Password is required
         </div>
       </div>
 
@@ -51,8 +51,8 @@
       </div>
 
       <div class="text-center mt-3">
-        Noch keinen Account?
-        <a routerLink="/register" class="register-link">Registrieren</a>
+         Don't have an account yet?
+        <a routerLink="/register" class="register-link">Register</a>
       </div>
 
       <button type="submit" class="btn btn-primary w-100" [disabled]="!valid()">Login</button>

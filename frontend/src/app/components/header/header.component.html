@@ -41,21 +41,19 @@
   </div>
 </header>
 
-
-  <!-- Modal -->
   <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4">
         <div class="modal-header">
-          <h5 class="modal-title" id="logoutModalLabel">Abmelden</h5>
+          <h5 class="modal-title" id="logoutModalLabel">Log Out</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
         </div>
         <div class="modal-body">
-          Möchtest du dich wirklich abmelden?
+          Are you sure you want to log out?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="logout()">Abmelden</button>
-          <button type="button"  id="cancelLogoutBtn" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+          <button type="button" class="btn btn-primary" (click)="logout()">Yes, log ou</button>
+          <button type="button"  id="cancelLogoutBtn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
