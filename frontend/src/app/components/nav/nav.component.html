@@ -1,11 +1,14 @@
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">SEOULSPEAK</a>
-    <button class="navbar-toggler" type="button" aria-controls="navbarNavDropdown"
-      aria-expanded="false" aria-label="Toggle navigation" id="navbarToggler">
-      <span class="navbar-toggler-icon"></span>
+<nav class="navbar">
+  <div class="navbar-container">
+    <a class="navbar-brand" routerLink="/">SEOULSPEAK</a>
+
+    <button class="burger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
+<<<<<<< HEAD
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -25,5 +28,13 @@
         </li>
       </ul>
     </div>
+=======
+    <ul class="nav-links dropdown" [class.active]="menuOpen">
+      <li><a routerLink="/hangul" (click)="closeMenu()">Hangul</a></li>
+      <li><a routerLink="/grammar" (click)="closeMenu()">Grammar</a></li>
+      <li><a routerLink="/vocab" (click)="closeMenu()">Vocabulary</a></li>
+      <li><a routerLink="/levels" (click)="closeMenu()">Learn</a></li>
+    </ul>
+>>>>>>> origin/main
   </div>
 </nav>

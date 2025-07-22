@@ -1,74 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container-fluid"> 
+    <main class="main-content">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Language Level</title>
-</head>
+        <h1>Language Level</h1>   
+        <h3>Find the right starting point for your Korean journey</h3>
+        <p>
+            Whether you're just beginning or already deep into your studies, selecting the right level helps you learn more efficiently. <br>
+            <strong>A1–A2</strong> are great for absolute beginners and early learners. <strong>B1–B2</strong> suit intermediate learners who can form sentences and understand everyday topics. <strong>C1–C2</strong> are ideal if you’re reading Korean texts or watching dramas with few issues.<br>
+            Choose your level below and start practicing grammar with interactive examples and exercises. You can always switch levels later!
+        </p>   
 
-<body>
-    <header>
-        <h2>Choose your Language Level</h2>
-    </header>
-    <main>
-        <section class="wrapper">
-            <a [routerLink]="['/lessons', 'A1']" class="levelcard">
-                <div class="levelimage">
-                    <img src="../../../assets/pic/SK-7.png" alt="King Sejong" />
-                </div>
-                <div class="level">
-                    <p>A1<br />(Beginner)</p>
-                </div>
-            </a>
+        <div class="container section-padding">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="grid-wrapper">
+                        <a [routerLink]="['/lessons', 'A1']" class="level-card">
+                        <div class="card-img">
+                            <img src="../../../assets/pic/SK-7.png" alt="A1 Level">
+                        </div>
+                        <div class="card-label">A1<br>(Beginner)</div>
+                        </a>
 
-            <a href="/lessons" class="levelcard">
-                <div class="levelimage">
-                    <img src="../../../assets/pic/SK-6.png" alt="King Sejong" />
-                </div>
-                <div class="level">
-                    <p>A2<br />(Elementary)</p>
-                </div>
-            </a>
+                        <a [routerLink]="['/lessons', 'A2']" class="level-card">
+                        <div class="card-img">
+                            <img src="../../../assets/pic/SK-6.png" alt="A2 Level">
+                        </div>
+                        <div class="card-label">A2<br>(Elementary)</div>
+                        </a>
 
-            <a href="/lessons" class="levelcard">
-                <div class="levelimage">
-                    <img src="../../../assets/pic/SK-4.png" alt="King Sejong" />
-                </div>
-                <div class="level">
-                    <p>B1<br />(Intermediate)</p>
-                </div>
-            </a>
+                        <a [routerLink]="['/lessons', 'B1']" class="level-card">
+                        <div class="card-img">
+                            <img src="../../../assets/pic/SK-4.png" alt="B1 Level">
+                        </div>
+                        <div class="card-label">B1<br>(Intermediate)</div>
+                        </a>
 
-            <a href="/lessons" class="levelcard">
-                <div class="levelimage">
-                    <img src="../../../assets/pic/SK-3.png" alt="King Sejong" />
-                </div>
-                <div class="level">
-                    <p>B2<br />(Upper Intermediate)</p>
-                </div>
-            </a>
+                        <a [routerLink]="['/lessons', 'B2']" class="level-card">
+                        <div class="card-img">
+                            <img src="../../../assets/pic/SK-3.png" alt="B2 Level">
+                        </div>
+                        <div class="card-label">B2<br>(Upper Intermediate)</div>
+                        </a>
 
-            <a href="/lessons" class="levelcard">
-                <div class="levelimage">
-                    <img src="../../../assets/pic/SK-2.png" alt="King Sejong" />
-                </div>
-                <div class="level">
-                    <p>C1<br />(Advanced)</p>
-                </div>
-            </a>
+                        <a [routerLink]="['/lessons', 'C1']" class="level-card">
+                        <div class="card-img">
+                            <img src="../../../assets/pic/SK-2.png" alt="C1 Level">
+                        </div>
+                        <div class="card-label">C1<br>(Advanced)</div>
+                        </a>
 
-            <a href="/lessons" class="levelcard">
-                <div class="levelimage">
-                    <img src="../../../assets/pic/SK-10.png" alt="King Sejong" />
+                        <a [routerLink]="['/lessons', 'C2']" class="level-card">
+                            <div class="card-img">
+                                <img src="../../../assets/pic/SK-10.png" alt="C2 Level">
+                            </div>
+                            <div class="card-label">C2<br>(Proficient)
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="level">
-                    <p>C2<br />(Proficient)</p>
-                </div>
-            </a>
-        </section>
+            </div>
+        </div>
     </main>
-</body>
-
-</html>
+</div>

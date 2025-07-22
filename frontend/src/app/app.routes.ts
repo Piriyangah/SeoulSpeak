@@ -64,10 +64,11 @@ export const routes: Routes = [{
     path: "lessons",
     component: LessonsComponent
   },
-  { 
+  /*{ 
     path: "", 
     redirectTo: '/levels', 
-    pathMatch: 'full' },
+    pathMatch: 'full' }
+    */
   {
     path: "layout",
     component: LayoutComponent

@@ -35,6 +35,7 @@ export class VocabComponent implements OnInit { // OnInit ein Interface; beim In
       error: (error) => console.log('Error:', error),
       complete: () => { console.log('getAllVocabs() completed') }
     })
+    
   }
 
   //delete(id: number): void {
@@ -124,9 +125,6 @@ setStatus(status: 'learned' | 'learning') {
     // ggf. speichern über Service
   }
 }
-
-
-
 
 }
 // Was passiert hier?

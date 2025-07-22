@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <header class="header">
   <img src="assets/pic/Logo_3.png" alt="SeoulSpeak Logo" class="logo">
   <div class="header-buttons">
@@ -10,5 +11,48 @@
 
     <!-- Show username when logged in -->
     <span *ngIf="loggedIn()" class="username-display">{{ user().username }}</span>
+=======
+<header class="header container">
+  <div class="header-inner">
+    <a routerLink="/" class="logo-link">
+      <img src="assets/pic/Logo_3c.png" alt="SeoulSpeak Logo" class="logo" />
+    </a>
+
+    <nav class="nav d-none d-md-flex">
+      <a routerLink="/hangul">Hangul</a>
+      <a routerLink="/grammar">Grammar</a>
+      <a routerLink="/vocab">Vocabulary</a>
+      <a routerLink="/levels">Learn</a>
+    </nav>
+
+    <div class="mobile-menu-wrapper" 
+        (mouseenter)="onHover(true)" 
+        (mouseleave)="onHover(false)">
+      <nav class="nav-mobile" [class.active]="menuOpen">
+        <a routerLink="/hangul">
+           <span class="hangul-icon">한</span> Hangul
+        </a>
+        <a routerLink="/grammar">
+          <i class="bi bi-book"></i> Grammar
+        </a>
+        <a routerLink="/vocab">
+          <i class="bi bi-journal-text"></i> Vocabulary
+        </a>
+
+        <a routerLink="/levels">
+          <i class="bi bi-mortarboard"></i> Learn
+        </a>
+      </nav>
+    </div>
+    
+    <div class="actions">
+      <a routerLink="/login" class="btn login-icon" aria-label="Login">
+        <i class="bi bi-person-circle"></i>
+      </a>
+      <button class="burger d-md-none" (click)="toggleMenu()" [class.open]="menuOpen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>    
+>>>>>>> origin/main
   </div>
 </header>

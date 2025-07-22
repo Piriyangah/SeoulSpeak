@@ -2,13 +2,18 @@ import { HttpClient } from '@angular/common/http'; // stellt die Funktionen zu v
 import { computed, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { Vocab } from './vocab';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
 import { User } from './user';
+=======
+import { environment } from '../../environments/environment';
+>>>>>>> origin/main
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
-  backendUrl = 'http://localhost:3000'; 
+  backendUrl = environment.apiUrl;  // binden wir die environment.ts in unseren Service ein = apiUrl
+  //backendUrl = 'http://localhost:3000'; 
 
   // Login und Registrierung
   user: WritableSignal<User> = signal({id: 0, username: '', password: '', email: '', role: ''});
