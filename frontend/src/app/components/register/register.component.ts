@@ -1,26 +1,29 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, Validators, FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { User } from '../../shared/user';
 import { BackendService } from '../../shared/backend.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
-  standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule
   ]
 })
+
 export class RegisterComponent {
-  constructor(private backend: BackendService) {}
+  constructor(private backend: BackendService, private router: Router) {}
 
   registerForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    password2: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    password: new FormControl('', Validators.required),
+    password2: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     role: new FormControl('', Validators.required)
   });
@@ -36,9 +39,7 @@ export class RegisterComponent {
     const check =
       !this.registerForm.controls['username'].hasError('required') &&
       !this.registerForm.controls['password'].hasError('required') &&
-      !this.registerForm.controls['password'].hasError('minlength') &&
       !this.registerForm.controls['password2'].hasError('required') &&
-      !this.registerForm.controls['password2'].hasError('minlength') &&
       !this.registerForm.controls['email'].hasError('required') &&
       !this.registerForm.controls['email'].hasError('email') &&
       this.registerForm.value.password === this.registerForm.value.password2;
@@ -57,6 +58,7 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
+    console.log('Formular abgeschickt', this.registerForm.value);
     const values = this.registerForm.value;
     this.user = {
       username: values.username!,
@@ -69,12 +71,12 @@ export class RegisterComponent {
       this.backend.registerUser(this.user).subscribe({
         next: (response) => {
           this.success = true;
-          this.message = `✅ User "${response.username}" erfolgreich registriert.`;
+          this.message = `✅ Benutzer "${response.username}" wurde erfolgreich erstellt.`;
           this.registerForm.reset();
         },
         error: (err) => {
           this.success = false;
-          this.message = `❌ Fehler: Benutzername oder E-Mail bereits vergeben.`;
+          this.message = `❌ Fehler: ${err.error.message || 'Unbekannter Fehler'}`;
         }
       });
     } else {

@@ -18,17 +18,14 @@ import { authguardAdmin, authguardLogin } from './shared/authguard.guard';
 export const routes: Routes = [{
     path: "",
     component: HomeComponent,
-    pathMatch: 'full',
-    canActivate: [authguardLogin] //
+    pathMatch: 'full'
   },
   {
     path: "register",
-    title: "Register",
     component: RegisterComponent
   },
   {
     path: "login",
-    title: "Login",
     component: LoginComponent
   },
   {

@@ -85,5 +85,4 @@ export class BackendService {
   currentUser(): User {
     return this.user();
   }
-
 }

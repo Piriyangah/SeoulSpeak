@@ -1,50 +1,61 @@
-<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
-  <div class="card shadow-sm p-4">
-    <h4 class="card-title text-center">Registrierung</h4>
-
-    <div class="mb-3">
-      <label for="username" class="form-label">Nutzername</label>
-      <div class="input-group">
-        <input
-          id="username"
-          type="text"
-          class="form-control"
-          placeholder="Nutzername"
-          formControlName="username"
-        />
-        <span class="input-group-text"><i class="bi bi-person-plus"></i></span>
-      </div>
-      <div class="text-danger" *ngIf="loginForm.controls['username'].hasError('required')">
-        Nutzername <strong>erforderlich</strong>
-      </div>
+<div class="login-wrapper">
+  <div class="login-card">
+    <!-- Bildbereich (wird bei kleinen Screens ausgeblendet) -->
+    <div class="login-image">
+      <img src="assets/pic/Login4.jpg" alt="Login Illustration" />
     </div>
 
-    <div class="mb-3">
-      <label for="password" class="form-label">Passwort</label>
-      <div class="input-group">
-        <input
-          [type]="hide ? 'password' : 'text'"
-          id="password"
-          class="form-control"
-          placeholder="Passwort"
-          formControlName="password"
-        />
-        <button class="btn btn-outline-secondary" type="button" (click)="hide = !hide">
-          <i class="bi" [ngClass]="hide ? 'bi-eye-slash' : 'bi-eye'"></i>
-        </button>
-      </div>
-      <div class="text-danger" *ngIf="loginForm.controls['password'].hasError('required')">
-        Passwort <strong>erforderlich</strong>
-      </div>
-      <div class="text-danger" *ngIf="loginForm.controls['password'].hasError('minlength')">
-        Passwort muss mind. <strong>8</strong> Zeichen enthalten!
-      </div>
-    </div>
+    <!-- Formular -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="login-form">
+      <h2 class="text-center mb-4">Login</h2>
 
-    <div class="text-danger mb-3" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Nutzername</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            placeholder="Nutzername"
+            formControlName="username"
+          />
+        </div>
+        <div class="text-danger" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">
+          Nutzername erforderlich
+        </div>
+      </div>
 
-    <button type="submit" class="btn btn-primary w-100" [disabled]="!valid()">Login</button>
+      <div class="mb-3">
+        <label for="password" class="form-label">Passwort</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          <input
+            [type]="hide ? 'password' : 'text'"
+            id="password"
+            class="form-control"
+            placeholder="Passwort"
+            formControlName="password"
+          />
+          <button class="btn btn-outline-secondary" type="button" (click)="hide = !hide">
+            <i class="bi" [ngClass]="hide ? 'bi-eye-slash' : 'bi-eye'"></i>
+          </button>
+        </div>
+        <div class="text-danger" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+          Passwort erforderlich
+        </div>
+      </div>
+
+      <div class="text-danger text-center mb-3" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div class="text-center mt-3">
+        Noch keinen Account?
+        <a routerLink="/register" class="register-link">Registrieren</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="!valid()">Login</button>
+    </form>
   </div>
-</form>
+</div>

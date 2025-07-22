@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './userlist.component.html',
   styleUrl: './userlist.component.css',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
 })
 export class UserlistComponent implements OnInit {
   users: User[] = [];

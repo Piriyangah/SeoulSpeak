@@ -5,7 +5,6 @@ const db = require('./db');
 var jwt = require('jsonwebtoken');
 
 router.get('/', async(req, res) => {
-
     res.send({ message: "Hello FIW!" });
 });
 

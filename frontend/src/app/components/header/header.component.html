@@ -32,17 +32,18 @@
 
     <div class="actions">
       <!-- Wenn eingeloggt, zeige Logout-Button & Username -->
-      <span *ngIf="loggedIn()" class="username-display">{{ user()?.username }}</span>
-      <button *ngIf="loggedIn()" class="logout-btn" (click)="logout()">Logout</button>
+      <span *ngIf="loggedIn()" class="username-display">{{ user().username }}</span>
 
-      <!-- Wenn nicht eingeloggt, zeige Login & Register -->
-      <button *ngIf="!loggedIn()" class="login-btn" (click)="goToLogin()">Login</button>
-      <button *ngIf="!loggedIn()" class="register-btn" (click)="goToRegister()">Register</button>
-
-      <!-- Icon-Login-Button (optional, bleibt erhalten) -->
-      <a routerLink="/login" class="btn login-icon d-none" aria-label="Login">
+      <!-- ✅ Nur noch das Symbol anzeigen -->
+      <a *ngIf="!loggedIn()" routerLink="/login" class="btn login-icon" aria-label="Login">
         <i class="bi bi-person-circle"></i>
       </a>
+
+      <!-- ✅ Logout-Button als Icon zeigen -->
+      <button *ngIf="loggedIn()" class="btn logout-icon" aria-label="Logout" (click)="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+
 
       <!-- Mobile Burger Menu Button -->
       <button class="burger d-md-none" (click)="toggleMenu()" [class.open]="menuOpen">

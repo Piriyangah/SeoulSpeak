@@ -66,8 +66,6 @@ export class HeaderComponent {
     this.isMobile = window.innerWidth < 768;
   }
 
-  // ➕ Ergänzte Methoden ↓↓↓↓↓↓
-
   goToLogin(): void {
     this.router.navigate(['/login']);
   }
@@ -77,14 +75,13 @@ export class HeaderComponent {
   }
 
   user = this.backend.user;
-  token = this.backend.token;
-
+  
   loggedIn(): boolean {
-    return this.backend.loggedIn(); // alternativ: return this.user().id > 0;
+    return this.backend.loggedIn();
   }
 
   logout(): void {
-    this.backend.unsetUser(); // ← wichtig!
+    this.backend.unsetUser(); 
     this.router.navigate(['/']);
   }
 
