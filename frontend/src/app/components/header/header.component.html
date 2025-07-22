@@ -28,8 +28,7 @@
       <a *ngIf="!loggedIn()" routerLink="/login" class="btn login-icon" aria-label="Login">
         <i class="bi bi-person-circle"></i>
       </a>
-
-      <!-- Logout with modal -->
+      
       <button *ngIf="loggedIn()" class="btn logout-icon" aria-label="Logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
         <i class="bi bi-box-arrow-right" title="Logout"></i>
       </button>
