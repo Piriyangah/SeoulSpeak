@@ -81,7 +81,14 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    this.backend.unsetUser(); 
+    //localStorage.removeItem('token');
+    //localStorage.removeItem('user');
+
+    //const cancelBtn = document.getElementById('cancelLogoutBtn');
+    //cancelBtn?.click();
+
+    this.backend.unsetUser();
+    document.getElementById('cancelLogoutBtn')?.click();
     this.router.navigate(['/']);
   }
 

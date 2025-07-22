@@ -4,7 +4,7 @@
   border-radius: 0 0 2rem 2rem;
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
 .header-inner {
@@ -203,4 +203,95 @@
 
 .logout-icon:hover i {
   color: white;
+}
+
+/* Modal-Wrapper */
+.modal {
+  z-index: 1100; /* höher als Header (1) und Bootstrap default (1055) */
+}
+
+/* Modal-Inhalt */
+.modal-content {
+  background: #fff5fb;
+  border: 2px solid #ba8ac7;
+  border-radius: 1.8rem;
+  box-shadow: 0 12px 40px rgba(81, 20, 98, 0.25);
+  padding: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  z-index: 1100;
+}
+
+/* Modal-Animation (optional, für smoothes Reinkommen) */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-20px);
+}
+
+.modal.fade.show .modal-dialog {
+  transform: translateY(0);
+}
+
+/* Modal-Header */
+.modal-header {
+  border-bottom: none;
+  color: #511462;
+  font-weight: 600;
+  font-size: 1.25rem;
+  padding-bottom: 0;
+}
+
+/* Modal-Body */
+.modal-body {
+  font-size: 1rem;
+  color: #511462;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+/* Modal-Footer */
+.modal-footer {
+  border-top: none;
+  padding: 0.5rem 1rem 1rem 1rem;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Buttons */
+.modal-footer .btn-primary {
+  background-color: #511462;
+  color: white;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.5rem 1.4rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #7b2d88;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #e5d0e5;
+  border: none;
+  border-radius: 1.2rem;
+  color: #511462;
+  padding: 0.5rem 1.4rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #edd7ec;
+}
+
+/* Close-Button */
+.modal-header .btn-close {
+  background: none;
+  font-size: 1.4rem;
+  color: #511462;
+  opacity: 0.8;
+}
+
+.modal-backdrop.show {
+  background-color: transparent;
 }

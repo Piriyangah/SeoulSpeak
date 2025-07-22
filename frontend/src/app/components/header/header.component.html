@@ -15,40 +15,48 @@
         (mouseenter)="onHover(true)" 
         (mouseleave)="onHover(false)">
       <nav class="nav-mobile" [class.active]="menuOpen">
-        <a routerLink="/hangul">
-          <span class="hangul-icon">한</span> Hangul
-        </a>
-        <a routerLink="/grammar">
-          <i class="bi bi-book"></i> Grammar
-        </a>
-        <a routerLink="/vocab">
-          <i class="bi bi-journal-text"></i> Vocabulary
-        </a>
-        <a routerLink="/levels">
-          <i class="bi bi-mortarboard"></i> Learn
-        </a>
+        <a routerLink="/hangul"><span class="hangul-icon">한</span> Hangul</a>
+        <a routerLink="/grammar"><i class="bi bi-book"></i> Grammar</a>
+        <a routerLink="/vocab"><i class="bi bi-journal-text"></i> Vocabulary</a>
+        <a routerLink="/levels"><i class="bi bi-mortarboard"></i> Learn</a>
       </nav>
     </div>
 
     <div class="actions">
-      <!-- Wenn eingeloggt, zeige Logout-Button & Username -->
-      <span *ngIf="loggedIn()" class="username-display">{{ user().username }}</span>
+      <span *ngIf="loggedIn()" class="username-display">Hi {{ user().username }}</span>
 
-      <!-- ✅ Nur noch das Symbol anzeigen -->
       <a *ngIf="!loggedIn()" routerLink="/login" class="btn login-icon" aria-label="Login">
         <i class="bi bi-person-circle"></i>
       </a>
 
-      <!-- ✅ Logout-Button als Icon zeigen -->
-      <button *ngIf="loggedIn()" class="btn logout-icon" aria-label="Logout" (click)="logout()">
-        <i class="bi bi-box-arrow-right"></i>
+      <!-- Logout with modal -->
+      <button *ngIf="loggedIn()" class="btn logout-icon" aria-label="Logout" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        <i class="bi bi-box-arrow-right" title="Logout"></i>
       </button>
 
-
-      <!-- Mobile Burger Menu Button -->
       <button class="burger d-md-none" (click)="toggleMenu()" [class.open]="menuOpen">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Abmelden</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+        </div>
+        <div class="modal-body">
+          Möchtest du dich wirklich abmelden?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="logout()">Abmelden</button>
+          <button type="button"  id="cancelLogoutBtn" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        </div>
+      </div>
+    </div>
+  </div>

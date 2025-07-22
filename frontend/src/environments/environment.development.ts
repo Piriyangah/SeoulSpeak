@@ -8,6 +8,8 @@
 // Render verbinden
 export const environment = {
   production: true,
-  apiUrl: 'https://seoulspeak.onrender.com'
+  //apiUrl: 'https://seoulspeak.onrender.com'
+  apiUrl: 'https://seoulspeaklogin.onrender.com'
+
   // man soll mit this.http.get(`${environment.apiUrl}/vocabulary`) auhc machch können --- Später ausprobieren
 };
