@@ -60,6 +60,7 @@ export class RegisterComponent {
   onSubmit(): void {
     console.log('Formular abgeschickt', this.registerForm.value);
     const values = this.registerForm.value;
+    
     this.user = {
       username: values.username!,
       password: values.password!,
@@ -70,13 +71,25 @@ export class RegisterComponent {
     if (this.valid()) {
       this.backend.registerUser(this.user).subscribe({
         next: (response) => {
-          this.success = true;
-          this.message = `✅ Benutzer "${response.username}" wurde erfolgreich erstellt.`;
-          this.registerForm.reset();
+          // 🟢 Nach erfolgreicher Registrierung: einloggen
+          this.backend.loginUser({
+            username: this.user.username,
+            password: this.user.password
+          }).subscribe({
+            next: (loginResponse) => {
+              this.backend.setUser(loginResponse.token, loginResponse.user);
+              this.message = `✅ Willkommen, ${loginResponse.user.username}!`;
+              this.router.navigate(['/']);
+            },
+            error: (err) => {
+              this.success = false;
+              this.message = `❌ Login nach Registrierung fehlgeschlagen: ${err.error.message}`;
+            }
+          });
         },
         error: (err) => {
           this.success = false;
-          this.message = `❌ Fehler: ${err.error.message || 'Unbekannter Fehler'}`;
+          this.message = `❌ Registrierung fehlgeschlagen: ${err.error.message || 'Unbekannter Fehler'}`;
         }
       });
     } else {
