@@ -10,7 +10,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 app.use('/init', init);
-// app.use('/', routes);
+app.use('/', routes);
 // Login and Register
 app.use('/user', routes)
 
