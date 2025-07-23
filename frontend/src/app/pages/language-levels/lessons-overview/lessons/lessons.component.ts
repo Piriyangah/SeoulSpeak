@@ -134,7 +134,7 @@ export class LessonsComponent implements OnInit {
       english: word.en,
       example: '',
       meaning: '',
-      difficulty: 0 // 👈 wichtig: kein "A1" als String!
+      difficulty: 0 
     };
 
     fetch('http://localhost:3000/vocabulary', {
@@ -163,7 +163,7 @@ export class LessonsComponent implements OnInit {
 
   saveAllVocab(): void {
     if (!this.lesson) return;
-
+    /*
     // 1. Hole aktuelle Vokabelliste vom Server
     fetch('http://localhost:3000/vocabulary')
       .then(res => res.json())
@@ -203,6 +203,40 @@ export class LessonsComponent implements OnInit {
         console.error('Fehler beim Laden vorhandener Vokabeln:', err);
         alert('Fehler beim Speichern.');
       });
+      */
+      const words = this.lesson.vocab.words;
+
+      for (const word of words) {
+        const vocabEntry: Vocab = {
+          id: 0,
+          korean: word.ko,
+          pronunciation: '',
+          english: word.en,
+          example: '',
+          meaning: '',
+          difficulty: 0
+        };
+
+        fetch('http://localhost:3000/vocabulary', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(vocabEntry)
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('Fehler beim Speichern');
+          return res.json();
+        })
+        .then(data => {
+          console.log('Gespeichert:', data);
+        })
+        .catch(err => {
+          console.error('Fehler beim Speichern:', err);
+        });
+      }
+
+      alert(`${words.length} Vokabel(n) wurden gespeichert.`);
   }
 
   bulkSave(words: { ko: string; en: string }[]): void {
@@ -399,7 +433,6 @@ export class LessonsComponent implements OnInit {
   }
 
   onSelectSentenceWord(word: string): void {
-    // Optional: Direkt per Klick setzen in das nächste freie Feld
     const index = this.findFirstEmptySlot();
     if (index.qIndex !== -1 && index.i !== -1) {
       this.sentenceSlots[index.qIndex][index.i] = word;
